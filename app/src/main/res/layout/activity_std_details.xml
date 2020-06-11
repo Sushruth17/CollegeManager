@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ExtraText"
+    android:background="@drawable/login_background">
+
+
+    <TableLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/table_row1"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/name"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:text="Name"/>
+
+            <TextView
+                android:id="@+id/age"
+                android:textColor="#FFFFFF"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Address"/>
+            <TextView
+                android:textColor="#FFFFFF"
+                android:id="@+id/position"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Parent Name"/>
+            <TextView
+                android:textColor="#FFFFFF"
+                android:id="@+id/address"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Age"/>
+            <TextView
+                android:textColor="#FFFFFF"
+                android:id="@+id/address"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Branch Id"/>
+
+        </TableRow>
+        <View
+            android:layout_height="3dip"
+            android:layout_width="match_parent"
+            android:background="@color/colorAccent"/>
+    </TableLayout>
+
+</RelativeLayout>
