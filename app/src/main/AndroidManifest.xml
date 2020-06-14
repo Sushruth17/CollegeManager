@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.login_and_signup"
-    >
-    <uses-permission android:name="android.permission.INTERNET"/>
+    package="com.example.login_and_signup">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,11 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".stdDetails"
-            android:theme="@style/LoginPage"/>
+        <activity android:name=".AddStudent"
+            android:theme="@style/LoginPage" />
+        <activity
+            android:name=".stdDetails"
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".Home"
-            android:theme="@style/LoginPage" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Signup"
             android:theme="@style/LoginPage" />

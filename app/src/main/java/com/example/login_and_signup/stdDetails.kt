@@ -13,9 +13,14 @@ class stdDetails : AppCompatActivity() {
 
         val button = findViewById<FloatingActionButton>(R.id.floatingActionButton)
         button.setOnClickListener {
-            val intent = Intent(this, add_std_details::class.java)
+            val intent = Intent(this, AddStudent::class.java)
             startActivity(intent)
         }
+//        val button= findViewById<Button>(R.id.add_std)
+//        button.setOnClickListener {
+//            val intent = Intent(this, AddStudent::class.java)
+//            startActivity(intent)
+//        }
     }
 
 }
