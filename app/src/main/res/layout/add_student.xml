@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="580dp"
+    android:background="@drawable/login_background">
+
+    <EditText
+        android:id="@+id/add_name"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/login_edit_background"
+        android:drawablePadding="10dp"
+        android:hint="Name"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="90dp"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="127dp" />
+    <EditText
+        android:id="@+id/add_address"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/login_edit_background"
+        android:drawablePadding="10dp"
+        android:hint="Address"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/add_name"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="127dp" />
+    <EditText
+        android:id="@+id/add_parent_name"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/login_edit_background"
+        android:drawablePadding="10dp"
+        android:hint="Parent Name"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/add_address"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="127dp" />
+    <EditText
+        android:id="@+id/add_age"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/login_edit_background"
+        android:drawablePadding="10dp"
+        android:hint="Age"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/add_parent_name"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="127dp" />
+    <EditText
+        android:id="@+id/add_branch_id"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/login_edit_background"
+        android:drawablePadding="10dp"
+        android:hint="Branch Id"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/add_age"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="127dp" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="ADD"
+        android:textSize="21dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/add_branch_id"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background"/>
+
+</RelativeLayout>
