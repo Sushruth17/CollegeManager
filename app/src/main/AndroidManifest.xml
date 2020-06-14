@@ -14,7 +14,7 @@
         <activity android:name=".AddStudent"
             android:theme="@style/LoginPage" />
         <activity
-            android:name=".stdDetails"
+            android:name=".StudentDetails"
             android:theme="@style/LoginPage" />
         <activity
             android:name=".Home"

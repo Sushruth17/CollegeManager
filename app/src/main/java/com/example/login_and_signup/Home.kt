@@ -11,6 +11,8 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.widget.Toolbar
+import com.example.login_and_signup.model.MockData
+import com.example.login_and_signup.utils.StringUtils
 
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
@@ -20,6 +22,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        var data = getData()
         setContentView(R.layout.activity_home)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -36,7 +39,8 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
     val buttonstd = findViewById<Button>(R.id.btn_stdDetails)
     buttonstd.setOnClickListener{
-        val intent = Intent(this, stdDetails::class.java)
+        val intent = Intent(this, StudentDetails::class.java)
+        intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
         startActivity(intent)
 
     }
@@ -63,4 +67,14 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+    fun getData(): String {
+//        val gson = Gson()
+        val json = getDataFromRepo()
+//        val studentInfoData = gson.fromJson(json, StudentInfoModel::class.java)
+    return json
+    }
+    fun getDataFromRepo(): String {
+        return MockData.data
+    }
+
 }

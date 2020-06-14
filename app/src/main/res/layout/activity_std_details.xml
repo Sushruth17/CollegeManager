@@ -1,110 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="ExtraText"
-    android:background="@drawable/login_background">
-
-<!--    <ListView-->
-<!--        android:id="@+id/listView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:paddingTop="50dp">-->
-
-
-<!--    </ListView>-->
-
-    <TableLayout
-        android:id="@+id/table_layout"
+    tools:context="com.example.login_and_signup.StudentDetails">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_studentInfo_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        tools:ignore="MissingConstraints">
-
-        <TableRow
-            android:id="@+id/table_row1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            >
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="serif"
-                android:text="Name"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="serif"
-                android:text="Address"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal" />
-
-            <TextView
-                android:id="@+id/parent_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="serif"
-                android:text="Parent Name"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-
-            <TextView
-                android:id="@+id/age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="serif"
-                android:text="Age"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-
-            <TextView
-                android:id="@+id/branch_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="serif"
-                android:text="Branch Id"
-                android:textColor="#FFFFFF"
-                android:gravity="center_horizontal"/>
-
-        </TableRow>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dip"
-            android:background="@color/colorAccent" />
-    </TableLayout>
+        android:layout_height="match_parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/add_symbol"
-        android:textSize="35sp"
-        app:srcCompat="@drawable/button_background"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="10dp"
-         />
 
-
-</RelativeLayout>
