@@ -5,11 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_background"
     tools:context="com.example.login_and_signup.StudentDetails">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_studentInfo_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="76dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
