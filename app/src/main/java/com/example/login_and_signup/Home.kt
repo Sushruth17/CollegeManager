@@ -42,7 +42,6 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val intent = Intent(this, StudentDetails::class.java)
         intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
         startActivity(intent)
-
     }
 }
 
@@ -76,5 +75,6 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
     fun getDataFromRepo(): String {
         return MockData.data
     }
+
 
 }
