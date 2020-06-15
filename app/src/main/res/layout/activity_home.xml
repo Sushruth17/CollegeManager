@@ -36,14 +36,28 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerVertical="true" />
-
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_nav_button"
+        tools:ignore="VectorDrawableCompat"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        />
     <TextView
+        android:id="@+id/welcome_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_home"
         android:layout_centerHorizontal="true"
         android:padding="20dp"
         android:textSize="25sp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@drawable/button_background"
+        android:layout_below="@+id/welcome_home"/>
 
     <TextView
         android:layout_width="wrap_content"
