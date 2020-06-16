@@ -43,6 +43,13 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
         startActivity(intent)
     }
+
+        val buttonmarks = findViewById<Button>(R.id.btn_stdMarks)
+        buttonmarks.setOnClickListener{
+            val intent = Intent(this, StudentMarks::class.java)
+//            intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
+            startActivity(intent)
+        }
 }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

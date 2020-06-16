@@ -11,14 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddStudent"
+        <activity android:name=".StudentMarks"></activity>
+        <activity
+            android:name=".AddStudent"
             android:theme="@style/LoginPage" />
         <activity
             android:name=".StudentDetails"
             android:theme="@style/LoginPage" />
         <activity
             android:name=".Home"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Signup"
             android:theme="@style/LoginPage" />
