@@ -1,9 +1,20 @@
 package com.example.login_and_signup.model
 
+import android.telecom.Call
+import android.widget.Toast
+import com.google.gson.GsonBuilder
+import okhttp3.Response
+import okhttp3.ResponseBody
+
 class MockData {
     companion object {
 
+    val data = "{\"info\":[{'id': 1, 'name': 'Arun', 'address': 'vijaynagar', 'parentname': 'Adams', 'age': 20, 'bid': 1}, {'id': 2, 'name': 'James', 'address': 'malleshwaram', 'parentname': 'Campbell', 'age': 21, 'bid': 1}, {'id': 3, 'name': 'Joshua', 'address': 'hosahalli', 'parentname': 'Phillips', 'age': 20, 'bid': 1}, {'id': 4, 'name': 'Samuel', 'address': 'yelahanka', 'parentname': 'Robert', 'age': 21, 'bid': 1}, {'id': 5, 'name': 'Joseph', 'address': 'rajajinagar', 'parentname': 'Patterson', 'age': 20, 'bid': 1}, {'id': 6, 'name': 'Thomas', 'address': 'bnagar', 'parentname': 'Mcdonald', 'age': 21, 'bid': 1}, {'id': 7, 'name': 'Matthew', 'address': 'majestic', 'parentname': 'Chris', 'age': 20, 'bid': 1}, {'id': 8, 'name': 'Jack', 'address': 'jayanagar', 'parentname': 'Jordan', 'age': 21, 'bid': 3}, {'id': 9, 'name': 'Daniel', 'address': 'chordroad', 'parentname': 'Burns', 'age': 20, 'bid': 3}, {'id': 10, 'name': 'Butler', 'address': 'maagdiroad', 'parentname': 'Harrison', 'age': 21, 'bid': 3}, {'id': 11, 'name': 'Oliver', 'address': 'krpuram', 'parentname': 'Craig', 'age': 20, 'bid': 3}, {'id': 12, 'name': 'Bell', 'address': 'gnagar', 'parentname': 'Robertson', 'age': 21, 'bid': 3}, {'id': 13, 'name': 'Benjamin', 'address': 'mysoreroad', 'parentname': 'Max', 'age': 20, 'bid': 3}, {'id': 14, 'name': 'Nichols', 'address': 'dnagar', 'parentname': 'Christopher', 'age': 21, 'bid': 3}, {'id': 15, 'name': 'Adam', 'address': 'devanahalli', 'parentname': 'Mills', 'age': 20, 'bid': 2}, {'id': 16, 'name': 'Luke', 'address': 'shivajinagar', 'parentname': 'Nathan', 'age': 21, 'bid': 2}, {'id': 17, 'name': 'Lewis', 'address': 'chikjala', 'parentname': 'Jake', 'age': 20, 'bid': 2}, {'id': 18, 'name': 'Aaron', 'address': 'srirampura', 'parentname': 'Patel', 'age': 21, 'bid': 2}, {'id': 19, 'name': 'Harry', 'address': 'ppnagar', 'parentname': 'Edward', 'age': 20, 'bid': 2}, {'id': 20, 'name': 'Peter', 'address': 'kuvempuroad', 'parentname': 'Collins', 'age': 21, 'bid': 2}]}"
+}
+}
 
-    val data = "{\"info\":[{'id': 1, 'name': 'Arun', 'address': 'vijaynagar', 'parentName': 'Adams', 'age': 20, 'bid': 1}, {'id': 2, 'name': 'James', 'address': 'malleshwaram', 'parentName': 'Campbell', 'age': 21, 'bid': 1}, {'id': 3, 'Name': 'Joshua', 'Address': 'hosahalli', 'ParentName': 'Phillips', 'Age': 20, 'Bid': 1}, {'id': 4, 'Name': 'Samuel', 'Address': 'yelahanka', 'ParentName': 'Robert', 'Age': 21, 'Bid': 1}, {'id': 5, 'Name': 'Joseph', 'Address': 'rajajinagar', 'ParentName': 'Patterson', 'Age': 20, 'Bid': 1}, {'id': 6, 'Name': 'Thomas', 'Address': 'bnagar', 'ParentName': 'Mcdonald', 'Age': 21, 'Bid': 1}, {'id': 7, 'Name': 'Matthew', 'Address': 'majestic', 'ParentName': 'Chris', 'Age': 20, 'Bid': 1}, {'id': 8, 'Name': 'Jack', 'Address': 'jayanagar', 'ParentName': 'Jordan', 'Age': 21, 'Bid': 3}, {'id': 9, 'Name': 'Daniel', 'Address': 'chordroad', 'ParentName': 'Burns', 'Age': 20, 'Bid': 3}, {'id': 10, 'Name': 'Butler', 'Address': 'maagdiroad', 'ParentName': 'Harrison', 'Age': 21, 'Bid': 3}, {'id': 11, 'Name': 'Oliver', 'Address': 'krpuram', 'ParentName': 'Craig', 'Age': 20, 'Bid': 3}, {'id': 12, 'Name': 'Bell', 'Address': 'gnagar', 'ParentName': 'Robertson', 'Age': 21, 'Bid': 3}, {'id': 13, 'Name': 'Benjamin', 'Address': 'mysoreroad', 'ParentName': 'Max', 'Age': 20, 'Bid': 3}, {'id': 14, 'Name': 'Nichols', 'Address': 'dnagar', 'ParentName': 'Christopher', 'Age': 21, 'Bid': 3}, {'id': 15, 'Name': 'Adam', 'Address': 'devanahalli', 'ParentName': 'Mills', 'Age': 20, 'Bid': 2}, {'id': 16, 'Name': 'Luke', 'Address': 'shivajinagar', 'ParentName': 'Nathan', 'Age': 21, 'Bid': 2}, {'id': 17, 'Name': 'Lewis', 'Address': 'chikjala', 'ParentName': 'Jake', 'Age': 20, 'Bid': 2}, {'id': 18, 'Name': 'Aaron', 'Address': 'srirampura', 'ParentName': 'Patel', 'Age': 21, 'Bid': 2}, {'id': 19, 'Name': 'Harry', 'Address': 'ppnagar', 'ParentName': 'Edward', 'Age': 20, 'Bid': 2}, {'id': 20, 'Name': 'Peter', 'Address': 'kuvempuroad', 'ParentName': 'Collins', 'Age': 21, 'Bid': 2}]}"
-}
-}
+
+
+
+
+

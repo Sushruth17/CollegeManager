@@ -19,6 +19,7 @@ import java.sql.Wrapper
 class StudentDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("Learning","------ Home activity B on create --------- ")
         setContentView(R.layout.activity_std_details)
 
         val json = intent.getStringExtra(StringUtils.STUDENT_INFO_DATA)
@@ -41,11 +42,39 @@ class StudentDetails : AppCompatActivity() {
         rv_studentInfo_list.layoutManager = LinearLayoutManager(
             this, LinearLayoutManager.VERTICAL ,false)
         rv_studentInfo_list.adapter = student_adapter
-//        val button= findViewById<Button>(R.id.add_std)
-//        button.setOnClickListener {
-//            val intent = Intent(this, AddStudent::class.java)
-//            startActivity(intent)
-//        }
+
     }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("Learning","------ Home activity B on pause --------- ")
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("Learning","------ Home activity B on stop --------- ")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("Learning","------ Home activity B on destroy --------- ")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("Learning","------ Home activity B on start --------- ")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("Learning","------ Home activity B on restart --------- ")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("Learning","------ Home activity B on resume --------- ")
+    }
+
 
 }

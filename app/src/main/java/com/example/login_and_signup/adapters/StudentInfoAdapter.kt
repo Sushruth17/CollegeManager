@@ -1,6 +1,5 @@
 package com.example.login_and_signup.adapters
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.R
 import com.example.login_and_signup.model.InfoItem
-import com.example.login_and_signup.model.MockData.Companion.data
 import com.example.login_and_signup.model.StudentInfoModel
 import kotlinx.android.synthetic.main.student_info_unit.view.*
 
@@ -45,7 +43,7 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
             holder.nameType?.text = unitData.name
             holder.ageType?.text = unitData.age.toString()
             holder.addressType?.text = unitData.address
-            holder.parentNameType?.text = unitData.parentName
+            holder.parentNameType?.text = unitData.parentname
         }
 
     }
