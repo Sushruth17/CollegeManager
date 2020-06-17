@@ -46,7 +46,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                         if (response.isSuccessful) {
-                            val msg = response.body()?.string()
+                            val msg = "{info:" + response.body()?.string() + "}"
                             val intent = Intent(context, StudentDetails::class.java)
                             intent.putExtra(StringUtils.STUDENT_INFO_DATA,msg)
                             startActivity(intent)
