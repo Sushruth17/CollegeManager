@@ -1,5 +1,6 @@
 package com.example.login_and_signup
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,22 +13,55 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.login_and_signup.model.MockData
+import com.example.login_and_signup.model.StudentInfoModel
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.navigation.NavigationView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.ResponseBody
+import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
+import java.lang.reflect.Type
 
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
+    lateinit var context: Context
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        Log.i("Learning","------ Home activity A on create --------- ")
-        var data = getData()
         setContentView(R.layout.activity_home)
+        val buttonstd = findViewById<Button>(R.id.btn_stdDetails)
+        context = this
+        buttonstd.setOnClickListener{
+            var apiKindaStuff = Turrr()
+                .addRetroFit()
+                .greetUser()
+                .enqueue(object : Callback<ResponseBody> {
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        Log.i("api","---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                    }
+
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        if (response.isSuccessful) {
+                            val msg = response.body()?.string()
+                            val intent = Intent(context, StudentDetails::class.java)
+                            intent.putExtra(StringUtils.STUDENT_INFO_DATA,msg)
+                            startActivity(intent)
+                            Log.i("api","---TTTT :: GET msg from server :: " + msg)
+                            Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
+
+                        }
+                    }
+                })
+        }
+
+
+/*        Log.i("Learning","------ Home activity A on create --------- ")
+        var data = getData()
+
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -47,27 +81,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val intent = Intent(this, StudentDetails::class.java)
         intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
         startActivity(intent)
-        /*Log.i("api","------ After start activity Button clicked --------- ")
-        val apiKindaStuff = APIKindaStuff()
-            .addRetroFit()
-            .enqueue(object : Callback<ResponseBody> {
-                override fun onFailure(call: retrofit2.Call<ResponseBody>, t: Throwable) {
-                    Log.i("api","---TTTT :: GET Throwable EXCEPTION:: " + t.message)
-                }
-
-                override fun onResponse(
-                    call: retrofit2.Call<ResponseBody>,
-                    response: retrofit2.Response<ResponseBody>
-                ) {
-                    if (response.isSuccessful) {
-                        val msg = response.body()?.string()
-                        Log.i("api","---TTTT :: GET msg from server :: " + msg)
-                        Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
-
-        Log.i("here","------this is apikindastuff--------" + apiKindaStuff)*/
+        *//**//*
 
 
     }
@@ -77,7 +91,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             val intent = Intent(this, StudentMarks::class.java)
 //            intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
             startActivity(intent)
-        }
+        }*/
 }
 
     override fun onPause() {
