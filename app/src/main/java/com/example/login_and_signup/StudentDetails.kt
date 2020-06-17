@@ -52,20 +52,26 @@ class StudentDetails : AppCompatActivity() {
 
 
         Log.i("Learning","------ Home activity B on create --------- ")
+        Log.i("api","------ After start activity Button clicked --------- ")
+//        Log.i("here","------this is apikindastuff--------" + apiKindaStuff)
         setContentView(R.layout.activity_std_details)
-
         val json = intent.getStringExtra(StringUtils.STUDENT_INFO_DATA)
         val gson = Gson()
+
+
         val button = findViewById<FloatingActionButton>(R.id.floatingActionButton)
         button.setOnClickListener {
             val intent = Intent(this, AddStudent::class.java)
             startActivity(intent)
         }
 
+
+        Log.i("myyyaapp", "josn -->$json")
         val type: Type =
             object : TypeToken<StudentInfoModel>() {}.type
         val studentInfoData = gson.fromJson<StudentInfoModel>(json, type)
         Log.i("myyyaapp", "ssiizzeeeeee-->$studentInfoData")
+
 
         val rv_studentInfo_list = findViewById<RecyclerView>(R.id.rv_studentInfo_list)
         val student_adapter = StudentInfoAdapter()
