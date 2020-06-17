@@ -3,6 +3,7 @@ package com.example.login_and_signup
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,13 +13,44 @@ import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import okhttp3.ResponseBody
+import retrofit2.Callback
 import java.lang.reflect.Type
-import java.sql.Wrapper
 
 
 class StudentDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        Log.i("api","------ After start activity Button clicked --------- ")
+        val apiKindaStuff = APIKindaStuff()
+            .addRetroFit()
+            .enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: retrofit2.Call<ResponseBody>, t: Throwable) {
+                    Log.i("api","---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                }
+
+                override fun onResponse(
+                    call: retrofit2.Call<ResponseBody>,
+                    response: retrofit2.Response<ResponseBody>
+                ) {
+                    if (response.isSuccessful) {
+                        val msg = response.body()?.string()
+                        Log.i("api","---TTTT :: GET msg from server :: " + msg)
+                        Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+
+        Log.i("here","------this is apikindastuff--------" + apiKindaStuff)
+
+
+
+
+
+
+
         Log.i("Learning","------ Home activity B on create --------- ")
         setContentView(R.layout.activity_std_details)
 
