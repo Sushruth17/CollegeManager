@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/login_background">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/name_ll"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/colorAccent"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Sushruth"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/colorAccent"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_ll"
+        android:id="@+id/sub1_ll"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sub1: "
+            />
+        <TextView
+            android:id="@+id/sub1"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="76"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sub1_ll"
+        android:id="@+id/sub2_ll"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sub2: "/>
+
+        <TextView
+            android:id="@+id/sub2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="90"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sub2_ll"
+        android:id="@+id/sub3_ll"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sub3: "/>
+
+        <TextView
+            android:id="@+id/sub3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="87"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sub3_ll" />
+</androidx.constraintlayout.widget.ConstraintLayout>
