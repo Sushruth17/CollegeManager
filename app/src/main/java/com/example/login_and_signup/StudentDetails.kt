@@ -16,41 +16,12 @@ import com.google.gson.reflect.TypeToken
 import okhttp3.ResponseBody
 import retrofit2.Callback
 import java.lang.reflect.Type
+import java.sql.Wrapper
 
 
 class StudentDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-        Log.i("api","------ After start activity Button clicked --------- ")
-        val apiKindaStuff = APIKindaStuff()
-            .addRetroFit()
-            .enqueue(object : Callback<ResponseBody> {
-                override fun onFailure(call: retrofit2.Call<ResponseBody>, t: Throwable) {
-                    Log.i("api","---TTTT :: GET Throwable EXCEPTION:: " + t.message)
-                }
-
-                override fun onResponse(
-                    call: retrofit2.Call<ResponseBody>,
-                    response: retrofit2.Response<ResponseBody>
-                ) {
-                    if (response.isSuccessful) {
-                        val msg = response.body()?.string()
-                        Log.i("api","---TTTT :: GET msg from server :: " + msg)
-                        Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
-
-        Log.i("here","------this is apikindastuff--------" + apiKindaStuff)
-
-
-
-
-
-
-
         Log.i("Learning","------ Home activity B on create --------- ")
         Log.i("api","------ After start activity Button clicked --------- ")
 //        Log.i("here","------this is apikindastuff--------" + apiKindaStuff)
