@@ -45,7 +45,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_profile -> {
-                Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Profile    clicked", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_messages -> {
                 Toast.makeText(this, "Messages clicked", Toast.LENGTH_SHORT).show()
