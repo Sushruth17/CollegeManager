@@ -78,9 +78,9 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         navView.setNavigationItemSelectedListener(this)
 
 
-        val buttonmarks = findViewById<Button>(R.id.btn_stdMarks)
+        val buttonmarks = findViewById<Button>(R.id.btn_search_student)
         buttonmarks.setOnClickListener{
-            val intent = Intent(this, StudentMarks::class.java)
+            val intent = Intent(this, SearchStudent::class.java)
 //            intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
             startActivity(intent)
         }

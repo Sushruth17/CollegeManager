@@ -82,26 +82,18 @@
         android:layout_below="@+id/hometext_1"
         android:textSize="21sp"/>
 
-    <TextView
-        android:id="@+id/hometext_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To view student's marks "
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/btn_stdDetails"
-        android:padding="20dp"
-        android:textSize="20sp" />
 
     <Button
-        android:id="@+id/btn_stdMarks"
+        android:id="@+id/btn_search_student"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
-        android:text="Click here"
+        android:text="Search Student"
         android:textAllCaps="false"
-        android:layout_below="@id/hometext_2"
+        android:layout_below="@id/btn_stdDetails"
         android:textSize="21sp"/>
 </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
