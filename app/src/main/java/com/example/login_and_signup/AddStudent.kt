@@ -12,7 +12,7 @@ class AddStudent : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.add)
         button.setOnClickListener {
-            val intent = Intent(this, stdDetails::class.java)
+            val intent = Intent(this, StudentDetails::class.java)
             startActivity(intent)
         }
     }
