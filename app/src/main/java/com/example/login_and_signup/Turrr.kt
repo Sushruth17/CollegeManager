@@ -19,9 +19,9 @@ class Turrr {
         @GET("/student_data")
         fun greetUser(): Call<ResponseBody>
 
-        @Headers("Content-type: application/json")
-        @POST("/api/post_some_data")
-        fun getVectors(@Body body: JsonObject): Call<ResponseBody>
+//        @Headers("Content-type: application/json")
+//        @POST("/api/post_some_data")
+//        fun getVectors(@Body body: JsonObject): Call<ResponseBody>
     }
     //    companion object {
 //        private val retrofit = Retrofit.Builder()
@@ -33,7 +33,7 @@ class Turrr {
 //    }
     public fun addRetroFit(): APIService {
         val logging = HttpLoggingInterceptor ()
-        logging.level = HttpLoggingInterceptor.Level.BODY;
+    logging.level = HttpLoggingInterceptor.Level.BODY;
         val httpClient =  OkHttpClient.Builder()
         httpClient.addInterceptor(logging);
         val retrofit = Retrofit.Builder()

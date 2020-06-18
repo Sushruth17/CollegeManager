@@ -46,12 +46,14 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                         if (response.isSuccessful) {
-                            val msg = "{info:" + response.body()?.string() + "}"
+//                            val msg = "{info:" + response.body()?.string() + "}"
+//                            Log.i("api","msgg " + msg)
+                            val msg = response.body()?.string()
                             val intent = Intent(context, StudentDetails::class.java)
                             intent.putExtra(StringUtils.STUDENT_INFO_DATA,msg)
                             startActivity(intent)
                             Log.i("api","---TTTT :: GET msg from server :: " + msg)
-                            Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
 
                         }
                     }
@@ -59,8 +61,8 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         }
 
 
-/*        Log.i("Learning","------ Home activity A on create --------- ")
-        var data = getData()
+//        Log.i("Learning","------ Home activity A on create --------- ")
+//        var data = getData()
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -75,23 +77,13 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
-    val buttonstd = findViewById<Button>(R.id.btn_stdDetails)
-    buttonstd.setOnClickListener{
-        Log.i("api","------ Button clicked --------- ")
-        val intent = Intent(this, StudentDetails::class.java)
-        intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
-        startActivity(intent)
-        *//**//*
-
-
-    }
 
         val buttonmarks = findViewById<Button>(R.id.btn_stdMarks)
         buttonmarks.setOnClickListener{
             val intent = Intent(this, StudentMarks::class.java)
 //            intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
             startActivity(intent)
-        }*/
+        }
 }
 
     override fun onPause() {
