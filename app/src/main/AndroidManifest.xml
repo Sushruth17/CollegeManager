@@ -13,7 +13,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".AfterSearch"></activity>
-        <activity android:name=".SearchStudent" />
+        <activity android:name=".SearchStudent"
+            android:theme="@style/LoginPage"/>
         <activity android:name=".StudentMarks" />
         <activity
             android:name=".AddStudent"

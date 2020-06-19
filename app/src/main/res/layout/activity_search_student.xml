@@ -11,10 +11,10 @@
     <EditText
         android:id="@+id/editName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:ems="10"
         android:textAlignment="center"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/login_edit_background"
         android:inputType="textPersonName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,6 +23,9 @@
         android:hint="Enter Student Name"
         tools:layout_editor_absoluteX="84dp"
         tools:layout_editor_absoluteY="299dp" />
+
+
+
     <Button
         android:layout_width="wrap_content"
         android:id="@+id/search_name"

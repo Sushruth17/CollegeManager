@@ -48,6 +48,13 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
 
     }
 
+    fun removeAt(position: Int) {
+        data.info?.removeAt(position)
+        notifyItemRemoved(position)
+    }
 
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
+    }
 
 }
