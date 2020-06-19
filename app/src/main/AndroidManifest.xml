@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SearchStudent"></activity>
+        <activity android:name=".AfterSearch"></activity>
+        <activity android:name=".SearchStudent" />
         <activity android:name=".StudentMarks" />
         <activity
             android:name=".AddStudent"

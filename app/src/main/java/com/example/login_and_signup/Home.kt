@@ -14,6 +14,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.login_and_signup.model.MockData
 import com.example.login_and_signup.model.StudentInfoModel
+import com.example.login_and_signup.utils.ApiSearchStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
@@ -35,24 +36,27 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         setContentView(R.layout.activity_home)
         val buttonstd = findViewById<Button>(R.id.btn_stdDetails)
         context = this
-        buttonstd.setOnClickListener{
+        buttonstd.setOnClickListener {
             var apiKindaStuff = Turrr()
                 .addRetroFit()
                 .greetUser()
                 .enqueue(object : Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        Log.i("api","---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                        Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                     }
 
-                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
                         if (response.isSuccessful) {
 //                            val msg = "{info:" + response.body()?.string() + "}"
 //                            Log.i("api","msgg " + msg)
                             val msg = response.body()?.string()
                             val intent = Intent(context, StudentDetails::class.java)
-                            intent.putExtra(StringUtils.STUDENT_INFO_DATA,msg)
+                            intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
                             startActivity(intent)
-                            Log.i("api","---TTTT :: GET msg from server :: " + msg)
+                            Log.i("api", "---TTTT :: GET msg from server :: " + msg)
 //                            Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
 
                         }
@@ -79,13 +83,12 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
 
         val buttonmarks = findViewById<Button>(R.id.btn_search_student)
-        buttonmarks.setOnClickListener{
-            val intent = Intent(this, SearchStudent::class.java)
-//            intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
+        buttonmarks.setOnClickListener {
+            val intent = Intent(context, SearchStudent::class.java)
+//          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
             startActivity(intent)
         }
-}
-
+    }
     override fun onPause() {
         super.onPause()
         Log.i("Learning","------ Home activity A on pause --------- ")
