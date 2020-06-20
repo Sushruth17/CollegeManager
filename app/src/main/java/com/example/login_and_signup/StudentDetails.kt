@@ -1,30 +1,27 @@
 package com.example.login_and_signup
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.SimpleAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.adapters.StudentInfoAdapter
-import com.example.login_and_signup.model.MockData.Companion.data
 import com.example.login_and_signup.model.StudentInfoModel
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import okhttp3.ResponseBody
-import retrofit2.Callback
 import java.lang.reflect.Type
-import java.sql.Wrapper
 
 
 class StudentDetails : AppCompatActivity() {
+    lateinit var context: Context
     override fun onCreate(savedInstanceState: Bundle?) {
+        context = this
         super.onCreate(savedInstanceState)
         Log.i("Learning","------ Home activity B on create --------- ")
         Log.i("api","------ After start activity Button clicked --------- ")
@@ -57,14 +54,54 @@ class StudentDetails : AppCompatActivity() {
             this, LinearLayoutManager.VERTICAL ,false)
         rv_studentInfo_list.adapter = student_adapter
 
-        val swipeHandler = object : SwipeToDeleteCallback(this){
+        val swipeDelHandler = object : SwipeToDeleteCallback(this){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val adapter = rv_studentInfo_list.adapter as StudentInfoAdapter
                 adapter.removeAt(viewHolder.adapterPosition)
+
+//                Turrr()
+//                    .addRetroFit()
+//                    .deleteStudent(viewHolder.adapterPosition)
+/*                    .enqueue(object : Callback<ResponseBody> {
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                        }
+
+                        override fun onResponse(
+                            call: Call<ResponseBody>,
+                            response: Response<ResponseBody>
+                        ) {
+                            if (response.isSuccessful) {
+//                            val msg = "{info:" + response.body()?.string() + "}"
+//                            Log.i("api","msgg " + msg)
+                                val msg = response.body()?.string()
+                                val intent = Intent(context, StudentDetails::class.java)
+                                intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
+                                startActivity(intent)
+                                Log.i("api", "---TTTT :: GET msg from server :: " + msg)
+//                            Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
+
+                            }
+                        }
+                    })*/
             }
         }
-        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        val itemTouchHelper = ItemTouchHelper(swipeDelHandler)
         itemTouchHelper.attachToRecyclerView(rv_studentInfo_list)
+
+
+        val swipeEditHandler = object : SwipetoEditCallback(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = rv_studentInfo_list.adapter as StudentInfoAdapter
+                adapter.edit(viewHolder)
+            }
+        }
+
+        val itemEditHelper = ItemTouchHelper(swipeEditHandler)
+        itemEditHelper.attachToRecyclerView(rv_studentInfo_list)
+
+
+
 
 //        addItemBtn.setOnClickListener(this)
 //    }

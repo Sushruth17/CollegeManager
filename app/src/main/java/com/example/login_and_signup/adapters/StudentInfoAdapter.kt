@@ -11,7 +11,6 @@ import com.example.login_and_signup.model.StudentInfoModel
 import kotlinx.android.synthetic.main.student_info_unit.view.*
 
 class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>() {
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameType = itemView.name
         val ageType = itemView.age
@@ -53,8 +52,10 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
         notifyItemRemoved(position)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
-    }
+//    fun edit(RecyclerView.ViewHolder) {
+//        data.info?.edit()
+//    }
+
+
 
 }
