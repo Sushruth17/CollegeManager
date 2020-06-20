@@ -1,16 +1,11 @@
 package com.example.login_and_signup
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
-import java.util.logging.Level
 
 
 class Turrr {
@@ -20,7 +15,7 @@ class Turrr {
         fun greetUser(): Call<ResponseBody>
 
         @GET("/{delstd}")
-        fun deleteStudent(@Path("delstd") delstd: Int): Call<ResponseBody>
+        fun deleteStudent(@Path("delstd") delstd: Int?): Call<ResponseBody>
     }
 
 //        @Headers("Content-type: application/json")

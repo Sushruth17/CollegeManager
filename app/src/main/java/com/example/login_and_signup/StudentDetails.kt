@@ -69,14 +69,16 @@ class StudentDetails : AppCompatActivity() {
                 startActivity(intent)
             }
             override fun onRightClicked(position: Int) {
+                val removed = student_adapter.data.info?.get(position)?.id
                 student_adapter.removeAt(position)
                 val item_removed = student_adapter.notifyItemRemoved(position)
                 student_adapter.notifyItemRangeChanged(position, student_adapter.getItemCount())
-                val removed = studentInfoData.info
+//                student_adapter.data.info?.get(position)?.id
 
+                Log.i("del", "------removed----position------>" +position+"\n" +Gson().toJson(removed))
                 Turrr()
                     .addRetroFit()
-                    .deleteStudent(position)
+                    .deleteStudent(removed)
                     .enqueue(object : Callback<ResponseBody> {
                         override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                             Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)

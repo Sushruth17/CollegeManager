@@ -2,11 +2,14 @@ package com.example.login_and_signup
 
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
+import android.graphics.drawable.Drawable
 import android.view.MotionEvent
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.LEFT
 import androidx.recyclerview.widget.ItemTouchHelper.RIGHT
@@ -24,6 +27,7 @@ internal class SwipeController(buttonsActions: SwipeControllerActions?) :
     private var buttonInstance: RectF? = null
     private var currentItemViewHolder: RecyclerView.ViewHolder? = null
     private var buttonsActions: SwipeControllerActions? = null
+    lateinit var context: Context
    override fun getMovementFlags(
        recyclerView: RecyclerView,
        viewHolder: RecyclerView.ViewHolder
@@ -241,6 +245,7 @@ internal class SwipeController(buttonsActions: SwipeControllerActions?) :
         val textWidth = p.measureText(text)
         c.drawText(text, button.centerX() - textWidth / 2, button.centerY() + textSize / 2, p)
     }
+
 
     fun onDraw(c: Canvas) {
         if (currentItemViewHolder != null) {
