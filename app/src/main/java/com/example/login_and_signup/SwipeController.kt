@@ -129,15 +129,9 @@ internal class SwipeController(buttonsActions: SwipeControllerActions?) :
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setTouchDownListener(
-        c: Canvas,
-        recyclerView: RecyclerView,
-        viewHolder: RecyclerView.ViewHolder,
-        dX: Float,
-        dY: Float,
-        actionState: Int,
-        isCurrentlyActive: Boolean
-    ) {
+    private fun setTouchDownListener(c: Canvas, recyclerView: RecyclerView,
+                                     viewHolder: RecyclerView.ViewHolder, dX: Float,
+                                     dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
         recyclerView.setOnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 setTouchUpListener(
@@ -239,12 +233,7 @@ internal class SwipeController(buttonsActions: SwipeControllerActions?) :
         }
     }
 
-    private fun drawText(
-        text: String,
-        c: Canvas,
-        button: RectF,
-        p: Paint
-    ) {
+    private fun drawText(text: String, c: Canvas, button: RectF, p: Paint) {
         val textSize = 60f
         p.color = Color.WHITE
         p.isAntiAlias = true

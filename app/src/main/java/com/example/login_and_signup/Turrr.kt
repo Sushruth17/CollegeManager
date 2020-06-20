@@ -19,10 +19,14 @@ class Turrr {
         @GET("/student_data")
         fun greetUser(): Call<ResponseBody>
 
+        @GET("/{delstd}")
+        fun deleteStudent(@Path("delstd") delstd: Int): Call<ResponseBody>
+    }
+
 //        @Headers("Content-type: application/json")
 //        @POST("/api/post_some_data")
 //        fun getVectors(@Body body: JsonObject): Call<ResponseBody>
-    }
+
     //    companion object {
 //        private val retrofit = Retrofit.Builder()
 //                .baseUrl("http://127.0.0.1:5000")

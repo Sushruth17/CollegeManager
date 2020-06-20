@@ -1,9 +1,11 @@
 package com.example.login_and_signup
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,16 +17,22 @@ import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.reflect.Type
 
 
 class StudentDetails : AppCompatActivity() {
+    lateinit var context: Context
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i("Learning","------ Home activity B on create --------- ")
         Log.i("api","------ After start activity Button clicked --------- ")
 //        Log.i("here","------this is apikindastuff--------" + apiKindaStuff)
         setContentView(R.layout.activity_std_details)
+        context = this
         val json = intent.getStringExtra(StringUtils.STUDENT_INFO_DATA)
         val gson = Gson()
 
@@ -55,11 +63,42 @@ class StudentDetails : AppCompatActivity() {
 
 
         val swipeController = SwipeController(object : SwipeControllerActions() {
+
+            override fun onLeftClicked(position: Int) {
+                val intent = Intent(context, EditStudent::class.java)
+                startActivity(intent)
+            }
             override fun onRightClicked(position: Int) {
                 student_adapter.removeAt(position)
-                student_adapter.notifyItemRemoved(position)
+                val item_removed = student_adapter.notifyItemRemoved(position)
                 student_adapter.notifyItemRangeChanged(position, student_adapter.getItemCount())
+                val removed = studentInfoData.info
+
+                Turrr()
+                    .addRetroFit()
+                    .deleteStudent(position)
+                    .enqueue(object : Callback<ResponseBody> {
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                        }
+                        override fun onResponse(call: Call<ResponseBody>,
+                            response: Response<ResponseBody>) {
+                            if (response.isSuccessful) {
+//                            val msg = "{info:" + response.body()?.string() + "}"
+//                            Log.i("api","msgg " + msg)
+                                val msg = response.body()?.string()
+//                                val intent = Intent(context, StudentDetails::class.java)
+//                                intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
+//                                startActivity(intent)
+                                Log.i("api", "---TTTT :: GET msg from server :: " + msg)
+                                Toast.makeText(context, "Successfully" +  msg, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    })
+
+
             }
+
         })
 
 
@@ -73,7 +112,7 @@ class StudentDetails : AppCompatActivity() {
         })
     }
 
-    
+
 
     override fun onPause() {
         super.onPause()
