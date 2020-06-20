@@ -45,9 +45,12 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
             holder.addressType?.text = unitData.address
             holder.parentNameType?.text = unitData.parentname
         }
-
     }
 
+    fun removeAt(position: Int) {
+        data.info?.removeAt(position)
+        notifyItemRemoved(position)
+    }
 
 
 }
