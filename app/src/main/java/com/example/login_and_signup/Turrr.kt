@@ -16,6 +16,7 @@ class Turrr {
 
         @GET("/{delstd}")
         fun deleteStudent(@Path("delstd") delstd: Int?): Call<ResponseBody>
+
     }
 
 //        @Headers("Content-type: application/json")

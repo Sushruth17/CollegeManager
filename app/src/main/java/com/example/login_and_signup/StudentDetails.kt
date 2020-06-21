@@ -67,7 +67,14 @@ class StudentDetails : AppCompatActivity() {
         val swipeController = SwipeController(object : SwipeControllerActions() {
 
             override fun onLeftClicked(position: Int) {
+                val itemClicked = position
+                val dataSelected = student_adapter.data.info?.get(position)
+                Log.i("dataselected","-----selected position-----"+position)
+                Log.i("dataselected","-----selected-----"+dataSelected)
                 val intent = Intent(context, EditStudent::class.java)
+                if (dataSelected != null) {
+                    intent.putExtra("Name",dataSelected)
+                }
                 startActivity(intent)
             }
             override fun onRightClicked(position: Int) {

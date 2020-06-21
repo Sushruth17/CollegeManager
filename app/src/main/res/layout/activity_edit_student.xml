@@ -15,7 +15,7 @@
         android:textSize="35sp"
         />
     <LinearLayout
-        android:id="@+id/add_name"
+        android:id="@+id/edit_name_ll"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
@@ -31,18 +31,19 @@
             android:textSize="18sp"
             android:textStyle="bold" />
         <EditText
+            android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_edit_background"
             android:inputType="text" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/add_age"
+        android:id="@+id/edit_age_ll"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:layout_below="@id/add_name"
+        android:layout_below="@id/edit_name_ll"
         android:layout_marginBottom="20dp">
         <TextView
             android:layout_width="80dp"
@@ -53,18 +54,19 @@
             android:textSize="18sp"
             android:textStyle="bold" />
         <EditText
+            android:id="@+id/edit_age"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_edit_background"
             android:inputType="text" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/add_address"
+        android:id="@+id/edit_address_ll"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:layout_below="@id/add_age"
+        android:layout_below="@id/edit_age_ll"
         android:layout_marginBottom="20dp">
         <TextView
             android:layout_width="80dp"
@@ -76,18 +78,19 @@
             android:textSize="18sp"
             android:textStyle="bold" />
         <EditText
+            android:id="@+id/edit_address"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_edit_background"
             android:inputType="text" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/add_parent_name"
+        android:id="@+id/edit_parent_name_ll"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:layout_below="@id/add_address"
+        android:layout_below="@id/edit_address_ll"
         android:layout_marginBottom="20dp">
 
         <TextView
@@ -101,6 +104,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/edit_parent_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_edit_background"
@@ -110,13 +114,13 @@
 
 
     <Button
-        android:id="@+id/edit"
+        android:id="@+id/btn_edit"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:text="Edit"
         android:textSize="21sp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/add_parent_name"
+        android:layout_below="@+id/edit_parent_name_ll"
 
         android:background="@drawable/button_background"
         android:textAllCaps="false"/>

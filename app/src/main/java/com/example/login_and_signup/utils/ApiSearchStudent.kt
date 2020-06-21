@@ -41,6 +41,9 @@ class ApiAddStudent {
     interface APIServiceAdd {
         @POST("/api/post_some_data")
         fun getVectors(@Body body: JsonObject): Call<ResponseBody>
+
+        @POST("/api/edit_data")
+        fun editStudent(@Body body: JsonObject): Call<ResponseBody>
     }
 
 

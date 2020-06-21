@@ -1,7 +1,8 @@
 package com.example.login_and_signup.model
 
-data class StudentInfoModel(
+data class StudentInfoModel (
 	val info: MutableList<InfoItem?>? = null
+
 )
 
 data class InfoItem(
@@ -11,6 +12,8 @@ data class InfoItem(
 	val bid: Int? = null,
 	val age: Int? = null,
 	val name: String? = null
+
+
 
 )
 
