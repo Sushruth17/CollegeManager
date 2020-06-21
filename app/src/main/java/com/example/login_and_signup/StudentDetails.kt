@@ -52,6 +52,8 @@ class StudentDetails : AppCompatActivity() {
 
 
         val rv_studentInfo_list = findViewById<RecyclerView>(R.id.rv_studentInfo_list)
+
+
         val student_adapter = StudentInfoAdapter()
         student_adapter.setDataCustom(studentInfoData)
 

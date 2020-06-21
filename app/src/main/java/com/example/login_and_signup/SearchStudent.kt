@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_and_signup.utils.ApiSearchStudent
@@ -38,6 +37,7 @@ class SearchStudent : AppCompatActivity() {
             }
             hideKeyboard()
 //            val editName = findViewById(R.id.editName) as EditText
+
             val name_entered: String = editName.getText().toString()
             Log.i("name","--------EDIT NAME-------------- " + name_entered)
             Toast.makeText(this, name_entered, Toast.LENGTH_SHORT).show()
@@ -64,3 +64,4 @@ class SearchStudent : AppCompatActivity() {
         }
     }
 }
+

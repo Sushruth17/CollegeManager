@@ -16,25 +16,6 @@
         tools:layout_editor_absoluteX="35dp"
         tools:layout_editor_absoluteY="76dp"
         />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/add_symbol"
-        android:textSize="35sp"
-        app:srcCompat="@drawable/button_background"
-        tools:layout_editor_absoluteX="321dp"
-        tools:layout_editor_absoluteY="641dp"
-        android:layout_marginEnd="10dp"
-        />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

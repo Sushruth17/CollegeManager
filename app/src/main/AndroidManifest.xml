@@ -12,10 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EditStudent"></activity>
-        <activity android:name=".AfterSearch" />
-        <activity android:name=".SearchStudent" />
-        <activity android:name=".StudentMarks" />
+        <activity android:name=".EditStudent"
+            android:theme="@style/LoginPage"/>
+        <activity android:name=".AfterSearch"
+            android:theme="@style/LoginPage"/>
+        <activity android:name=".SearchStudent"
+            android:theme="@style/LoginPage"/>
+        <activity android:name=".StudentMarks"
+            android:theme="@style/LoginPage"/>
         <activity
             android:name=".AddStudent"
             android:theme="@style/LoginPage" />
