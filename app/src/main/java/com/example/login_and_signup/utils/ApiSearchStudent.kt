@@ -39,8 +39,6 @@ class ApiSearchStudent {
 class ApiAddStudent {
 
     interface APIServiceAdd {
-        @GET("/student_data/{name}")
-        fun nameSearched(@Path("name") name: String): Call<ResponseBody>
         @POST("/api/post_some_data")
         fun getVectors(@Body body: JsonObject): Call<ResponseBody>
     }

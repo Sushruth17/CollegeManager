@@ -3,6 +3,7 @@ package com.example.login_and_signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.example.login_and_signup.utils.ApiAddStudent
@@ -19,22 +20,26 @@ class AddStudent : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_student)
 
-        val name_added : String = add_name.getText().toString()
-        val address_added : String = add_address.getText().toString()
-        val age_added : String = add_age.getText().toString()
-        val parentname_added : String = add_parent_name.getText().toString()
-
-
-        val jsonObj = JsonObject()
-        jsonObj.addProperty("name", name_added)
-        jsonObj.addProperty("address", address_added)
-        jsonObj.addProperty("age", age_added)
-        jsonObj.addProperty("parentname", parentname_added)
-
 
 
         val button = findViewById<Button>(R.id.add)
         button.setOnClickListener {
+
+            val name_added : String = add_name.getText().toString()
+            Log.i("add","--------ADDNAME-------------- " + name_added)
+            val address_added : String = add_address.getText().toString()
+            Log.i("add","--------ADDADDRES-------------- " + address_added)
+            val age_added : String = add_age.getText().toString()
+            Log.i("add","--------ADDAGE-------------- " + age_added)
+            val parentname_added : String = add_parent_name.getText().toString()
+            Log.i("add","--------ADDPARENTNAME-------------- " + parentname_added)
+
+
+            val jsonObj = JsonObject()
+            jsonObj.addProperty("name", name_added)
+            jsonObj.addProperty("address", address_added)
+            jsonObj.addProperty("age", age_added)
+            jsonObj.addProperty("parentname", parentname_added)
             //  POST demo
             ApiAddStudent()
                 .addRetroFit()
@@ -52,9 +57,6 @@ class AddStudent : AppCompatActivity() {
                         }
                     }
                 })
-            val intent = Intent(this, StudentDetails::class.java)
-            startActivity(intent)
-
         }
     }
 }
