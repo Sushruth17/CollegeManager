@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home"
-    android:background="@drawable/login_background">
+    android:background="@drawable/login_background"
+    android:id="@+id/home_xml">
 
     <ImageView
         android:id="@+id/img1"

@@ -61,13 +61,13 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             }
         }
 
-        viewpager.addOnPageChangeListener(
-            ArianaBackgroundListener(
-                getColors(),
-                img1,
-                viewpager
-            )
-        )
+//        viewpager.addOnPageChangeListener(
+////            ArianaBackgroundListener(
+////                getColors(),
+////                img1,
+////                viewpager
+////            )
+//        )
 
 
         val buttonstd = findViewById<Button>(R.id.btn_stdDetails)
@@ -191,15 +191,14 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         return MockData.data
     }
 
-    private fun getColors(): IntArray {
-        return intArrayOf(
-            ContextCompat.getColor(this, R.color.home),
-            ContextCompat.getColor(this, R.color.search),
-            ContextCompat.getColor(this, R.color.profile),
-            ContextCompat.getColor(this, R.color.home)
-
-        )
+//    private fun getColors(): IntArray {
+//        return intArrayOf(
+//            ContextCompat.getColor(this, R.color.home),
+//            ContextCompat.getColor(this, R.color.search),
+//            ContextCompat.getColor(this, R.color.profile),
+//            ContextCompat.getColor(this, R.color.home)
+//
+//        )
 
 
     }
-}

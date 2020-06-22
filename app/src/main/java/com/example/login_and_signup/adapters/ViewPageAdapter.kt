@@ -1,6 +1,7 @@
 package com.example.login_and_signup.adapters
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ class ViewPagerAdapter(supportFragmentManager: FragmentManager) :
     }
 
     class Child : Fragment() {
-        private var param1: String? = "Hi"
+        private var param1: String? = ""
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             arguments?.let {
@@ -50,6 +51,7 @@ class ViewPagerAdapter(supportFragmentManager: FragmentManager) :
             val rootView =
                 View.inflate(context, R.layout.fragment_child, null)
             rootView.tvPosition.text = param1
+            Log.i("fragment","jxndjidhfdisufhuifdshfiuhdsifuhsd")
             return rootView
 
         }

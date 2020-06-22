@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -77,34 +78,63 @@ class StudentDetails : AppCompatActivity() {
                 startActivity(intent)
             }
             override fun onRightClicked(position: Int) {
-                val removed = student_adapter.data.info?.get(position)?.id
-                student_adapter.removeAt(position)
-                val item_removed = student_adapter.notifyItemRemoved(position)
-                student_adapter.notifyItemRangeChanged(position, student_adapter.getItemCount())
+
+                val builder = AlertDialog.Builder(context)
+                //set title for alert dialog
+                builder.setTitle("Are you sure you want to delete?")
+                //set message for alert dialog
+                builder.setMessage("Deleteing student will remove student from the database")
+                builder.setIcon(android.R.drawable.ic_dialog_alert)
+
+                //performing positive action
+                builder.setPositiveButton("Yes"){dialogInterface, which ->
+                    Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_LONG).show()
+
+
+                    val removed = student_adapter.data.info?.get(position)?.id
+                    student_adapter.removeAt(position)
+                    student_adapter.notifyItemRemoved(position)
+                    student_adapter.notifyItemRangeChanged(position, student_adapter.getItemCount())
 //                student_adapter.data.info?.get(position)?.id
 
-                Log.i("del", "------removed----position------>" +position+"\n" +Gson().toJson(removed))
-                Turrr()
-                    .addRetroFit()
-                    .deleteStudent(removed)
-                    .enqueue(object : Callback<ResponseBody> {
-                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                            Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
-                        }
-                        override fun onResponse(call: Call<ResponseBody>,
-                            response: Response<ResponseBody>) {
-                            if (response.isSuccessful) {
+                    Log.i("del", "------removed----position------>" +position+"\n" +Gson().toJson(removed))
+                    Turrr()
+                        .addRetroFit()
+                        .deleteStudent(removed)
+                        .enqueue(object : Callback<ResponseBody> {
+                            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                                Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                            }
+                            override fun onResponse(call: Call<ResponseBody>,
+                                                    response: Response<ResponseBody>) {
+                                if (response.isSuccessful) {
 //                            val msg = "{info:" + response.body()?.string() + "}"
 //                            Log.i("api","msgg " + msg)
-                                val msg = response.body()?.string()
+                                    val msg = response.body()?.string()
 //                                val intent = Intent(context, StudentDetails::class.java)
 //                                intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
 //                                startActivity(intent)
-                                Log.i("api", "---TTTT :: GET msg from server :: " + msg)
-                                Toast.makeText(context, "Successfully" +  msg, Toast.LENGTH_SHORT).show()
+                                    Log.i("api", "---TTTT :: GET msg from server :: " + msg)
+                                    Toast.makeText(context, "Successfully" +  msg, Toast.LENGTH_SHORT).show()
+                                }
                             }
-                        }
-                    })
+                        })
+
+                }
+                //performing cancel action
+                builder.setNeutralButton("Cancel"){dialogInterface , which ->
+                    Toast.makeText(applicationContext,"operation cancel",Toast.LENGTH_LONG).show()
+                }
+                //performing negative action
+                builder.setNegativeButton("No"){dialogInterface, which ->
+                    Toast.makeText(applicationContext,"clicked No",Toast.LENGTH_LONG).show()
+                }
+                // Create the AlertDialog
+                val alertDialog: AlertDialog = builder.create()
+                // Set other dialog properties
+                alertDialog.setCancelable(false)
+                alertDialog.show()
+
 
 
             }

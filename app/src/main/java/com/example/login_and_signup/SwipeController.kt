@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.LEFT
 import androidx.recyclerview.widget.ItemTouchHelper.RIGHT
 import androidx.recyclerview.widget.RecyclerView
+import com.fxn.ariana.Ariana.drawable
 
 
 internal enum class ButtonsState {
@@ -22,6 +23,7 @@ internal enum class ButtonsState {
 
 internal class SwipeController(buttonsActions: SwipeControllerActions?) :
     ItemTouchHelper.Callback() {
+//    private val deleteIcon = ContextCompat.getDrawable(context, R.drawable.ic_delete_white_24)
     private var swipeBack = false
     private var buttonShowedState = ButtonsState.GONE
     private var buttonInstance: RectF? = null
