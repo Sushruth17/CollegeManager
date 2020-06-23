@@ -6,45 +6,59 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.login_and_signup.adapters.ViewPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.example.login_and_signup.model.MockData
-import com.example.login_and_signup.model.StudentInfoModel
-import com.example.login_and_signup.utils.ApiSearchStudent
 import com.example.login_and_signup.utils.StringUtils
-import com.fxn.ariana.ArianaBackgroundListener
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_home.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.reflect.Type
 
 
-class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class Home : AppCompatActivity() {
+    var bottomNavigationView: BottomNavigationView? = null
+
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
     lateinit var context: Context
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        setUpNavigation()
+    }
+
+    private fun setUpNavigation() {
+        bottomNavigationView = findViewById(R.id.bttm_nav)
+        val navHostFragment: NavHostFragment? = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
+        if (navHostFragment != null) {
+            if (bottomNavigationView != null) {
+                NavigationUI.setupWithNavController(
+                    bottomNavigationView!!,
+                    navHostFragment.getNavController()
+                )
+            }
+        }
+    }
+}
 
 
 
-        menu_bottom.setOnItemSelectedListener { id ->
+
+      /*  menu_bottom.setOnItemSelectedListener { id ->
             when (id) {
                 R.id.home -> viewpager.currentItem = 0
                 R.id.search -> viewpager.currentItem = 1
@@ -61,16 +75,16 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             }
         }
 
-//        viewpager.addOnPageChangeListener(
-////            ArianaBackgroundListener(
-////                getColors(),
-////                img1,
-////                viewpager
-////            )
-//        )
+        viewpager.addOnPageChangeListener(
+            ArianaBackgroundListener(
+                getColors(),
+                img1,
+                viewpager
+            )
+        )
+*/
 
-
-        val buttonstd = findViewById<Button>(R.id.btn_stdDetails)
+       /* val buttonstd = findViewById<Button>(R.id.btn_stdDetails)
         context = this
         buttonstd.setOnClickListener {
             var apiKindaStuff = Turrr()
@@ -126,6 +140,19 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         }
     }
 
+    private fun setUpNavigation() {
+        var bottomNavigationView: BottomNavigationView? = null
+        bottomNavigationView = findViewById(R.id.bttm_nav)
+        val navHostFragment: NavHostFragment? = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
+        if (navHostFragment != null)
+        {
+            NavigationUI.setupWithNavController(
+                bottomNavigationView,
+                navHostFragment.getNavController()
+            )
+        }
+    }
     override fun onPause() {
         super.onPause()
         Log.i("Learning", "------ Home activity A on pause --------- ")
@@ -200,5 +227,12 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 //
 //        )
 
-
     }
+
+}*/
+
+
+
+
+
+

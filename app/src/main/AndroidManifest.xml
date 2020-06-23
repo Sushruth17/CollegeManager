@@ -12,14 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EditStudent"
-            android:theme="@style/LoginPage"/>
-        <activity android:name=".AfterSearch"
-            android:theme="@style/LoginPage"/>
-        <activity android:name=".SearchStudent"
-            android:theme="@style/LoginPage"/>
-        <activity android:name=".StudentMarks"
-            android:theme="@style/LoginPage"/>
+        <activity android:name=".Profile" />
+        <activity
+            android:name=".EditStudent"
+            android:theme="@style/LoginPage" />
+        <activity
+            android:name=".AfterSearch"
+            android:theme="@style/LoginPage" />
+        <activity
+            android:name=".SearchStudent"
+            android:theme="@style/LoginPage" />
+        <activity
+            android:name=".StudentMarks"
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".AddStudent"
             android:theme="@style/LoginPage" />
@@ -40,9 +45,7 @@
             android:theme="@style/LoginPage" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/LoginPage">
-
-        </activity>
+            android:theme="@style/LoginPage" />
     </application>
 
 </manifest>
