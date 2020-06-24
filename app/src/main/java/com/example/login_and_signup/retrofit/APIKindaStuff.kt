@@ -15,7 +15,6 @@ class APIKindaStuff {
     interface APIService {
         @GET("/")
         fun greetUser(@Path("") user: String): retrofit2.Call<ResponseBody>
-
         @Headers("Content-type: application/json")
         @POST("/api/post_some_data")
         fun getVectors(@Body body: JsonObject): retrofit2.Call<ResponseBody>

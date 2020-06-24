@@ -54,27 +54,39 @@ class FragmentProfile : Fragment() {
                 val intent = Intent(getActivity(), MainActivity::class.java)
                 //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
                 getActivity()?.startActivity(intent)
-             }
+
+            }
+        }
+        val btnEdit = getView()?.findViewById<TextView>(R.id.profile_edit)
+        if (btnEdit != null) {
+            btnEdit.setOnClickListener {
+                Log.i("btntest", "Logout clicked")
+                val intent = Intent(getActivity(), EditProfile::class.java)
+                //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
+                getActivity()?.startActivity(intent)
+
+
+            }
         }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentProfile.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentProfile().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        companion object {
+            /**
+             * Use this factory method to create a new instance of
+             * this fragment using the provided parameters.
+             *
+             * @param param1 Parameter 1.
+             * @param param2 Parameter 2.
+             * @return A new instance of fragment FragmentProfile.
+             */
+            // TODO: Rename and change types and number of parameters
+            @JvmStatic
+            fun newInstance(param1: String, param2: String) =
+                FragmentProfile().apply {
+                    arguments = Bundle().apply {
+                        putString(ARG_PARAM1, param1)
+                        putString(ARG_PARAM2, param2)
+                    }
                 }
-            }
+        }
     }
-}

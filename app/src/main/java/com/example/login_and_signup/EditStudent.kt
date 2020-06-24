@@ -2,17 +2,13 @@ package com.example.login_and_signup
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
 import android.text.InputFilter
-import android.text.TextWatcher
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.example.login_and_signup.model.InfoItem
-import com.example.login_and_signup.utils.ApiAddStudent
+import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_edit_student.*
@@ -72,7 +68,7 @@ class EditStudent : AppCompatActivity() {
         jsonEditObj.addProperty("parentname", parentname_edited)
         jsonEditObj.addProperty("id", idOfEdited)
         //  POST demo
-        ApiAddStudent()
+        ApiStudent()
             .addRetroFit()
             ?.editStudent(jsonEditObj)
             ?.enqueue(object : Callback<ResponseBody> {

@@ -10,7 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.login_and_signup.utils.ApiSearchStudent
+import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import kotlinx.android.synthetic.main.activity_search_student.*
 import okhttp3.ResponseBody
@@ -41,7 +41,7 @@ class SearchStudent : AppCompatActivity() {
             val name_entered: String = editName.getText().toString()
             Log.i("name","--------EDIT NAME-------------- " + name_entered)
             Toast.makeText(this, name_entered, Toast.LENGTH_SHORT).show()
-            ApiSearchStudent()
+            ApiStudent()
                 .addRetroFit()
                 ?.nameSearched(name_entered)
                 ?.enqueue(object : Callback<ResponseBody> {

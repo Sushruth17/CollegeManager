@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.login_and_signup.adapters.StudentInfoAdapter
 import com.example.login_and_signup.model.StudentInfoModel
+import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
@@ -98,22 +99,23 @@ class StudentDetails : AppCompatActivity() {
 //                student_adapter.data.info?.get(position)?.id
 
                     Log.i("del", "------removed----position------>" +position+"\n" +Gson().toJson(removed))
-                    Turrr()
+                    ApiStudent()
                         .addRetroFit()
-                        .deleteStudent(removed)
-                        .enqueue(object : Callback<ResponseBody> {
+                        ?.deleteStudent(removed)
+                        ?.enqueue(object : Callback<ResponseBody> {
                             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                                 Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                             }
+
                             override fun onResponse(call: Call<ResponseBody>,
                                                     response: Response<ResponseBody>) {
                                 if (response.isSuccessful) {
-//                            val msg = "{info:" + response.body()?.string() + "}"
-//                            Log.i("api","msgg " + msg)
+                //                            val msg = "{info:" + response.body()?.string() + "}"
+                //                            Log.i("api","msgg " + msg)
                                     val msg = response.body()?.string()
-//                                val intent = Intent(context, StudentDetails::class.java)
-//                                intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
-//                                startActivity(intent)
+                //                                val intent = Intent(context, StudentDetails::class.java)
+                //                                intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
+                //                                startActivity(intent)
                                     Log.i("api", "---TTTT :: GET msg from server :: " + msg)
                                     Toast.makeText(context, "Successfully" +  msg, Toast.LENGTH_SHORT).show()
                                 }

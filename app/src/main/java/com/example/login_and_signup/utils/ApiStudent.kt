@@ -12,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 
-class ApiSearchStudent {
+/*class ApiSearchStudent {
 
     interface APIServicesearch {
         @GET("/student_data/{name}")
@@ -34,21 +34,34 @@ class ApiSearchStudent {
     }
 
 
-}
+}*/
 
-class ApiAddStudent {
+class ApiStudent {
 
-    interface APIServiceAdd {
-        @POST("/api/post_some_data")
+
+    interface APIService {
+        @POST("/api/sign_in_data")
+        fun signIn(@Body body: JsonObject): Call<ResponseBody>
+
+        @POST("/api/add_data")
         fun getVectors(@Body body: JsonObject): Call<ResponseBody>
 
         @POST("/api/edit_data")
         fun editStudent(@Body body: JsonObject): Call<ResponseBody>
+
+        @GET("/student_data/{name}")
+        fun nameSearched(@Path("name") name: String): Call<ResponseBody>
+
+        @GET("/student_data")
+        fun greetUser(): Call<ResponseBody>
+
+        @GET("/{delstd}")
+        fun deleteStudent(@Path("delstd") delstd: Int?): Call<ResponseBody>
     }
 
 
 
-    public fun addRetroFit(): APIServiceAdd? {
+    public fun addRetroFit(): APIService? {
         val logging = HttpLoggingInterceptor ()
         logging.level = HttpLoggingInterceptor.Level.BODY;
         val httpClient =  OkHttpClient.Builder()
@@ -58,7 +71,7 @@ class ApiAddStudent {
             .addConverterFactory(GsonConverterFactory.create())
             .client(httpClient.build())
             .build()
-        return retrofit.create(APIServiceAdd::class.java)
+        return retrofit.create(APIService::class.java)
     }
 
 }

@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
-import com.example.login_and_signup.utils.ApiAddStudent
+import com.example.login_and_signup.utils.ApiStudent
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_add_student.*
-import kotlinx.android.synthetic.main.activity_search_student.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,7 +40,7 @@ class AddStudent : AppCompatActivity() {
             jsonObj.addProperty("age", age_added)
             jsonObj.addProperty("parentname", parentname_added)
             //  POST demo
-            ApiAddStudent()
+            ApiStudent()
                 .addRetroFit()
                 ?.getVectors(jsonObj)
                 ?.enqueue(object : Callback<ResponseBody> {
