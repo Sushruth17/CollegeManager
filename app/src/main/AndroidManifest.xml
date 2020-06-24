@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.login_and_signup">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,7 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EditProfile"></activity>
+        <activity
+            android:name=".ResetPassword"
+            android:theme="@style/LoginPage">
+        </activity>
+
+        <activity android:name=".EditProfile"/>
         <activity android:name=".Profile" />
         <activity
             android:name=".EditStudent"
@@ -34,7 +42,7 @@
             android:theme="@style/LoginPage" />
         <activity
             android:name=".Home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Signup"
             android:theme="@style/LoginPage" />

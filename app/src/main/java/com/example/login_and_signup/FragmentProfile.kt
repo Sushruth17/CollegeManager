@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.example.login_and_signup.utils.StringUtils
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +27,6 @@ class FragmentProfile : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
     fun FragmentProfile() {
         // Required empty public constructor
     }
@@ -47,6 +49,8 @@ class FragmentProfile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        val usernameProfile = sign_in_username.getText().toString()
+//        profile_username.setText(usernameProfile)
         val btnLogout = getView()?.findViewById<TextView>(R.id.profile_logout)
         if (btnLogout != null) {
             btnLogout.setOnClickListener {

@@ -43,6 +43,9 @@ class ApiStudent {
         @POST("/api/sign_in_data")
         fun signIn(@Body body: JsonObject): Call<ResponseBody>
 
+        @POST("/api/sign_up_data")
+        fun signUp(@Body body: JsonObject): Call<ResponseBody>
+
         @POST("/api/add_data")
         fun getVectors(@Body body: JsonObject): Call<ResponseBody>
 
