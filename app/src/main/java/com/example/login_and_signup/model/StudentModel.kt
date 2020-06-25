@@ -48,3 +48,15 @@ data class StudentInfoModel(
 			}
 		}
 	}
+
+data class StudentMarksModel(
+	val infoMarks: MutableList<MarksItem?>? = null
+)
+data class MarksItem(
+	val name: String? = null,
+	val marks: Int? = null
+
+)
+
+
+

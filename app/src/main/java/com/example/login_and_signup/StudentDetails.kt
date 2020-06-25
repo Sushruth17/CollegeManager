@@ -3,27 +3,38 @@ package com.example.login_and_signup
 import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.login_and_signup.adapters.StudentInfoAdapter
+import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.StudentInfoModel
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_edit_student.*
+import kotlinx.android.synthetic.main.activity_std_details.*
+import kotlinx.android.synthetic.main.activity_student_marks.*
+import kotlinx.android.synthetic.main.student_marks_unit.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.reflect.Type
+import java.util.Locale.filter
 
 
 class StudentDetails : AppCompatActivity() {
@@ -34,6 +45,34 @@ class StudentDetails : AppCompatActivity() {
         Log.i("api","------ After start activity Button clicked --------- ")
 //        Log.i("here","------this is apikindastuff--------" + apiKindaStuff)
         setContentView(R.layout.activity_std_details)
+
+        val searchIcon = search_bar.findViewById<ImageView>(R.id.search_mag_icon)
+        searchIcon.setColorFilter(Color.WHITE)
+
+        val cancelIcon = search_bar.findViewById<ImageView>(R.id.search_close_btn)
+        cancelIcon.setColorFilter(Color.WHITE)
+
+        val textView = search_bar.findViewById<TextView>(R.id.search_src_text)
+        textView.setTextColor(Color.WHITE)
+
+
+ /*       search_bar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val adpFilter = StudentInfoAdapter().getFilter()
+                if (adpFilter != null) {
+                    adpFilter.filter(newText)
+                }
+                return false
+            }
+
+        })*/
+
+
+
         context = this
         val json = intent.getStringExtra(StringUtils.STUDENT_INFO_DATA)
         val gson = Gson()
@@ -63,8 +102,41 @@ class StudentDetails : AppCompatActivity() {
             this, LinearLayoutManager.VERTICAL ,false)
         rv_studentInfo_list.adapter = student_adapter
 
+        rv_studentInfo_list.addOnItemTouchListener(RecyclerItemClickListenr
+            (this, rv_studentInfo_list, object :
+            RecyclerItemClickListenr.OnItemClickListener {
 
+            override fun onItemClick(view: View, position: Int) {
+                val itemSelected = student_adapter.data.info?.get(position)
+                val studentid = itemSelected?.id
+//                val intent = Intent(context, StudentMarks::class.java)
+                ApiStudent()
+                    .addRetroFit()
+                    ?.getMarks(studentid)
+                    ?.enqueue(object : Callback<ResponseBody> {
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                        }
 
+                        override fun onResponse(call: Call<ResponseBody>,
+                                                response: Response<ResponseBody>) {
+                            if (response.isSuccessful) {
+                                val msg = response.body()?.string()
+                                val intent = Intent(context, StudentMarks::class.java)
+                                intent.putExtra(StringUtils.STUDENT_MARKS_DATA, msg)
+                                intent.putExtra(StringUtils.STUDENT_INFO_DATA,itemSelected)
+                                startActivity(intent)
+                                Log.i("marksssssss", "---TTTT :: GET msg from server :: " + msg)
+                                Toast.makeText(context, "Successfully" +  msg, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    })
+//                startActivity(intent)
+            }
+            override fun onItemLongClick(view: View?, position: Int) {
+                Log.i("here","-----inside recycler view on long click-----")
+            }
+        }))
 
         val swipeController = SwipeController(object : SwipeControllerActions() {
 

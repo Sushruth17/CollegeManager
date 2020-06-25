@@ -10,21 +10,31 @@
     <LinearLayout
         android:id="@+id/student_data_ll"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toTopOf="@id/rv_studentInfo_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal"
-        android:background="@drawable/login_edit_background">
+        android:orientation="vertical"
+        android:background="@drawable/login_background">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="Student Details"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="30sp"/>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/login_edit_background"
+            android:textCursorDrawable="@null"
+            app:iconifiedByDefault="true"
+            android:layout_margin="5dp"/>
     </LinearLayout>
     <ImageView
+        app:layout_constraintTop_toBottomOf="@+id/student_data_ll"
         app:layout_constraintBottom_toTopOf="@id/rv_studentInfo_list"
         android:layout_width="match_parent"
         android:layout_height="8dp"

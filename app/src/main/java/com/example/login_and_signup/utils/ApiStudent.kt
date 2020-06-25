@@ -60,6 +60,9 @@ class ApiStudent {
 
         @GET("/{delstd}")
         fun deleteStudent(@Path("delstd") delstd: Int?): Call<ResponseBody>
+
+        @GET("/marks/{studentid}")
+        fun getMarks(@Path("studentid") studentid: Int?): Call<ResponseBody>
     }
 
 

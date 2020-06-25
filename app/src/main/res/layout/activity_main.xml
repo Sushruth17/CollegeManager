@@ -37,6 +37,7 @@
         android:layout_height="50dp"
         android:drawableStart="@drawable/ic_user"
         android:hint="@string/username"
+        android:text="asd"
         android:drawablePadding="10dp"
         android:background="@drawable/login_edit_background"
         android:padding="10dp" />
@@ -53,6 +54,7 @@
         android:layout_height="50dp"
         android:drawableStart="@drawable/ic_password"
         android:hint="@string/password"
+        android:text="asd"
         android:drawablePadding="10dp"
         android:background="@drawable/login_edit_background"
         android:padding="10dp" />

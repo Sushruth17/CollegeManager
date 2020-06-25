@@ -20,6 +20,8 @@ class StringUtils {
 
         val STUDENT_EDIT_DATA = "STUDENT_EDIT_DATA"
 
+        val STUDENT_MARKS_DATA = "STUDENT_MARKS_DATA"
+
     }
 
 }

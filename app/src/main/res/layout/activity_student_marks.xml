@@ -1,22 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/std_marks"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentMarks"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/login_background">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/login_edit_background">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/name_ll"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Sushruth"
+                    android:textStyle="bold"
+                    android:textSize="35sp"
+                    android:textColor="@color/colorAccent"/>
 
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/line_bar"
+            app:layout_constraintTop_toBottomOf="@+id/name_ll"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_background" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="389dp"
-            android:layout_height="653dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="1dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/rv_studentMarks_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-          />
+            tools:layout_editor_absoluteX="-4dp"
+            tools:layout_editor_absoluteY="95dp" />
 
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
