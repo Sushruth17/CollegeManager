@@ -8,38 +8,6 @@
     android:background="@drawable/login_background"
     android:id="@+id/home_xml">
 
-<!--        <ImageView
-            android:id="@+id/img1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/menu_bottom"/>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/menu_bottom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
-        <com.ismaeldivita.chipnavigation.ChipNavigationBar
-            android:id="@+id/menu_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#fff"
-            android:padding="8dp"
-            android:elevation="16dp"
-            android:gravity="center"
-            app:cnb_menuResource="@menu/bottom_menu"
-            app:layout_constraintBottom_toBottomOf="parent" />-->
-
     <TextView
         android:id="@+id/welcome_home"
         android:layout_width="wrap_content"
@@ -98,7 +66,20 @@
         android:text="Search Student"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/btn_stdDetails"
-        android:layout_below="@id/btn_stdDetails"
+        android:textSize="21sp"/>
+
+    <Button
+        android:id="@+id/btn_toppers_list"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="Topper's List"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/btn_search_student"
+
         android:textSize="21sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

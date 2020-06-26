@@ -103,6 +103,16 @@ public class FragmentHome : Fragment() {
                 getActivity()?.startActivity(intent)
             }
         }
+
+        val btnTopper = getView()?.findViewById<Button>(R.id.btn_toppers_list)
+        if (btnTopper != null) {
+            btnTopper.setOnClickListener {
+                Log.i("btntest", "Clicked search student button ")
+                val intent = Intent(getActivity(), TopperList::class.java)
+                //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
+                getActivity()?.startActivity(intent)
+            }
+        }
     }
 
 
