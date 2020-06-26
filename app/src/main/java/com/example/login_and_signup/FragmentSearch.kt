@@ -75,8 +75,9 @@ class FragmentSearch : Fragment() {
     //            val editName = findViewById(R.id.editName) as EditText
 
                 val name_entered: String = editName.getText().toString()
-                Log.i("name","--------EDIT NAME-------------- " + name_entered)
-                Toast.makeText(getActivity(), name_entered, Toast.LENGTH_SHORT).show()
+                //Toast.makeText(getActivity(), name_entered, Toast.LENGTH_SHORT).show()
+                if(name_entered == "")
+                    Toast.makeText(getActivity(),"Enter the name", Toast.LENGTH_SHORT).show()
                 ApiStudent()
                     .addRetroFit()
                     ?.nameSearched(name_entered)
@@ -88,12 +89,14 @@ class FragmentSearch : Fragment() {
                         override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                             if (response.isSuccessful) {
                                 val msg = response.body()?.string()
-                                val intent = Intent(getActivity(), AfterSearch::class.java)
-                                intent.putExtra(StringUtils.STUDENT_SEARCH_DATA, msg)
-                                getActivity()?.startActivity(intent)
-                                Log.i("api","---TTTT :: GET msg from server :: " + msg)
-                                //                            Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
-
+                                if (msg != "{'info': ()}") {
+                                    val intent = Intent(getActivity(), AfterSearch::class.java)
+                                    intent.putExtra(StringUtils.STUDENT_SEARCH_DATA, msg)
+                                    getActivity()?.startActivity(intent)
+                                    Log.i("api", "---TTTT :: GET msg from server :: " + msg)
+                                    //                            Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
+                                }
+                            else Toast.makeText(context,"Student does not exist", Toast.LENGTH_SHORT).show()
                             }
                         }
                     })
