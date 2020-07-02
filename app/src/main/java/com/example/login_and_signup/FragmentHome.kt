@@ -107,7 +107,7 @@ public class FragmentHome : Fragment() {
         val btnTopper = getView()?.findViewById<Button>(R.id.btn_toppers_list)
         if (btnTopper != null) {
             btnTopper.setOnClickListener {
-                Log.i("btntest", "Clicked search student button ")
+                Log.i("btntest", "Clicked topper list button ")
                 val intent = Intent(getActivity(), TopperList::class.java)
                 //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
                 getActivity()?.startActivity(intent)

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 
 
 class TopperList : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -44,17 +45,28 @@ class TopperList : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
+        val navController = Navigation.findNavController(this,R.id.nav_topper_host_fragment)
         when (pos) {
-            0 -> supportFragmentManager.beginTransaction()
-                .replace(R.id.topper_spinner, AcademicYear.newInstance("","")).commit()
+/*            0 -> supportFragmentManager.beginTransaction()
+                .replace(R.id.topper_spinner, TopperAcademicYear.newInstance("", "")).commit()
             1 -> supportFragmentManager.beginTransaction()
-                .replace(R.id.topper_spinner, AnyYear.newInstance("","")).commit()
+                .replace(R.id.topper_spinner, TopperAnyYear.newInstance("", "")).commit()
             else -> supportFragmentManager.beginTransaction()
-                .replace(R.id.topper_spinner, ParticularYear.newInstance("","")).commit()
+                .replace(R.id.topper_spinner, TopperParticularYear.newInstance("", "")).commit()*/
+                0 -> navController.navigate(R.id.topperAcademicYear)
+                1 -> navController.navigate(R.id.topperAnyYear)
+                2 -> navController.navigate(R.id.topperParticularYear)
         }
+    }
+/*        if (pos == 0)
+            showToast(message = "Spinner 1 Position:${pos}")
+        else if (pos == 1)
+            showToast(message = "Spinner 1 Position:${pos}")
+        else if (pos == 2) {
+            showToast(message = "Spinner 1 Position:${pos}")
+            year_spinner.visibility = View.VISIBLE
         }
-
-
+    }*/
 
     override fun onNothingSelected(parent: AdapterView<*>) {
         // Another interface callback

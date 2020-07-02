@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_topper_list"
+    app:startDestination="@id/topperAcademicYear">
+
+    <fragment
+        android:id="@+id/topperAcademicYear"
+        android:name="com.example.login_and_signup.TopperAcademicYear"
+        android:label="fragment_academic_year"
+        tools:layout="@layout/fragment_academic_year" >
+        <action
+            android:id="@+id/action_topperAcademicYear_to_topperAnyYear"
+            app:destination="@id/topperAnyYear" />
+    </fragment>
+    <fragment
+        android:id="@+id/topperAnyYear"
+        android:name="com.example.login_and_signup.TopperAnyYear"
+        android:label="fragment_any_year"
+        tools:layout="@layout/fragment_any_year" >
+        <action
+            android:id="@+id/action_topperAnyYear_to_topperParticularYear"
+            app:destination="@id/topperParticularYear" />
+    </fragment>
+    <fragment
+        android:id="@+id/topperParticularYear"
+        android:name="com.example.login_and_signup.TopperParticularYear"
+        android:label="fragment_particular_year"
+        tools:layout="@layout/fragment_particular_year" />
+</navigation>

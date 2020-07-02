@@ -13,10 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TopperList"></activity>
+        <activity android:name=".TopperList"
+            android:theme="@style/LoginPage"/>
         <activity
             android:name=".ResetPassword"
-            android:theme="@style/LoginPage"></activity>
+            android:theme="@style/LoginPage" />
         <activity android:name=".EditProfile" />
         <activity android:name=".Profile" />
         <activity
