@@ -11,11 +11,11 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/login_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        android:background="@drawable/login_background">
 
     <Spinner
         android:id="@+id/topper_spinner"
@@ -26,20 +26,23 @@
         app:layout_constraintHorizontal_bias="0.006"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:popupBackground="@color/colorPrimary" />
+        android:popupBackground="@color/colorPrimary"
+        android:backgroundTint="@color/colorAccent"/>
 
     <Spinner
         android:id="@+id/year_spinner"
         android:layout_width="70dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_margin="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/topper_spinner"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
-        android:popupBackground="@color/colorPrimary"/>
+        android:popupBackground="@color/colorPrimary"
+        android:backgroundTint="@color/colorAccent"/>
+
+    </LinearLayout>
 
     <fragment
         android:id="@+id/nav_topper_host_fragment"
