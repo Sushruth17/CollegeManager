@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.login_and_signup.adapters.StudentInfoAdapter
 import com.example.login_and_signup.model.InfoItem
-import com.example.login_and_signup.model.StudentInfoModel
+import com.example.login_and_signup.model.StudentModel
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -87,8 +87,8 @@ class StudentDetails : AppCompatActivity() {
 
         Log.i("myyyaapp", "josn -->$json")
         val type: Type =
-            object : TypeToken<StudentInfoModel>() {}.type
-        val studentInfoData = gson.fromJson<StudentInfoModel>(json, type)
+            object : TypeToken<StudentModel>() {}.type
+        val studentInfoData = gson.fromJson<StudentModel>(json, type)
         Log.i("myyyaapp", "ssiizzeeeeee-->$studentInfoData")
 
 
@@ -122,12 +122,24 @@ class StudentDetails : AppCompatActivity() {
                                                 response: Response<ResponseBody>) {
                             if (response.isSuccessful) {
                                 val msg = response.body()?.string()
-                                val intent = Intent(context, StudentMarks::class.java)
-                                intent.putExtra(StringUtils.STUDENT_MARKS_DATA, msg)
-                                intent.putExtra(StringUtils.STUDENT_INFO_DATA,itemSelected)
-                                startActivity(intent)
                                 Log.i("marksssssss", "---TTTT :: GET msg from server :: " + msg)
-                                Toast.makeText(context, "Successfully" +  msg, Toast.LENGTH_SHORT).show()
+                                if (msg != "") {
+                                    val intent = Intent(context, StudentMarks::class.java)
+                                    intent.putExtra(StringUtils.STUDENT_MARKS_DATA, msg)
+                                    intent.putExtra(StringUtils.STUDENT_INFO_DATA, itemSelected)
+                                    startActivity(intent)
+                                    Log.i("marksssssss", "---TTTT :: GET msg from server :: " + msg)
+                                    Toast.makeText(
+                                        context,
+                                        "Successfully" + msg,
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                                Toast.makeText(
+                                    context,
+                                    "data not available for this student" + msg,
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     })
@@ -135,6 +147,33 @@ class StudentDetails : AppCompatActivity() {
             }
             override fun onItemLongClick(view: View?, position: Int) {
                 Log.i("here","-----inside recycler view on long click-----")
+                val studentSelected = student_adapter.data.info?.get(position)
+                val studentName = studentSelected?.name
+                Log.i("long","-----on long click -----"+studentName)
+/*                if (studentName != null) {
+                    ApiStudent()
+                        .addRetroFit()
+                        ?.nameSearched(studentName)
+                        ?.enqueue(object : Callback<ResponseBody> {
+                            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                                Log.i("api","---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                            }
+
+                            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                                if (response.isSuccessful) {
+                                    val msg = response.body()?.string()
+                                    if (msg != "{'info': ()}") {
+                                        val intent = Intent(context, AfterSearch::class.java)
+                                        intent.putExtra(StringUtils.STUDENT_SEARCH_DATA, msg)
+                                        startActivity(intent)
+                                        Log.i("api", "---TTTT :: GET msg from server :: " + msg)
+            //                                Toast.makeText(context, "Im the msg" + msg, Toast.LENGTH_SHORT)
+            //                                    .show()
+                                    } else  Toast.makeText(context,"Student does not exist", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        })
+                }*/
             }
         }))
 

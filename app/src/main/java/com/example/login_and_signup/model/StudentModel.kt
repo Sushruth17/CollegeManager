@@ -8,8 +8,8 @@ import java.nio.file.Files.write
 
 
 @Parcelize
-data class StudentInfoModel(
-	val info: MutableList<InfoItem?>? = null
+data class StudentModel(
+	var info: MutableList<InfoItem?>? = null
 
 ): Parcelable
 

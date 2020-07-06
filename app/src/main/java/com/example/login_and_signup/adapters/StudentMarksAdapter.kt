@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.R
 import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.MarksItem
-import com.example.login_and_signup.model.StudentInfoModel
+import com.example.login_and_signup.model.StudentModel
 import com.example.login_and_signup.model.StudentMarksModel
 import kotlinx.android.synthetic.main.student_info_unit.view.*
 import kotlinx.android.synthetic.main.student_marks_unit.view.*

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.adapters.StudentInfoAdapter
 import com.example.login_and_signup.adapters.StudentMarksAdapter
 import com.example.login_and_signup.model.InfoItem
-import com.example.login_and_signup.model.StudentInfoModel
 import com.example.login_and_signup.model.StudentMarksModel
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.adapters.StudentInfoAdapter
 import com.example.login_and_signup.model.InfoItem
-import com.example.login_and_signup.model.StudentInfoModel
+import com.example.login_and_signup.model.StudentModel
 import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -27,8 +27,8 @@ class AfterSearch : AppCompatActivity() {
         Log.i("myyyaapp", "josn -->$json")
 //        if (json != "{'info': ()}") {
             val type: Type =
-                object : TypeToken<StudentInfoModel>() {}.type
-            val searchInfo = gson.fromJson<StudentInfoModel>(json, type)
+                object : TypeToken<StudentModel>() {}.type
+            val searchInfo = gson.fromJson<StudentModel>(json, type)
             Log.i("myyyaapp", "ssiizzeeeeee-->$searchInfo")
             val rv_searchInfo_list = findViewById<RecyclerView>(R.id.rv_searchInfo_list)
             val search_adapter = StudentInfoAdapter()

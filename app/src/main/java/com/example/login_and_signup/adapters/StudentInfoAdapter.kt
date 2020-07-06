@@ -9,7 +9,7 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.R
 import com.example.login_and_signup.model.InfoItem
-import com.example.login_and_signup.model.StudentInfoModel
+import com.example.login_and_signup.model.StudentModel
 import kotlinx.android.synthetic.main.student_info_unit.view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -32,8 +32,8 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
     }
 
 
-    lateinit var data:StudentInfoModel
-    fun setDataCustom(data:StudentInfoModel){
+    lateinit var data:StudentModel
+    fun setDataCustom(data:StudentModel){
         this.data = data
     }
 
@@ -96,6 +96,7 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
 
         }
     }*/
+
 
     fun removeAt(position: Int) {
         data.info?.removeAt(position)

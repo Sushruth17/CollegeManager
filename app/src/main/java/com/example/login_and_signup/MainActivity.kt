@@ -1,5 +1,6 @@
 package com.example.login_and_signup
 
+
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_and_signup.utils.ApiStudent
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_add_student.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import okhttp3.ResponseBody
@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                             if (msg == "Successfully signed in")
                             {
                                 val intent = Intent(context, Home::class.java)
+                                intent.putExtra("USERNAME", username)
                                 startActivity(intent)
                             }
                             Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
