@@ -10,6 +10,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.activity_topper_list.*
 
 
 class TopperList : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -53,9 +54,12 @@ class TopperList : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 .replace(R.id.topper_spinner, TopperAnyYear.newInstance("", "")).commit()
             else -> supportFragmentManager.beginTransaction()
                 .replace(R.id.topper_spinner, TopperParticularYear.newInstance("", "")).commit()*/
-                0 -> navController.navigate(R.id.topperAcademicYear)
-                1 -> navController.navigate(R.id.topperAnyYear)
-                2 -> navController.navigate(R.id.topperParticularYear)
+                0 -> {navController.navigate(R.id.topperAcademicYear)
+                    year_spinner.visibility = View.GONE}
+                1 -> {navController.navigate(R.id.topperAnyYear)
+                    year_spinner.visibility = View.GONE}
+                2 -> { navController.navigate(R.id.topperParticularYear)
+                    year_spinner.visibility = View.VISIBLE}
         }
     }
 /*        if (pos == 0)

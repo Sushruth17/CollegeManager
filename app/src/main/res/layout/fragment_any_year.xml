@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/std_marks"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TopperAnyYear"
-    android:id="@+id/any_year">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/login_background">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="any year" />
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/login_edit_background">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/line_bar"
+            app:layout_constraintTop_toBottomOf="@+id/name_ll"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_background" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_academic_topper_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="-4dp"
+            tools:layout_editor_absoluteY="95dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

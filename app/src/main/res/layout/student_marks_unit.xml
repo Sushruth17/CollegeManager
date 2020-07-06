@@ -24,14 +24,17 @@
             android:id="@+id/sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Sub: "
-            android:textSize="25sp"/>
+            tools:text="Sub"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:layout_marginEnd="80dp"/>
         <TextView
             android:id="@+id/sub_marks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="76"
-            android:textSize="25sp"/>
+            android:textSize="25sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 
