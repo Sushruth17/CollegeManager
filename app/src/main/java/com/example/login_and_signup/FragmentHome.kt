@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import okhttp3.ResponseBody
@@ -67,10 +68,10 @@ public class FragmentHome : Fragment() {
         val buttonstd = getView()?.findViewById<Button>(R.id.btn_stdDetails)
         buttonstd?.setOnClickListener {
             Log.i("btntest", "Clicked student details button ")
-            Turrr()
+            ApiStudent()
                 .addRetroFit()
-                .greetUser()
-                .enqueue(object : Callback<ResponseBody> {
+                ?.greetUser()
+                ?.enqueue(object : Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                         Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                     }

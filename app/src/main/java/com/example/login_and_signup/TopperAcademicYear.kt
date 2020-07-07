@@ -1,10 +1,20 @@
 package com.example.login_and_signup
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.login_and_signup.utils.ApiStudent
+import com.example.login_and_signup.utils.StringUtils
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,6 +46,42 @@ class TopperAcademicYear : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_academic_year, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var year = Calendar.getInstance().get(Calendar.YEAR)
+        val month = Calendar.getInstance().get(Calendar.MONTH)
+        Log.i("year","-----current year -----"+year)
+        Log.i("year","-----current year -----"+month)
+        if (month < 6) {
+            {}
+            year = ((year - 1).toString() + year.toString()).toInt()
+            Log.i("year", "-----current year <  6-----" + year)
+        }
+        else {
+            year = (year.toString() + (year + 1).toString()).toInt()
+            Log.i("year", "-----current year >  6-----" + year)
+        }
+        ApiStudent()
+            .addRetroFit()
+            ?.getAcedamicTopper(year)
+            ?.enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+                    if (response.isSuccessful) {
+                        val msg = response.body()?.string()
+                        Log.i("api", "---TTTT :: GET msg from server :: " + msg)
+                        Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
     }
 
 

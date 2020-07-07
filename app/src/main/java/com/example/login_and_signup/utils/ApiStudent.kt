@@ -63,6 +63,9 @@ class ApiStudent {
 
         @GET("/marks/{studentid}")
         fun getMarks(@Path("studentid") studentid: Int?): Call<ResponseBody>
+
+        @GET("/topper/{year}")
+        fun getAcedamicTopper(@Path("year") year: Int?): Call<ResponseBody>
     }
 
 

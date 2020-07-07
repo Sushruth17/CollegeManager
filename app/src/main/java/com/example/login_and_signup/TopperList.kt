@@ -3,6 +3,7 @@ package com.example.login_and_signup
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -11,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.activity_topper_list.*
+import java.util.*
 
 
 class TopperList : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -55,7 +57,7 @@ class TopperList : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             else -> supportFragmentManager.beginTransaction()
                 .replace(R.id.topper_spinner, TopperParticularYear.newInstance("", "")).commit()*/
                 0 -> {navController.navigate(R.id.topperAcademicYear)
-                    year_spinner.visibility = View.GONE}
+                    year_spinner.visibility = View.GONE }
                 1 -> {navController.navigate(R.id.topperAnyYear)
                     year_spinner.visibility = View.GONE}
                 2 -> { navController.navigate(R.id.topperParticularYear)
