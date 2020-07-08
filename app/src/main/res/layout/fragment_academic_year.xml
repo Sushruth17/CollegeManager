@@ -13,12 +13,14 @@
         android:layout_margin="20dp"
         android:orientation="vertical"
         android:background="@drawable/login_edit_background">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_year_academic_topper_list"
+
+        <TextView
+            android:id="@+id/topper_ac_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_margin="15dp"
+            tools:text="2019-2020"
+            android:textSize="30sp"/>
 
         <ImageView
             android:id="@+id/line_bar"
@@ -29,7 +31,7 @@
             android:background="@drawable/button_background" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_academic_topper_list"
+            android:id="@+id/rv_topper_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
@@ -37,5 +39,6 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteX="-4dp"
             tools:layout_editor_absoluteY="95dp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,12 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.login_and_signup.adapters.StudentMarksAdapter
+import com.example.login_and_signup.adapters.TopperAdapter
+import com.example.login_and_signup.model.MarksItem
+import com.example.login_and_signup.model.StudentMarksModel
+import com.example.login_and_signup.model.TopperModel
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.fragment_academic_year.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.reflect.Type
 import java.util.*
 
 
@@ -79,6 +90,25 @@ class TopperAcademicYear : Fragment() {
                         val msg = response.body()?.string()
                         Log.i("api", "---TTTT :: GET msg from server :: " + msg)
                         Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
+                        val json = msg
+                        val gson = Gson()
+                        Log.i("marksssssss", "json -->$json")
+                        val type: Type =
+                            object : TypeToken<TopperModel>() {}.type
+                        val studentTopper = gson.fromJson<TopperModel>(msg, type)
+                        Log.i("marksssssss", "ssiizzeeeeee-->$studentTopper")
+
+                        val rv_topper_list = getView()!!.findViewById<RecyclerView>(R.id.rv_topper_list)
+                        val topper_adapter = TopperAdapter()
+                        topper_adapter.setDataCustom(studentTopper)
+                        if (rv_topper_list != null) {
+                            rv_topper_list.layoutManager = LinearLayoutManager(
+                                context, LinearLayoutManager.VERTICAL, false)
+                        }
+                        if (rv_topper_list != null) {
+                            rv_topper_list.adapter = topper_adapter
+                        }
+                        topper_ac_year.text = year.toString()
                     }
                 }
             })

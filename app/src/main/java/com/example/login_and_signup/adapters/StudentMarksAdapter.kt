@@ -20,6 +20,12 @@ class StudentMarksAdapter: RecyclerView.Adapter<StudentMarksAdapter.ViewHolder>(
         val marksType = itemView.sub_marks
     }
 
+    class ViewHolder2(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val nameType = itemView.sub
+        val totalType = itemView.sub_marks
+    }
+
+
     lateinit var data: StudentMarksModel
     fun setDataCustom(data: StudentMarksModel) {
         this.data = data
@@ -28,8 +34,7 @@ class StudentMarksAdapter: RecyclerView.Adapter<StudentMarksAdapter.ViewHolder>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return StudentMarksAdapter.ViewHolder(
-            LayoutInflater.from(parent.context).inflate
-                (R.layout.student_marks_unit, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.student_marks_unit, parent, false)
         )
     }
 

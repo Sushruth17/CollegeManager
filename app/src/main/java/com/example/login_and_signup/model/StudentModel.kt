@@ -55,7 +55,13 @@ data class StudentMarksModel(
 data class MarksItem(
 	val name: String? = null,
 	val marks: Int? = null
-
+)
+data class TopperModel(
+	val infoTopper: MutableList<TopperItem?>? = null
+)
+data class TopperItem(
+	val name: String? = null,
+	val total: String? = null
 )
 
 
