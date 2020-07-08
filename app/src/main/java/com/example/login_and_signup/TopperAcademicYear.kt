@@ -74,6 +74,7 @@ class TopperAcademicYear : Fragment() {
             year = (year.toString() + (year + 1).toString()).toInt()
             Log.i("year", "-----current year >  6-----" + year)
         }
+        topper_ac_year.text = year.toString()
         ApiStudent()
             .addRetroFit()
             ?.getAcedamicTopper(year)
@@ -108,7 +109,7 @@ class TopperAcademicYear : Fragment() {
                         if (rv_topper_list != null) {
                             rv_topper_list.adapter = topper_adapter
                         }
-                        topper_ac_year.text = year.toString()
+
                     }
                 }
             })
