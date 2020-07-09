@@ -74,7 +74,30 @@ class TopperAcademicYear : Fragment() {
             year = (year.toString() + (year + 1).toString()).toInt()
             Log.i("year", "-----current year >  6-----" + year)
         }
-        topper_ac_year.text = year.toString()
+        getTopper(year)
+    }
+
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment AcademicYear.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            TopperAcademicYear().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
+    fun getTopper(year : Int ){
         ApiStudent()
             .addRetroFit()
             ?.getAcedamicTopper(year)
@@ -113,26 +136,6 @@ class TopperAcademicYear : Fragment() {
                     }
                 }
             })
-    }
 
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AcademicYear.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TopperAcademicYear().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

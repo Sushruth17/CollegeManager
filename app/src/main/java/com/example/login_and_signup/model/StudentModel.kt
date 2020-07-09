@@ -61,7 +61,8 @@ data class TopperModel(
 )
 data class TopperItem(
 	val name: String? = null,
-	val total: String? = null
+	val total: String? = null,
+	val year: Int? = null
 )
 
 

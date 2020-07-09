@@ -1,14 +1,14 @@
 package com.example.login_and_signup
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import kotlinx.android.synthetic.main.activity_topper_list.*
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_particular_year.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -91,7 +91,10 @@ class TopperParticularYear : Fragment(), AdapterView.OnItemSelectedListener{
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        val selectedYear: String = year_spinner.getSelectedItem().toString()
+        Log.i("selectedyear","---selected year---"+selectedYear)
     }
+
     override fun onNothingSelected(parent: AdapterView<*>?) {
 
     }

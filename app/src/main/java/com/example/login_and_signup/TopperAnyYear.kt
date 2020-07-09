@@ -10,10 +10,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.adapters.TopperAdapter
+import com.example.login_and_signup.model.TopperItem
 import com.example.login_and_signup.model.TopperModel
 import com.example.login_and_signup.utils.ApiStudent
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.fragment_any_year.*
+import kotlinx.android.synthetic.main.fragment_any_year.view.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -69,7 +72,7 @@ class TopperAnyYear : Fragment() {
                         val msg = response.body()?.string()
                         Log.i("api", "---TTTT :: GET msg from server :: " + msg)
                         Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
-/*                        val json = msg
+                        val json = msg
                         val gson = Gson()
                         Log.i("marksssssss", "json -->$json")
                         val type: Type =
@@ -77,16 +80,16 @@ class TopperAnyYear : Fragment() {
                         val studentTopper = gson.fromJson<TopperModel>(msg, type)
                         Log.i("marksssssss", "ssiizzeeeeee-->$studentTopper")
 
-                        val rv_topper_list = getView()!!.findViewById<RecyclerView>(R.id.rv_topper_list)
+                        val rv_any_topper_list = getView()!!.findViewById<RecyclerView>(R.id.rv_any_topper_list)
                         val topper_adapter = TopperAdapter()
                         topper_adapter.setDataCustom(studentTopper)
-                        if (rv_topper_list != null) {
-                            rv_topper_list.layoutManager = LinearLayoutManager(
+                        if (rv_any_topper_list != null) {
+                            rv_any_topper_list.layoutManager = LinearLayoutManager(
                                 context, LinearLayoutManager.VERTICAL, false)
                         }
-                        if (rv_topper_list != null) {
-                            rv_topper_list.adapter = topper_adapter
-                        }*/
+                        if (rv_any_topper_list != null) {
+                            rv_any_topper_list.adapter = topper_adapter
+                        }
 
                     }
                 }

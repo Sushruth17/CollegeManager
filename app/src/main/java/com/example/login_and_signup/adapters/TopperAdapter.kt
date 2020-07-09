@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.R
 import com.example.login_and_signup.model.*
 import kotlinx.android.synthetic.main.academic_topper_unit.view.*
+import kotlinx.android.synthetic.main.fragment_any_year.view.*
 import kotlinx.android.synthetic.main.student_info_unit.view.*
 import kotlinx.android.synthetic.main.student_marks_unit.view.*
 
@@ -17,6 +18,7 @@ class TopperAdapter: RecyclerView.Adapter<TopperAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameType = itemView.topper_name
         val totalType = itemView.topper_total
+        val yearType = itemView.topper_ac_year
     }
 
 
@@ -46,6 +48,8 @@ class TopperAdapter: RecyclerView.Adapter<TopperAdapter.ViewHolder>() {
         if (unitData != null) {
             holder.nameType?.text = unitData.name
             holder.totalType?.text = unitData.total
+            holder.yearType?.text = unitData.year.toString()
+
         }
 
     }
