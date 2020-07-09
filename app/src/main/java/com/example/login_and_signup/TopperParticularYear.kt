@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_particular_year.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,33 +41,20 @@ class TopperParticularYear : Fragment(), AdapterView.OnItemSelectedListener{
     ): View? {
         // Inflate the layout for this fragment
 //        year_spinner.visibility = View.VISIBLE
-        return inflater.inflate(R.layout.fragment_particular_year, container, false)
+        var view = inflater.inflate(R.layout.fragment_particular_year, container, false)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         year_spinner.visibility = View.VISIBLE
-        val spinner: Spinner? = getView()?.findViewById(R.id.year_spinner)
-        if (spinner != null) {
-            spinner.onItemSelectedListener = this
-        }
+        val spinnerYear: Spinner? = getView()?.findViewById(R.id.year_spinner)
+        val arrayYear = R.array.year_array
+        createSpinner(spinnerYear,arrayYear)
 
-        activity!!.applicationContext.let {
-            ArrayAdapter.createFromResource(
-                it,
-                R.array.year_array,
-                android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
-                if (spinner != null) {
-                    spinner.adapter = adapter
-                }
-
-            }
-        }
-
+        val spinnerBranch: Spinner? = getView()?.findViewById(R.id.branch_spinner)
+        val arrayBranch = R.array.branch_array
+        createSpinner(spinnerBranch,arrayBranch)
     }
 
     companion object {
@@ -87,17 +75,54 @@ class TopperParticularYear : Fragment(), AdapterView.OnItemSelectedListener{
                     putString(ARG_PARAM2, param2)
                 }
             }
-
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val selectedYear: String = year_spinner.getSelectedItem().toString()
-        Log.i("selectedyear","---selected year---"+selectedYear)
+        if (parent != null) {
+            if(parent.id == R.id.year_spinner)
+            {
+                val selectedYear: Int = year_spinner.selectedItem.toString().toInt()
+                Log.i("spinner","---selected year---"+selectedYear)
+                val Topper = TopperAcademicYear()
+                val rv_topper_list_id = getView()?.findViewById<RecyclerView>(R.id.rv_py_topper_list)
+                if (rv_topper_list_id != null) {
+                    Topper.getTopper(selectedYear,rv_topper_list_id,context )
+                }
+            }
+/*            else if(parent.id == R.id.branch_spinner)
+            {
+                val selectedYear: Int = year_spinner.selectedItem.toString().toInt()
+                Log.i("spinner","---selected year---"+selectedYear)
+                val selectedBranch: String = branch_spinner.selectedItem.toString()
+                Log.i("spinner","---selected BRANCH---"+selectedBranch)
+            }*/
+        }
+
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
 
     }
 
+    fun createSpinner(spinner : Spinner?, array : Int){
+        if (spinner != null) {
+            spinner.onItemSelectedListener = this
+        }
 
+        activity!!.applicationContext.let {
+            ArrayAdapter.createFromResource(
+                it,
+                array,
+                android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                // Apply the adapter to the spinner
+                if (spinner != null) {
+                    spinner.adapter = adapter
+                }
+
+            }
+        }
+    }
 }

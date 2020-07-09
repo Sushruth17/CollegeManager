@@ -1,5 +1,6 @@
 package com.example.login_and_signup
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -56,7 +57,8 @@ class TopperAcademicYear : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_academic_year, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_academic_year, container, false)
+        return  rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,7 +68,6 @@ class TopperAcademicYear : Fragment() {
         Log.i("year","-----current year -----"+year)
         Log.i("year","-----current year -----"+month)
         if (month < 6) {
-            {}
             year = ((year - 1).toString() + year.toString()).toInt()
             Log.i("year", "-----current year <  6-----" + year)
         }
@@ -74,7 +75,10 @@ class TopperAcademicYear : Fragment() {
             year = (year.toString() + (year + 1).toString()).toInt()
             Log.i("year", "-----current year >  6-----" + year)
         }
-        getTopper(year)
+        val rv_topper_list_id = getView()?.findViewById<RecyclerView>(R.id.rv_ac_topper_list)
+        if (rv_topper_list_id != null) {
+            getTopper(year,rv_topper_list_id,context)
+        }
     }
 
 
@@ -97,7 +101,7 @@ class TopperAcademicYear : Fragment() {
                 }
             }
     }
-    fun getTopper(year : Int ){
+    fun getTopper(year : Int , rv_topper_list : RecyclerView, context : Context?){
         ApiStudent()
             .addRetroFit()
             ?.getAcedamicTopper(year)
@@ -121,18 +125,13 @@ class TopperAcademicYear : Fragment() {
                             object : TypeToken<TopperModel>() {}.type
                         val studentTopper = gson.fromJson<TopperModel>(msg, type)
                         Log.i("marksssssss", "ssiizzeeeeee-->$studentTopper")
-
-                        val rv_topper_list = getView()!!.findViewById<RecyclerView>(R.id.rv_topper_list)
+//                        val rv_topper_list = getView()?.findViewById<RecyclerView>(rv_topper_list_id)
                         val topper_adapter = TopperAdapter()
                         topper_adapter.setDataCustom(studentTopper)
-                        if (rv_topper_list != null) {
-                            rv_topper_list.layoutManager = LinearLayoutManager(
+                        rv_topper_list?.setHasFixedSize(true)
+                        rv_topper_list?.layoutManager = LinearLayoutManager(
                                 context, LinearLayoutManager.VERTICAL, false)
-                        }
-                        if (rv_topper_list != null) {
-                            rv_topper_list.adapter = topper_adapter
-                        }
-
+                        rv_topper_list?.adapter = topper_adapter
                     }
                 }
             })

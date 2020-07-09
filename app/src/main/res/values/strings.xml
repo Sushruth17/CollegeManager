@@ -123,11 +123,16 @@
     </string-array>
 
     <string-array name="year_array">
-        <item>20162017</item>
         <item>20172018</item>
         <item>20182019</item>
         <item>20192020</item>
         <item>20202021</item>
+    </string-array>
+
+    <string-array name="branch_array">
+        <item>CSE</item>
+        <item>ECE</item>
+        <item>ISE</item>
     </string-array>
 
 </resources>

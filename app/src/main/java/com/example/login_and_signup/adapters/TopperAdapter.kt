@@ -25,10 +25,12 @@ class TopperAdapter: RecyclerView.Adapter<TopperAdapter.ViewHolder>() {
     lateinit var data: TopperModel
     fun setDataCustom(data: TopperModel) {
         this.data = data
+        Log.i("data", "--setDataCustom-->"+data)
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        Log.i("adapter", "inside topper adapter on create viewholder-->" )
         return TopperAdapter.ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.academic_topper_unit, parent, false)
         )
@@ -36,7 +38,7 @@ class TopperAdapter: RecyclerView.Adapter<TopperAdapter.ViewHolder>() {
 
 
     override fun getItemCount(): Int {
-        Log.i("myyyaapp", "ssiizzeeeeee-->" + (data.infoTopper?.size ?: 8766))
+        Log.i("itemcount", "ssiizzeeeeee-->" + (data.infoTopper?.size ?: 8766))
         return if (data.infoTopper != null)
             data.infoTopper!!.size
         else
