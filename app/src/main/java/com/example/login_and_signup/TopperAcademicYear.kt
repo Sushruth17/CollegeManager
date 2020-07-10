@@ -1,31 +1,12 @@
 package com.example.login_and_signup
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.login_and_signup.adapters.StudentMarksAdapter
-import com.example.login_and_signup.adapters.TopperAdapter
-import com.example.login_and_signup.model.MarksItem
-import com.example.login_and_signup.model.StudentMarksModel
-import com.example.login_and_signup.model.TopperModel
-import com.example.login_and_signup.utils.ApiStudent
-import com.example.login_and_signup.utils.StringUtils
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.fragment_academic_year.*
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.lang.reflect.Type
 import java.util.*
 
 
@@ -75,10 +56,10 @@ class TopperAcademicYear : Fragment() {
             year = (year.toString() + (year + 1).toString()).toInt()
             Log.i("year", "-----current year >  6-----" + year)
         }
-        val rv_topper_list_id = getView()?.findViewById<RecyclerView>(R.id.rv_ac_topper_list)
+        val rv_topper_list = getView()?.findViewById<RecyclerView>(R.id.rv_ac_topper_list)
         val classRepo = Repo()
-        if (rv_topper_list_id != null) {
-            classRepo.getTopper(year,rv_topper_list_id,context)
+        if (rv_topper_list != null) {
+            classRepo.getTopperStudent(year,"",rv_topper_list,context)
         }
     }
 

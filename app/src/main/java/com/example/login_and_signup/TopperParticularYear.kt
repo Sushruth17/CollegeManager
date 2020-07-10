@@ -83,19 +83,26 @@ class TopperParticularYear : Fragment(), AdapterView.OnItemSelectedListener{
             {
                 val selectedYear: Int = year_spinner.selectedItem.toString().toInt()
                 Log.i("spinner","---selected year---"+selectedYear)
+/*                val selectedBranch: String = branch_spinner.selectedItem.toString()
+                Log.i("spinner","---selected BRANCH---"+selectedBranch)*/
                 val classRepo = Repo()
-                val rv_topper_list_id = getView()?.findViewById<RecyclerView>(R.id.rv_py_topper_list)
-                if (rv_topper_list_id != null) {
-                    classRepo.getTopper(selectedYear,rv_topper_list_id,context )
+                val rv_topper_list = getView()?.findViewById<RecyclerView>(R.id.rv_py_topper_list)
+                if (rv_topper_list != null) {
+                    classRepo.getTopperStudent(selectedYear,"",rv_topper_list,context)
                 }
             }
-/*            else if(parent.id == R.id.branch_spinner)
+            else if(parent.id == R.id.branch_spinner)
             {
                 val selectedYear: Int = year_spinner.selectedItem.toString().toInt()
                 Log.i("spinner","---selected year---"+selectedYear)
                 val selectedBranch: String = branch_spinner.selectedItem.toString()
                 Log.i("spinner","---selected BRANCH---"+selectedBranch)
-            }*/
+                val classRepo = Repo()
+                val rv_topper_list = getView()?.findViewById<RecyclerView>(R.id.rv_py_topper_list)
+                if (rv_topper_list != null) {
+                    classRepo.getTopperStudent(selectedYear,selectedBranch,rv_topper_list,context)
+                }
+            }
         }
 
     }

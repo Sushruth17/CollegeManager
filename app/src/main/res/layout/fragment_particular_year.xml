@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
         <Spinner
         android:id="@+id/year_spinner"
-        android:layout_width="200dp"
+        android:layout_width="170dp"
         android:layout_height="50dp"
         android:layout_margin="4dp"
         android:backgroundTint="@color/colorAccent"
@@ -31,12 +31,12 @@
         <Spinner
             android:id="@+id/branch_spinner"
             style="@style/mySpinnerItemStyle"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_margin="4dp"
             android:backgroundTint="@color/colorAccent"
             android:popupBackground="@color/colorPrimary"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/year_spinner"
             app:layout_constraintTop_toTopOf="parent" />
