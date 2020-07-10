@@ -32,18 +32,21 @@ class Signup : AppCompatActivity() {
 
             Log.i("add","--------clicked button-------------- " )
             val name = sign_up_name.getText().toString()
-            Log.i("add", "--------ADDNAME-------------- $name")
+            Log.i("add", "--------name-------------- $name")
             val username = sign_up_username.getText().toString()
-            Log.i("add", "--------ADDNAME-------------- $username")
+            Log.i("add", "--------username-------------- $username")
+            val emailId = sign_up_email_id.getText().toString()
+            Log.i("add", "--------emailId-------------- $emailId")
             val password : String = sign_up_password.getText().toString()
-            Log.i("add", "--------ADDADDRES-------------- $password")
+            Log.i("add", "--------password-------------- $password")
             val confirmPassword : String = sign_up_confirm_password.getText().toString()
-            Log.i("add", "--------ADDADDRES-------------- $confirmPassword")
+            Log.i("add", "--------confirmPassword-------------- $confirmPassword")
 
 
             val jsonObj = JsonObject()
             jsonObj.addProperty("name", name)
             jsonObj.addProperty("username", username)
+            jsonObj.addProperty("email id", emailId)
             jsonObj.addProperty("password", password)
             jsonObj.addProperty("confirm password", confirmPassword)
             //  POST demo

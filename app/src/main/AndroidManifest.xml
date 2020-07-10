@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".IndividualDetails"></activity>
         <activity
             android:name=".TopperList"
             android:theme="@style/LoginPage" />

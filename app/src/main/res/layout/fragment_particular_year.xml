@@ -20,13 +20,13 @@
         android:id="@+id/year_spinner"
         android:layout_width="170dp"
         android:layout_height="50dp"
-        android:layout_margin="4dp"
+        android:layout_margin="6dp"
         android:backgroundTint="@color/colorAccent"
         android:popupBackground="@color/colorPrimary"
         android:visibility="visible"
         style="@style/mySpinnerItemStyle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
         <Spinner
             android:id="@+id/branch_spinner"
