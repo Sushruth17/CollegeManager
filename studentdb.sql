@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2020 at 01:13 PM
+-- Generation Time: Jul 10, 2020 at 06:13 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -109,9 +109,9 @@ INSERT INTO `marksinfo` (`id`, `Marks`, `Sid`, `Subid`, `year`) VALUES
 (47, 98, 12, 2, 20192020),
 (48, 45, 12, 3, 20192020),
 (49, 78, 12, 4, 20192020),
-(50, 75, 13, 1, 20182019),
-(51, 85, 13, 2, 20182019),
-(52, 76, 13, 3, 20182019),
+(50, 91, 13, 1, 20182019),
+(51, 89, 13, 2, 20182019),
+(52, 90, 13, 3, 20182019),
 (53, 87, 13, 4, 20182019),
 (54, 67, 14, 1, 20182019),
 (55, 95, 14, 2, 20182019),
@@ -233,26 +233,32 @@ CREATE TABLE `tbl_user` (
   `user_id` bigint(20) NOT NULL,
   `user_name` varchar(45) DEFAULT NULL,
   `user_username` varchar(45) DEFAULT NULL,
-  `user_password` varchar(45) DEFAULT NULL
+  `user_email_id` varchar(30) DEFAULT NULL,
+  `user_password` varchar(45) DEFAULT NULL,
+  `user_role` varchar(20) DEFAULT NULL,
+  `user_status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_username`, `user_password`) VALUES
-(1, '', '', 'pbkdf2:sha256:150000'),
-(2, 'Sushruth S', 'sushruth.sushe@gmail', 'pbkdf2:sha256:150000'),
-(3, '123', '123', 'pbkdf2:sha256:150000'),
-(4, 'abcd', 'abcd', 'pbkdf2:sha256:150000'),
-(5, '3456', '34545', 'pbkdf2:sha256:150000'),
-(6, '1234567', '1234567', 'pbkdf2:sha256:150000'),
-(7, 'asd', 'asd', 'asd'),
-(8, 'ggg', 'ggg', 'ggg'),
-(9, 'Prajwal', 'prajwal@gmail.com', '123'),
-(10, 'abcd', 'abcd17', 'abcd'),
-(11, 'efgh', 'efgh18', 'efgh'),
-(12, 'ef', 'ef18', 'ef');
+INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_username`, `user_email_id`, `user_password`, `user_role`, `user_status`) VALUES
+(1, '', '', '', 'pbkdf2:sha256:150000', '', ''),
+(2, 'Sushruth S', 'sushruth.sushe@gmail', '', 'pbkdf2:sha256:150000', '', ''),
+(3, '123', '123', '', 'pbkdf2:sha256:150000', '', ''),
+(4, 'abcd', 'abcd', '', 'pbkdf2:sha256:150000', '', ''),
+(5, '3456', '34545', '', 'pbkdf2:sha256:150000', '', ''),
+(6, '1234567', '1234567', '', 'pbkdf2:sha256:150000', '', ''),
+(7, 'asd', 'asd', '', 'asd', 'teacher', 'active'),
+(8, 'ggg', 'ggg', '', 'ggg', '', ''),
+(9, 'Prajwal', 'prajwal@gmail.com', '', '123', '', ''),
+(10, 'abcd', 'abcd17', '', 'abcd', '', ''),
+(11, 'efgh', 'efgh18', '', 'efgh', '', ''),
+(12, 'ef', 'ef18', '', 'ef', '', ''),
+(13, NULL, NULL, 'test@gmail.com', NULL, 'teacher', 'not created'),
+(16, 'ddd', 'ddd', 'ddd', 'ddd', '', ''),
+(18, 'testtt', 'testtt', NULL, '4444', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -334,7 +340,7 @@ ALTER TABLE `subjectinfo`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
