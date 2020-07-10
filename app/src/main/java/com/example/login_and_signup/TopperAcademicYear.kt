@@ -76,8 +76,9 @@ class TopperAcademicYear : Fragment() {
             Log.i("year", "-----current year >  6-----" + year)
         }
         val rv_topper_list_id = getView()?.findViewById<RecyclerView>(R.id.rv_ac_topper_list)
+        val classRepo = Repo()
         if (rv_topper_list_id != null) {
-            getTopper(year,rv_topper_list_id,context)
+            classRepo.getTopper(year,rv_topper_list_id,context)
         }
     }
 
@@ -101,40 +102,5 @@ class TopperAcademicYear : Fragment() {
                 }
             }
     }
-    fun getTopper(year : Int , rv_topper_list : RecyclerView, context : Context?){
-        ApiStudent()
-            .addRetroFit()
-            ?.getAcedamicTopper(year)
-            ?.enqueue(object : Callback<ResponseBody> {
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
-                }
 
-                override fun onResponse(
-                    call: Call<ResponseBody>,
-                    response: Response<ResponseBody>
-                ) {
-                    if (response.isSuccessful) {
-                        val msg = response.body()?.string()
-                        Log.i("api", "---TTTT :: GET msg from server :: " + msg)
-                        Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
-                        val json = msg
-                        val gson = Gson()
-                        Log.i("marksssssss", "json -->$json")
-                        val type: Type =
-                            object : TypeToken<TopperModel>() {}.type
-                        val studentTopper = gson.fromJson<TopperModel>(msg, type)
-                        Log.i("marksssssss", "ssiizzeeeeee-->$studentTopper")
-//                        val rv_topper_list = getView()?.findViewById<RecyclerView>(rv_topper_list_id)
-                        val topper_adapter = TopperAdapter()
-                        topper_adapter.setDataCustom(studentTopper)
-                        rv_topper_list?.setHasFixedSize(true)
-                        rv_topper_list?.layoutManager = LinearLayoutManager(
-                                context, LinearLayoutManager.VERTICAL, false)
-                        rv_topper_list?.adapter = topper_adapter
-                    }
-                }
-            })
-
-    }
 }

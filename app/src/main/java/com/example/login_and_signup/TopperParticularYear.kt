@@ -83,10 +83,10 @@ class TopperParticularYear : Fragment(), AdapterView.OnItemSelectedListener{
             {
                 val selectedYear: Int = year_spinner.selectedItem.toString().toInt()
                 Log.i("spinner","---selected year---"+selectedYear)
-                val Topper = TopperAcademicYear()
+                val classRepo = Repo()
                 val rv_topper_list_id = getView()?.findViewById<RecyclerView>(R.id.rv_py_topper_list)
                 if (rv_topper_list_id != null) {
-                    Topper.getTopper(selectedYear,rv_topper_list_id,context )
+                    classRepo.getTopper(selectedYear,rv_topper_list_id,context )
                 }
             }
 /*            else if(parent.id == R.id.branch_spinner)
