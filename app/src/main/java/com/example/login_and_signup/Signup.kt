@@ -43,6 +43,17 @@ class Signup : AppCompatActivity() {
             Log.i("add", "--------confirmPassword-------------- $confirmPassword")
 
 
+            val emailPattern : String = "[a-zA-Z0-9._-]+@[a-z]+\\.+[\\(com\\|org\\|net\\){3}]+"
+            if (StringUtils.checkRegex(emailId,emailPattern)) {
+                Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show()
+            }
+
+            if (password != confirmPassword){
+                Toast.makeText(getApplicationContext(),"Paswword does not match", Toast.LENGTH_SHORT).show()
+            }
+
             val jsonObj = JsonObject()
             jsonObj.addProperty("name", name)
             jsonObj.addProperty("username", username)
@@ -64,13 +75,13 @@ class Signup : AppCompatActivity() {
                             println("---TTTT :: POST msg from server :: " + msg)
                             if (msg == "User Created Successfully")
                             {
-                                val intent = Intent(context, MainActivity::class.java)
+                                val intent = Intent(context, Home::class.java)
                                 startActivity(intent)
                             }
                             Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
                         }
                     }
                 })
-        }
+            }
         }
 }

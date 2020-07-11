@@ -4,11 +4,12 @@ package com.example.login_and_signup
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.login_and_signup.R.*
 import com.example.login_and_signup.utils.ApiStudent
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,11 +25,12 @@ class MainActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         context = this
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(layout.activity_main)
         Log.i("add","--------inside activity main-------------- " )
 
-        val buttonSignin = findViewById<Button>(R.id.btn_signin)
+        val buttonSignin = findViewById<Button>(id.btn_signin)
         buttonSignin.setOnClickListener{
+
 
             Log.i("add","--------clicked button-------------- " )
             val username = sign_in_username.getText().toString()
@@ -37,7 +39,31 @@ class MainActivity : AppCompatActivity() {
             Log.i("add","--------ADDADDRES-------------- " + password)
 
 
-            val jsonObj = JsonObject()
+
+/*
+            btn_show_password.setOnClickListener {
+                if(sign_in_password.inputType == 0){
+                    pwd.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                    btn_show_password.background = ""
+                } else{
+                    pwd.transformationMethod = PasswordTransformationMethod.getInstance()
+                    btn_show_password.text = "Show"
+                }
+*/
+
+                btn_show_password.setOnClickListener {
+                var i : Int = 0
+                    if (i == 0) {
+                        Log.i("edit", "--------emailId-------------- $")
+                        Toast.makeText(getApplicationContext(),"Clicked once", Toast.LENGTH_SHORT).show()
+                        i+= 1
+                    } else if (i == 1) {
+                        Toast.makeText(getApplicationContext(),"Clicked again", Toast.LENGTH_SHORT).show()
+                        i = 0;
+                    }
+                }
+
+                val jsonObj = JsonObject()
             jsonObj.addProperty("username", username)
             jsonObj.addProperty("password", password)
             //  POST demo
@@ -64,13 +90,13 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
         }
-        val fotgotPassword = findViewById<TextView>(R.id.forgot_password)
+        val fotgotPassword = findViewById<TextView>(id.forgot_password)
         fotgotPassword.setOnClickListener{
             val intent = Intent(this, ResetPassword::class.java)
             startActivity(intent)
         }
 
-        val btnSignUp = findViewById<Button>(R.id.btn_signup)
+        val btnSignUp = findViewById<Button>(id.btn_signup)
         btnSignUp.setOnClickListener{
             val intent = Intent(this, Signup::class.java)
             startActivity(intent)
