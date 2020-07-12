@@ -14,6 +14,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CreateUser"
+            android:theme="@style/LoginPage"/>
+        <activity
             android:name=".TopperList"
             android:theme="@style/LoginPage" />
         <activity

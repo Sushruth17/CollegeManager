@@ -36,6 +36,8 @@
         <item name="android:layout_height">match_parent</item>
     </style>
     <style name="mySpinnerItemStyle" parent="Base.Widget.AppCompat.Spinner">
+        <item name="radius">30dp</item>
+        <item name="color">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/white</item>
     </style>
 

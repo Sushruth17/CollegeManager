@@ -4,13 +4,18 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.View.VISIBLE
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.fragment_home1.*
 
 
 class Home : AppCompatActivity() {
@@ -20,18 +25,17 @@ class Home : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
     lateinit var context: Context
-
+    public lateinit var userType : String
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        userType = intent.getStringExtra("USERTYPE") ?: StringUtils.NOT_VALID
+        Log.i("type", "USERTYPE"+userType)
         setContentView(R.layout.activity_home)
-        val username = intent.getStringExtra("USERNAME")
-        Log.i("username home ", "profile username"+username)
-        val bundle = Bundle()
-        bundle.putString("USERNAME", username)
-        val myFrag = FragmentProfile()
-        myFrag.arguments = bundle
+/*        val assignButton = findViewById<Button>(R.id.btn_assign_user)
+        assignButton.visibility = VISIBLE*/
+
         setUpNavigation()
     }
 

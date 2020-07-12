@@ -43,8 +43,8 @@ class Signup : AppCompatActivity() {
             Log.i("add", "--------confirmPassword-------------- $confirmPassword")
 
 
-            val emailPattern : String = "[a-zA-Z0-9._-]+@[a-z]+\\.+[\\(com\\|org\\|net\\){3}]+"
-            if (StringUtils.checkRegex(emailId,emailPattern)) {
+
+            if (StringUtils.checkRegex(emailId,StringUtils.EMAIL_PATTERN)) {
                 Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show()

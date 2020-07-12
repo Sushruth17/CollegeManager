@@ -14,6 +14,7 @@ class StringUtils {
             return false
         }
 
+        val NOT_VALID = "NOT VALID"
         val STUDENT_INFO_DATA = "STUDENT_INFO_DATA"
 
         val STUDENT_SEARCH_DATA = "STUDENT_SEARCH_DATA"
@@ -21,6 +22,16 @@ class StringUtils {
         val STUDENT_EDIT_DATA = "STUDENT_EDIT_DATA"
 
         val STUDENT_MARKS_DATA = "STUDENT_MARKS_DATA"
+
+        val WRONG_PASSWORD = "Password wrong"
+
+        val WRONG_USER = "User wrong"
+
+        val TEACHER = "teacher"
+        val HOD = "HOD"
+        val ADMIN = "admin"
+
+        val EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[\\(com\\|org\\|net\\){3}]+"
 
     }
 

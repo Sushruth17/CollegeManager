@@ -136,4 +136,10 @@
         <item>ISE</item>
     </string-array>
 
+    <string-array name="create_user_array">
+        <item>Admin</item>
+        <item>HOD</item>
+        <item>Teacher</item>
+    </string-array>
+
 </resources>

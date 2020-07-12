@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_and_signup.R.*
 import com.example.login_and_signup.utils.ApiStudent
+import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -79,10 +80,10 @@ class MainActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             val msg = response.body()?.string()
                             println("---TTTT :: POST msg from server :: " + msg)
-                            if (msg == "Successfully signed in")
+                            if ((msg != StringUtils.WRONG_PASSWORD) && (msg != StringUtils.WRONG_USER))
                             {
                                 val intent = Intent(context, Home::class.java)
-                                intent.putExtra("USERNAME", username)
+                                intent.putExtra("USERTYPE", msg)
                                 startActivity(intent)
                             }
                             Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()

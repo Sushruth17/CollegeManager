@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateUser"
+    android:background="@drawable/login_background">
+
+    <TextView
+        android:id="@+id/user_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Role:"
+        android:textSize="20sp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Spinner
+        android:id="@+id/create_user_spinner"
+        style="@style/mySpinnerItemStyle"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:popupBackground="@color/colorPrimary"
+        android:visibility="visible"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_marginTop="190dp"
+        app:layout_constraintCircleRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/user_role"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/create_user_email_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email Id:"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@+id/user_role"
+        app:layout_constraintTop_toBottomOf="@+id/user_role"/>
+
+    <EditText
+        android:id="@+id/create_user_input_email_id"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:paddingStart="20dp"
+        android:background="@drawable/login_edit_background"
+        app:layout_constraintStart_toEndOf="@+id/create_user_email_id"
+        app:layout_constraintTop_toBottomOf="@+id/create_user_spinner"/>
+
+    <Button
+        android:id="@+id/btn_create"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Create"
+        android:textAllCaps="false"
+        android:textSize="21sp"
+        app:layout_constraintTop_toBottomOf="@+id/create_user_email_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

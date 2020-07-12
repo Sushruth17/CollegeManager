@@ -52,7 +52,8 @@
         android:text="Click here"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/hometext_1"
-        android:textSize="21sp"/>
+        android:textSize="21sp"
+        />
 
 
     <Button
@@ -81,5 +82,19 @@
         app:layout_constraintTop_toBottomOf="@id/btn_search_student"
 
         android:textSize="21sp"/>
+
+    <Button
+        android:id="@+id/btn_create_user"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="Create User"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/btn_toppers_list"
+        android:textSize="21sp"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
