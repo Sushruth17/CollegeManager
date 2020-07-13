@@ -69,6 +69,15 @@ class ApiStudent {
 
         @GET("/topper")
         fun getAnyYearTopper(): Call<ResponseBody>
+
+        @POST("/addUser")
+        fun addUser(@Body body: JsonObject): Call<ResponseBody>
+
+        @POST("/editProfile")
+        fun editProfile(@Body body: JsonObject): Call<ResponseBody>
+
+        @GET("/profileData")
+        fun getProfileData(): Call<ResponseBody>
     }
 
 

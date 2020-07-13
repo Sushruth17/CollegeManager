@@ -1,5 +1,6 @@
 package com.example.login_and_signup
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,8 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.login_and_signup.utils.ApiStudent
 import kotlinx.android.synthetic.main.fragment_profile.*
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,7 +56,26 @@ class FragmentProfile() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val usernameProfile = this.getArguments()?.getString("USERNAME");
+
+        ApiStudent()
+            .addRetroFit()
+            ?.getProfileData()
+            ?.enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    println("---TTTT :: POST Throwable EXCEPTION:: " + t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+                    if (response.isSuccessful) {
+                        val msg = response.body()?.string()
+                        println("---TTTT :: POST msg from server :: " + msg)
+                        Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
 
 
         val btnLogout = getView()?.findViewById<TextView>(R.id.profile_logout)
