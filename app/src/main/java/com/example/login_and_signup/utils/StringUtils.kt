@@ -14,7 +14,13 @@ class StringUtils {
             return false
         }
 
-        val NOT_VALID = "NOT VALID"
+        val USER_NAME: String = "USER_NAME"
+        val USER_USERNAME: String = "USER_USERNAME"
+        val USER_TYPE: String = "USER_TYPE"
+        val USER_EMAIL: String = "USER_EMAIL"
+
+
+        val NOT_VALID = "NOT_VALID"
         val STUDENT_INFO_DATA = "STUDENT_INFO_DATA"
 
         val STUDENT_SEARCH_DATA = "STUDENT_SEARCH_DATA"

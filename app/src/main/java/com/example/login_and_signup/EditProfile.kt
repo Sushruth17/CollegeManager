@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.example.login_and_signup.utils.ApiStudent
+import com.example.login_and_signup.utils.SharedPreference
 import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_edit_profile.*
@@ -22,6 +23,18 @@ class EditProfile : AppCompatActivity(){
 
         val buttonSignup = findViewById<Button>(R.id.btnProfileEdit)
         buttonSignup.setOnClickListener {
+
+            val userName = SharedPreference.getValueString(this ,StringUtils.USER_NAME) ?:StringUtils.NOT_VALID
+            Log.i("edit", "--------userName-------------- ",userName)
+            val userUsername = SharedPreference.getValueString(this ,StringUtils.USER_USERNAME) ?:StringUtils.NOT_VALID
+            Log.i("edit", "--------userUsername-------------- ",userUsername)
+            val userEmailId = SharedPreference.getValueString(this ,StringUtils.USER_EMAIL) ?:StringUtils.NOT_VALID
+            Log.i("edit", "--------userEmailId-------------- ")
+
+            editProfileName.setText(userName)
+            Log.i("edit", "--------userName-------------- ")
+            editProfileUsername.setText(userUsername)
+            editProfileEmailId.setText(userEmailId)
 
             Log.i("edit", "--------clicked button-------------- ")
             val name = editProfileName.getText().toString()
@@ -69,6 +82,7 @@ class EditProfile : AppCompatActivity(){
                             val msg = response.body()?.string()
                             println("---TTTT :: POST msg from server :: " + msg)
                             Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
+
                         }
                     }
                 })

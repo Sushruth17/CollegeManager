@@ -12,10 +12,15 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.login_and_signup.model.*
+import com.example.login_and_signup.utils.SharedPreference
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_home1.*
+import java.lang.reflect.Type
 
 
 class Home : AppCompatActivity() {
@@ -25,16 +30,35 @@ class Home : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
     lateinit var context: Context
-    public lateinit var userType : String
-
+    lateinit var username : String
+//    lateinit var userType : String
+//    lateinit var userEmailId  :String
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        userType = intent.getStringExtra("USERTYPE") ?: StringUtils.NOT_VALID
-        Log.i("type", "USERTYPE"+userType)
+        username = intent.getStringExtra("USERNAME")  ?: StringUtils.NOT_VALID
+
+        val json = intent.getStringExtra("ProfileData") ?: StringUtils.NOT_VALID
+        val gson = Gson()
+        Log.i("profile_data", "json -->$json")
+        val type: Type =
+            object : TypeToken<ProfileDataModel>() {}.type
+        val profile_data = gson.fromJson<ProfileDataModel>(json, type)
+        Log.i("profile_data", "ProfileData-->$profile_data")
+
+        val userType = profile_data.userType ?: StringUtils.NOT_VALID
+        Log.i("profile_data", "userType-->$userType")
+
+        val userEmailId = profile_data.userEmailId ?: StringUtils.NOT_VALID
+        Log.i("profile_data", "userEmailId-->$userEmailId")
+
         setContentView(R.layout.activity_home)
 /*        val assignButton = findViewById<Button>(R.id.btn_assign_user)
         assignButton.visibility = VISIBLE*/
+
+        SharedPreference.save(this,StringUtils.USER_TYPE,userType)
+
+        SharedPreference.save(this,StringUtils.USER_EMAIL,userEmailId)
 
         setUpNavigation()
     }

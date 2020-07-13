@@ -23,6 +23,7 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var context: Context
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         context = this
         super.onCreate(savedInstanceState)
@@ -83,7 +84,8 @@ class MainActivity : AppCompatActivity() {
                             if ((msg != StringUtils.WRONG_PASSWORD) && (msg != StringUtils.WRONG_USER))
                             {
                                 val intent = Intent(context, Home::class.java)
-                                intent.putExtra("USERTYPE", msg)
+                                intent.putExtra("ProfileData", msg)
+                                intent.putExtra("USERNAME",username)
                                 startActivity(intent)
                             }
                             Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()

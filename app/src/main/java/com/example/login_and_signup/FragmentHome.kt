@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.login_and_signup.utils.ApiStudent
+import com.example.login_and_signup.utils.SharedPreference
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_home1.*
@@ -74,6 +75,8 @@ public class FragmentHome : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.i("lifecycle", "onViewCreated")
 
+
+
             val buttonstd = getView()?.findViewById<Button>(R.id.btn_stdDetails)
             buttonstd?.setOnClickListener {
                 Log.i("btntest", "Clicked student details button ")
@@ -93,9 +96,9 @@ public class FragmentHome : Fragment() {
                                 // val msg = "{info:" + response.body()?.string() + "}"
                                 //Log.i("api","msgg " + msg)
                                 val msg = response.body()?.string()
-                                val intent = Intent(getActivity(), StudentDetails::class.java)
+                                val intent = Intent(activity, StudentDetails::class.java)
                                 intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
-                                getActivity()?.startActivity(intent)
+                                activity?.startActivity(intent)
                                 Log.i("api", "---TTTT :: GET msg from server :: " + msg)
                                 // Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
 
@@ -137,10 +140,12 @@ public class FragmentHome : Fragment() {
         override fun onActivityCreated(savedInstanceState: Bundle?) {
             super.onActivityCreated(savedInstanceState)
             Log.i("lifecycle", "onActivityCreated")
-            val homeActivity: Home = activity as Home
-            if (homeActivity.userType == StringUtils.ADMIN) {
+            userType = SharedPreference.getValueString(activity as Home,StringUtils.USER_TYPE) ?:StringUtils.NOT_VALID
+
+
+            if (userType == StringUtils.ADMIN) {
                 btn_create_user.visibility = View.VISIBLE
-                Log.i("type", "---usertype " + homeActivity.userType)
+                Log.i("type", "---usertype--- " + userType)
             }
         }
 

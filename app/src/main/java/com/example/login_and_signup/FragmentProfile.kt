@@ -11,6 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.login_and_signup.utils.ApiStudent
+import com.example.login_and_signup.utils.SharedPreference
+import com.example.login_and_signup.utils.StringUtils
 import kotlinx.android.synthetic.main.fragment_profile.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -31,6 +33,7 @@ class FragmentProfile() : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    var username : String? = null
     fun FragmentProfile() {
         // Required empty public constructor
     }
@@ -57,26 +60,15 @@ class FragmentProfile() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ApiStudent()
-            .addRetroFit()
-            ?.getProfileData()
-            ?.enqueue(object : Callback<ResponseBody> {
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    println("---TTTT :: POST Throwable EXCEPTION:: " + t.message)
-                }
+        val homeActivity : Home = activity as Home
+        username = homeActivity.username
+        profile_username.text = username
 
-                override fun onResponse(
-                    call: Call<ResponseBody>,
-                    response: Response<ResponseBody>
-                ) {
-                    if (response.isSuccessful) {
-                        val msg = response.body()?.string()
-                        println("---TTTT :: POST msg from server :: " + msg)
-                        Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
+//        profile_email_id.text =
 
+        val userEmailId = SharedPreference.getValueString(activity as Home,StringUtils.USER_EMAIL) ?:StringUtils.NOT_VALID
+        Log.i("type", "---userEmailId--- " + userEmailId)
+        profile_email_id.text = userEmailId
 
         val btnLogout = getView()?.findViewById<TextView>(R.id.profile_logout)
         if (btnLogout != null) {
@@ -96,9 +88,14 @@ class FragmentProfile() : Fragment() {
                 //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
                 getActivity()?.startActivity(intent)
 
-
             }
         }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
     }
 
         companion object {

@@ -75,9 +75,6 @@ class ApiStudent {
 
         @POST("/editProfile")
         fun editProfile(@Body body: JsonObject): Call<ResponseBody>
-
-        @GET("/profileData")
-        fun getProfileData(): Call<ResponseBody>
     }
 
 
