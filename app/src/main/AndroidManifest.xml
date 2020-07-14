@@ -13,9 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ChangeUserRole"></activity>
         <activity
             android:name=".CreateUser"
-            android:theme="@style/LoginPage"/>
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".TopperList"
             android:theme="@style/LoginPage" />

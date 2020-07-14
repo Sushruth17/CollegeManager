@@ -49,6 +49,15 @@ class Home : AppCompatActivity() {
         val userType = profile_data.userType ?: StringUtils.NOT_VALID
         Log.i("profile_data", "userType-->$userType")
 
+        val userName = profile_data.userName ?: StringUtils.NOT_VALID
+        Log.i("profile_data", "userName-->$userName")
+
+        val userUsername = profile_data.userUsername ?: StringUtils.NOT_VALID
+        Log.i("profile_data", "userUsername-->$userUsername")
+
+        val userPhoneNumber = profile_data.userPhoneNumber ?: StringUtils.NOT_VALID
+        Log.i("profile_data", "userPhoneNumber-->$userPhoneNumber")
+
         val userEmailId = profile_data.userEmailId ?: StringUtils.NOT_VALID
         Log.i("profile_data", "userEmailId-->$userEmailId")
 
@@ -57,7 +66,9 @@ class Home : AppCompatActivity() {
         assignButton.visibility = VISIBLE*/
 
         SharedPreference.save(this,StringUtils.USER_TYPE,userType)
-
+        SharedPreference.save(this,StringUtils.USER_NAME,userName)
+        SharedPreference.save(this,StringUtils.USER_USERNAME,userUsername)
+        SharedPreference.save(this,StringUtils.USER_PHONE_NUMBER,userPhoneNumber)
         SharedPreference.save(this,StringUtils.USER_EMAIL,userEmailId)
 
         setUpNavigation()

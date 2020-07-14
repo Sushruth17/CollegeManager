@@ -32,7 +32,7 @@
         android:layout_width="280dp"
         android:layout_centerHorizontal="true"
         android:layout_height="50dp"
-        android:drawableStart="@drawable/ic_user"
+        android:drawableStart="@drawable/ic_person_2"
         android:hint="@string/username"
         android:text="bbb"
         android:drawablePadding="10dp"

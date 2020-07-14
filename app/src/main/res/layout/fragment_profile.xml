@@ -25,14 +25,26 @@
                 <TextView
                     android:id="@+id/profile_username"
                     android:layout_marginTop="10dp"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
+                    tools:text= "Username"
                     android:textColor="#fff"
                     android:textStyle="bold"
-                    android:textSize="21sp"/>
+                    android:textSize="23sp"/>
+
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text= "Name"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
@@ -176,8 +188,8 @@
                     android:src="@drawable/ic_phone_android_black_24dp" />
 
                 <TextView
+                    android:id="@+id/profile_phone_number"
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"

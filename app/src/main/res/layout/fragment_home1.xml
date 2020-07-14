@@ -28,19 +28,7 @@
         android:background="@drawable/button_background"
         app:layout_constraintTop_toBottomOf="@id/welcome_home" />
 
-    <TextView
-        android:id="@+id/hometext_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:padding="20dp"
-        android:text="To view student's details "
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="150dp"
-        tools:layout_editor_absoluteY="204dp" />
+
 
     <Button
         android:id="@+id/btn_stdDetails"
@@ -49,9 +37,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
-        android:text="Click here"
+        android:text="Student Details"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/hometext_1"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:textSize="21sp"
         />
 
@@ -80,7 +71,6 @@
         android:text="Topper's List"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/btn_search_student"
-
         android:textSize="21sp"/>
 
     <Button
@@ -94,6 +84,20 @@
         android:text="Create User"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/btn_toppers_list"
+        android:textSize="21sp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_change_user_role"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="Change User Role"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/btn_create_user"
         android:textSize="21sp"
         android:visibility="gone"/>
 

@@ -37,6 +37,8 @@ class Signup : AppCompatActivity() {
             Log.i("add", "--------username-------------- $username")
             val emailId = sign_up_email_id.getText().toString()
             Log.i("add", "--------emailId-------------- $emailId")
+            val phoneNumber = sign_up_phone_number.getText().toString()
+            Log.i("add", "--------emailId-------------- $phoneNumber")
             val password : String = sign_up_password.getText().toString()
             Log.i("add", "--------password-------------- $password")
             val confirmPassword : String = sign_up_confirm_password.getText().toString()
@@ -44,22 +46,24 @@ class Signup : AppCompatActivity() {
 
 
 
-            if (StringUtils.checkRegex(emailId,StringUtils.EMAIL_PATTERN)) {
-                Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show()
+            if (!StringUtils.checkRegex(emailId,StringUtils.EMAIL_PATTERN)) {
+                Toast.makeText(applicationContext,"Invalid email address", Toast.LENGTH_SHORT).show()
+            }
+
+            if (phoneNumber.length != 10 ) {
+                Toast.makeText(applicationContext, "Invalid phone number", Toast.LENGTH_SHORT).show()
             }
 
             if (password != confirmPassword){
-                Toast.makeText(getApplicationContext(),"Paswword does not match", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"Password does not match", Toast.LENGTH_SHORT).show()
             }
 
             val jsonObj = JsonObject()
             jsonObj.addProperty("name", name)
             jsonObj.addProperty("username", username)
             jsonObj.addProperty("email id", emailId)
+            jsonObj.addProperty("phone number", phoneNumber)
             jsonObj.addProperty("password", password)
-            jsonObj.addProperty("confirm password", confirmPassword)
             //  POST demo
             ApiStudent()
                 .addRetroFit()
@@ -75,7 +79,7 @@ class Signup : AppCompatActivity() {
                             println("---TTTT :: POST msg from server :: " + msg)
                             if (msg == "User Created Successfully")
                             {
-                                val intent = Intent(context, Home::class.java)
+                                val intent = Intent(context, MainActivity::class.java)
                                 startActivity(intent)
                             }
                             Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()

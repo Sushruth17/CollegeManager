@@ -135,6 +135,15 @@ public class FragmentHome : Fragment() {
                 getActivity()?.startActivity(intent)
             }
         }
+        val buttonChangeUserRole= getView()?.findViewById<Button>(R.id.btn_create_user)
+        if (buttonCreateUser != null) {
+            buttonCreateUser.setOnClickListener {
+                Log.i("btntest", "Clicked create user button ")
+                val intent = Intent(getActivity(), CreateUser::class.java)
+                getActivity()?.startActivity(intent)
+            }
+        }
+
         }
 
         override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -145,6 +154,7 @@ public class FragmentHome : Fragment() {
 
             if (userType == StringUtils.ADMIN) {
                 btn_create_user.visibility = View.VISIBLE
+                btn_change_user_role.visibility = View.VISIBLE
                 Log.i("type", "---usertype--- " + userType)
             }
         }

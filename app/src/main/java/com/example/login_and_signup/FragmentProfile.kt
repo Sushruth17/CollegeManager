@@ -60,15 +60,21 @@ class FragmentProfile() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val homeActivity : Home = activity as Home
-        username = homeActivity.username
-        profile_username.text = username
+        val userUsername = SharedPreference.getValueString(activity as Home, StringUtils.USER_USERNAME) ?: StringUtils.NOT_VALID
+        Log.i("type", "--------userName-------------- " + userUsername)
+        profile_username.text = userUsername
 
-//        profile_email_id.text =
+        val userName = SharedPreference.getValueString(activity as Home, StringUtils.USER_NAME) ?: StringUtils.NOT_VALID
+        Log.i("type", "--------userName-------------- " + userName)
+        profile_name.text = userName
 
         val userEmailId = SharedPreference.getValueString(activity as Home,StringUtils.USER_EMAIL) ?:StringUtils.NOT_VALID
         Log.i("type", "---userEmailId--- " + userEmailId)
         profile_email_id.text = userEmailId
+
+        val userPhoneNumber = SharedPreference.getValueString(activity as Home,StringUtils.USER_PHONE_NUMBER) ?:StringUtils.NOT_VALID
+        Log.i("type", "---userPhoneNumber--- " + userPhoneNumber)
+        profile_phone_number.text = "+91 $userPhoneNumber"
 
         val btnLogout = getView()?.findViewById<TextView>(R.id.profile_logout)
         if (btnLogout != null) {
