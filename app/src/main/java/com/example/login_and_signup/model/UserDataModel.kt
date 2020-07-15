@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 data class UserDataModel(
 
 	@field:SerializedName("infoUser")
-	val infoUser: List<InfoUserItem?>? = null
+	val infoUser: MutableList<InfoUserItem?>? = null
 )
 
 @Parcelize

@@ -8,9 +8,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.R
-import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.InfoUserItem
-import com.example.login_and_signup.model.StudentModel
 import com.example.login_and_signup.model.UserDataModel
 import kotlinx.android.synthetic.main.student_info_unit.view.*
 import kotlinx.android.synthetic.main.user_details_unit.view.*
@@ -64,10 +62,10 @@ class UserDataAdapter  : RecyclerView.Adapter<UserDataAdapter.ViewHolder>(){
     }
 
 
-/*    fun removeAt(position: Int) {
+    fun removeAt(position: Int) {
         data.infoUser?.removeAt(position)
         notifyItemRemoved(position)
-    }*/
+    }
 
     fun <T : RecyclerView.ViewHolder> T.listen(event: (position: Int, type: Int) -> Unit): T {
         itemView.setOnClickListener {
@@ -77,3 +75,5 @@ class UserDataAdapter  : RecyclerView.Adapter<UserDataAdapter.ViewHolder>(){
     }
 
 }
+
+

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,10 +15,15 @@ import com.example.login_and_signup.adapters.StudentInfoAdapter
 import com.example.login_and_signup.adapters.UserDataAdapter
 import com.example.login_and_signup.model.StudentModel
 import com.example.login_and_signup.model.UserDataModel
+import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.reflect.Type
 
 class UserDetails : AppCompatActivity() {
@@ -68,7 +74,40 @@ class UserDetails : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            override fun onRightClicked(position: Int) {}
+            override fun onRightClicked(position: Int) {
+
+                val removed = user_adapter.data.infoUser?.get(position)?.userId
+                user_adapter.removeAt(position)
+                user_adapter.notifyItemRemoved(position)
+                user_adapter.notifyItemRangeChanged(position, user_adapter.itemCount)
+//                student_adapter.data.info?.get(position)?.id
+
+                Log.i("del", "------removed----position------>" +position+"\n" +Gson().toJson(removed))
+                ApiStudent()
+                    .addRetroFit()
+                    ?.deleteUser(removed)
+                    ?.enqueue(object : Callback<ResponseBody> {
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                        }
+
+                        override fun onResponse(call: Call<ResponseBody>,
+                                                response: Response<ResponseBody>
+                        ) {
+                            if (response.isSuccessful) {
+                                //                            val msg = "{info:" + response.body()?.string() + "}"
+                                //                            Log.i("api","msgg " + msg)
+                                val msg = response.body()?.string()
+                                //                                val intent = Intent(context, StudentDetails::class.java)
+                                //                                intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
+                                //                                startActivity(intent)
+                                Log.i("api", "---TTTT :: GET msg from server :: " + msg)
+                                Toast.makeText(context,msg, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    })
+
+            }
         })
 
         val itemTouchhelper = ItemTouchHelper(swipeController)
