@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.example.login_and_signup.model.InfoItem
+import com.example.login_and_signup.model.InfoUserItem
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.JsonObject
@@ -18,19 +20,12 @@ import retrofit2.Response
 
 class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var buttonID : Int = 0
+    var task :String= ""
+    var userName :String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_user)
 
-        val buttonsActivity = intent.getStringExtra("buttonsActivity")
-        if (buttonsActivity == StringUtils.CHANGE_USER_ROLE){
-            btn_create.visibility = View.GONE
-            btn_change.visibility = View.VISIBLE
-            buttonID = R.id.btn_change
-        }
-        else{
-            buttonID = R.id.btn_create
-        }
 
         val spinnerCreateUser: Spinner? = findViewById(R.id.create_user_spinner)
         val arrayCreateUser = R.array.create_user_array
@@ -54,6 +49,32 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             }
         }
+
+        val buttonsActivity = intent.getStringExtra("buttonsActivity")
+        val dataReceived =intent.getParcelableExtra<InfoUserItem>(StringUtils.USER_DATA)
+        Log.i("Data","----Data received-----"+ dataReceived)
+        if (buttonsActivity == StringUtils.CHANGE_USER_ROLE){
+            btn_create.visibility = View.GONE
+            btn_change.visibility = View.VISIBLE
+            buttonID = R.id.btn_change
+            task = StringUtils.CHANGE
+            userName = dataReceived.userName
+            Log.i("task","----task-----"+ task)
+
+            create_user_input_email_id.setText(dataReceived.userEmailId)
+            if (dataReceived.userType == StringUtils.TEACHER) {
+                spinnerCreateUser?.setSelection(2)
+            }
+            else if  (dataReceived.userType == StringUtils.ADMIN) {
+                spinnerCreateUser?.setSelection(0)
+            }
+        }
+        else{
+            buttonID = R.id.btn_create
+            task = StringUtils.CREATE
+            Log.i("task","----task-----"+ task)
+        }
+
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -68,7 +89,7 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         Log.i("buttonID", "--------buttonID-------------- $buttonID")
         val buttonCreate = findViewById<Button>(buttonID)
         buttonCreate.setOnClickListener {
-            val emailIdForCreateUser = create_user_input_email_id.getText().toString()
+            val emailIdForCreateUser = create_user_input_email_id.text.toString()
             Log.i("emailid", "--------emailId-------------- $emailIdForCreateUser")
             if (!StringUtils.checkRegex(emailIdForCreateUser, StringUtils.EMAIL_PATTERN)) {
                 Toast.makeText(applicationContext, "Invalid email address", Toast.LENGTH_SHORT)
@@ -78,6 +99,8 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             val jsonUserObj = JsonObject()
             jsonUserObj.addProperty("userType", spinnerCreateUser)
             jsonUserObj.addProperty("emailId", emailIdForCreateUser)
+            jsonUserObj.addProperty("userName", userName)
+            jsonUserObj.addProperty("task", task)
 
             ApiStudent()
                 .addRetroFit()

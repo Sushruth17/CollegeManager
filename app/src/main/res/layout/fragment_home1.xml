@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@id/btn_search_student"
         android:textSize="21sp"/>
 
-    <Button
+<!--    <Button
         android:id="@+id/btn_create_user"
         android:layout_marginTop="20dp"
         android:layout_marginStart="75dp"
@@ -85,7 +85,7 @@
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/btn_toppers_list"
         android:textSize="21sp"
-        android:visibility="gone"/>
+        android:visibility="gone"/>-->
 
     <Button
         android:id="@+id/btn_change_user_role"
@@ -97,7 +97,7 @@
         android:background="@drawable/button_background"
         android:text="Change User Role"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/btn_create_user"
+        app:layout_constraintTop_toBottomOf="@id/btn_toppers_list"
         android:textSize="21sp"
         android:visibility="gone"/>
 

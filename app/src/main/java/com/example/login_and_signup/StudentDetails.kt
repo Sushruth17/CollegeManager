@@ -180,7 +180,6 @@ class StudentDetails : AppCompatActivity() {
         val swipeController = SwipeController(object : SwipeControllerActions() {
 
             override fun onLeftClicked(position: Int) {
-                val itemClicked = position
                 val dataSelected = student_adapter.data.info?.get(position)
 //                val dataSelected = student_adapter.data
                 Log.i("dataselected","-----selected position-----"+position)

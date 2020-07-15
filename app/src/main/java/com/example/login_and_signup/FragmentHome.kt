@@ -127,7 +127,7 @@ public class FragmentHome : Fragment() {
                 }
             }
 
-        val buttonCreateUser = getView()?.findViewById<Button>(R.id.btn_create_user)
+/*        val buttonCreateUser = getView()?.findViewById<Button>(R.id.btn_create_user)
         if (buttonCreateUser != null) {
             buttonCreateUser.setOnClickListener {
                 Log.i("btntest", "Clicked create user button ")
@@ -135,7 +135,7 @@ public class FragmentHome : Fragment() {
                 intent.putExtra("buttonsActivity",StringUtils.CREATE_USER)
                 getActivity()?.startActivity(intent)
             }
-        }
+        }*/
         val buttonChangeUserRole= getView()?.findViewById<Button>(R.id.btn_change_user_role)
         if (buttonChangeUserRole != null) {
             buttonChangeUserRole.setOnClickListener {
@@ -185,7 +185,6 @@ public class FragmentHome : Fragment() {
 
 
             if (userType == StringUtils.ADMIN) {
-                btn_create_user.visibility = View.VISIBLE
                 btn_change_user_role.visibility = View.VISIBLE
                 btn_user_details.visibility=View.VISIBLE
                 Log.i("type", "---usertype--- " + userType)
