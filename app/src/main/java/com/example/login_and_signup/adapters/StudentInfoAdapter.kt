@@ -17,12 +17,6 @@ import java.util.logging.Filter as Filter1
 
 class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(){
 
-/*    var studentFilterList = data.info
-
-    init {
-         studentFilterList = data.info
-    }*/
-
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameType = itemView.name

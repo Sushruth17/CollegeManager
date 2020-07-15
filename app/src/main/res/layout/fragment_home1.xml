@@ -101,4 +101,18 @@
         android:textSize="21sp"
         android:visibility="gone"/>
 
+    <Button
+        android:id="@+id/btn_user_details"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="User Details"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/btn_change_user_role"
+        android:textSize="21sp"
+        android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

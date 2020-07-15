@@ -132,17 +132,49 @@ public class FragmentHome : Fragment() {
             buttonCreateUser.setOnClickListener {
                 Log.i("btntest", "Clicked create user button ")
                 val intent = Intent(getActivity(), CreateUser::class.java)
+                intent.putExtra("buttonsActivity",StringUtils.CREATE_USER)
                 getActivity()?.startActivity(intent)
             }
         }
-        val buttonChangeUserRole= getView()?.findViewById<Button>(R.id.btn_create_user)
-        if (buttonCreateUser != null) {
-            buttonCreateUser.setOnClickListener {
-                Log.i("btntest", "Clicked create user button ")
+        val buttonChangeUserRole= getView()?.findViewById<Button>(R.id.btn_change_user_role)
+        if (buttonChangeUserRole != null) {
+            buttonChangeUserRole.setOnClickListener {
+                Log.i("btntest", "Clicked ChangeUserRole button ")
                 val intent = Intent(getActivity(), CreateUser::class.java)
+                intent.putExtra("buttonsActivity",StringUtils.CHANGE_USER_ROLE)
                 getActivity()?.startActivity(intent)
             }
         }
+
+
+        val btnUserDetails = getView()?.findViewById<Button>(R.id.btn_user_details)
+        btnUserDetails?.setOnClickListener {
+            Log.i("btntest", "Clicked student details button ")
+            ApiStudent()
+                .addRetroFit()
+                ?.getUserDetails()
+                ?.enqueue(object : Callback<ResponseBody> {
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                    }
+
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
+                        if (response.isSuccessful) {
+                            val msg = response.body()?.string()
+                            val intent = Intent(activity, UserDetails::class.java)
+                            intent.putExtra(StringUtils.USER_DATA, msg)
+                            activity?.startActivity(intent)
+                            Log.i("api", "---TTTT :: GET msg from server :: " + msg)
+                            // Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
+        }
+
+
 
         }
 
@@ -155,6 +187,7 @@ public class FragmentHome : Fragment() {
             if (userType == StringUtils.ADMIN) {
                 btn_create_user.visibility = View.VISIBLE
                 btn_change_user_role.visibility = View.VISIBLE
+                btn_user_details.visibility=View.VISIBLE
                 Log.i("type", "---usertype--- " + userType)
             }
         }

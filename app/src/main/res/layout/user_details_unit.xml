@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- player_row.xml -->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_background"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:id="@+id/user_details_username_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username: "
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/user_details_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Sushruth" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/user_details_name_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: " />
+
+            <TextView
+                android:id="@+id/user_details_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Sush" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/user_details_user_type_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Type:" />
+
+            <TextView
+                android:id="@+id/user_details_user_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Teacher" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/user_details_email_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email Id:" />
+
+            <TextView
+                android:id="@+id/user_details_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="abc@gmail.com" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/user_details_phone_number_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number: " />
+
+            <TextView
+                android:id="@+id/user_details_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="998844556611" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/button_background" />
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

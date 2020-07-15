@@ -66,4 +66,18 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/button_background"/>
 
+    <Button
+        android:id="@+id/btn_change"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Change"
+        android:textAllCaps="false"
+        android:textSize="21sp"
+        app:layout_constraintTop_toBottomOf="@+id/create_user_email_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
+        android:visibility="gone"
+        android:background="@drawable/button_background"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

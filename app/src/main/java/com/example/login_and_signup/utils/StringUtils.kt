@@ -14,6 +14,9 @@ class StringUtils {
             return false
         }
 
+        val USER_DATA: String? = "USER_DATA"
+        val CHANGE_USER_ROLE: String? = "CHANGE_USER_ROLE"
+        val CREATE_USER: String? = "CREATE_USER"
         val USER_TYPE: String = "USER_TYPE"
         val USER_NAME: String = "USER_NAME"
         val USER_USERNAME: String = "USER_USERNAME"

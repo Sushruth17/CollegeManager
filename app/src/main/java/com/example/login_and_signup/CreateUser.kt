@@ -17,9 +17,20 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+    var buttonID : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_user)
+
+        val buttonsActivity = intent.getStringExtra("buttonsActivity")
+        if (buttonsActivity == StringUtils.CHANGE_USER_ROLE){
+            btn_create.visibility = View.GONE
+            btn_change.visibility = View.VISIBLE
+            buttonID = R.id.btn_change
+        }
+        else{
+            buttonID = R.id.btn_create
+        }
 
         val spinnerCreateUser: Spinner? = findViewById(R.id.create_user_spinner)
         val arrayCreateUser = R.array.create_user_array
@@ -54,7 +65,8 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val spinnerCreateUser: String = create_user_spinner.selectedItem.toString()
         Log.i("spinner","---selected ROLE---"+spinnerCreateUser)
 
-        val buttonCreate = findViewById<Button>(R.id.btn_create)
+        Log.i("buttonID", "--------buttonID-------------- $buttonID")
+        val buttonCreate = findViewById<Button>(buttonID)
         buttonCreate.setOnClickListener {
             val emailIdForCreateUser = create_user_input_email_id.getText().toString()
             Log.i("emailid", "--------emailId-------------- $emailIdForCreateUser")
@@ -66,7 +78,6 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             val jsonUserObj = JsonObject()
             jsonUserObj.addProperty("userType", spinnerCreateUser)
             jsonUserObj.addProperty("emailId", emailIdForCreateUser)
-
 
             ApiStudent()
                 .addRetroFit()
@@ -87,8 +98,6 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         }
                     }
                 })
-
-
         }
 
     }
