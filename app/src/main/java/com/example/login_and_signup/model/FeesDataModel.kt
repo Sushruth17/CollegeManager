@@ -3,6 +3,8 @@ package com.example.login_and_signup.model
 import com.google.gson.annotations.SerializedName
 
 data class FeesDataModel(
+	@field:SerializedName("Sid")
+	val sid: Int? = null,
 
 	@field:SerializedName("amount_paid")
 	val amountPaid: String? = null,
