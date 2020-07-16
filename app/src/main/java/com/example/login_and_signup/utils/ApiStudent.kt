@@ -70,6 +70,9 @@ class ApiStudent {
         @GET("/marks/{studentid}")
         fun getMarks(@Path("studentid") studentid: Int?): Call<ResponseBody>
 
+        @GET("/stdfees/{studentid}")
+        fun getFeeDetails(@Path("studentid") studentid: Int?): Call<ResponseBody>
+
         @POST("/topperStudent")
         fun getAcedamicTopper(@Body body: JsonObject): Call<ResponseBody>
 

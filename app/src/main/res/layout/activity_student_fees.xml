@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentFees"
+    android:background="@drawable/login_background">
+
+    <Button
+        android:id="@+id/btn_send_remainder"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/button_background"
+        android:text="Send Remainder"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:textSize="17dp"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/btn_update_fees"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_send_remainder"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_background"
+        android:text="Update"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:textSize="17dp"
+        android:visibility="visible"/>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:orientation="vertical">
+    <CheckBox
+        android:id="@+id/checkBoxConcession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Concession"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBoxNotPaid"/>
+    <LinearLayout
+        android:id="@+id/concession_amount_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ConcessionAmount: "
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/concession_amount_edit_txt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"/>
+    </LinearLayout>
+    <CheckBox
+        android:id="@+id/checkBoxPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Paid"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="25sp"/>
+    <LinearLayout
+        android:id="@+id/amount_tobe_paid_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount To Be Paid: "
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/amount_tobe_paid_edit_txt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/amount_paid_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount Paid: "
+        android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/amount_paid_edit_txt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"/>
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBoxNotPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Not Paid"
+        android:textSize="25sp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBoxPaid"/>
+
+    <LinearLayout
+        android:id="@+id/np_amount_tobe_paid_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount To Be Paid: "
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/np_amount_tobe_paid_edit_txt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/np_amount_paid_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount Paid: "
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/np_amount_paid_edit_txt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/amount_due_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount Due: "
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/amount_due_edit_txt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

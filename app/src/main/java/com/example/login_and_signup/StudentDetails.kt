@@ -109,8 +109,13 @@ class StudentDetails : AppCompatActivity() {
             override fun onItemClick(view: View, position: Int) {
                 val itemSelected = student_adapter.data.info?.get(position)
                 val studentid = itemSelected?.id
+
+                val intent = Intent(context, IndividualStudent::class.java)
+                intent.putExtra(StringUtils.STUDENT_INFO_DATA, itemSelected)
+                startActivity(intent)
+
 //                val intent = Intent(context, StudentMarks::class.java)
-                ApiStudent()
+/*                ApiStudent()
                     .addRetroFit()
                     ?.getMarks(studentid)
                     ?.enqueue(object : Callback<ResponseBody> {
@@ -142,7 +147,7 @@ class StudentDetails : AppCompatActivity() {
                                 ).show()
                             }
                         }
-                    })
+                    })*/
 //                startActivity(intent)
             }
             override fun onItemLongClick(view: View?, position: Int) {

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/std_marks"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/login_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/login_edit_background">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/name_ll"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/name_individual_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Sushruth"
+                android:textStyle="bold"
+                android:textSize="35sp"
+                android:textColor="@color/colorAccent"/>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/line_bar"
+            app:layout_constraintTop_toBottomOf="@+id/name_ll"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_background" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_marks"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="200dp"
+        android:text="Marks"
+        android:textSize="20dp"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn_fees"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_marks"
+        android:layout_marginTop="30dp"
+        android:text="Fees"
+        android:textSize="20dp"
+        android:textAllCaps="false"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

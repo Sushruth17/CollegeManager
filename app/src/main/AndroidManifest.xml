@@ -3,7 +3,6 @@
     package="com.example.login_and_signup">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,9 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UserDetails"
+        <activity android:name=".StudentFees"
             android:theme="@style/LoginPage"/>
-
+        <activity android:name=".IndividualStudent"
+            android:theme="@style/LoginPage"/>
+        <activity
+            android:name=".UserDetails"
+            android:theme="@style/LoginPage" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
