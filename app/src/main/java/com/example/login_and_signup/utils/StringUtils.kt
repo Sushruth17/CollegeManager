@@ -14,6 +14,9 @@ class StringUtils {
             return false
         }
 
+        val NOT_CREATED: String = "not created"
+        val INACTIVE: String = "inactive"
+        val ACTIVE: String = "active"
         val PAID: String? = "Paid"
         val NOT_PAID: String? = "Not Paid"
         val STUDENT_FEES_DATA: String? = "STUDENT_FEES_DATA"

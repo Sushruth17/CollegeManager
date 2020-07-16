@@ -58,8 +58,8 @@ class ApiStudent {
         @GET("/student_data")
         fun greetUser(): Call<ResponseBody>
 
-        @GET("/user_data")
-        fun getUserDetails(): Call<ResponseBody>
+        @GET("/user_data/{status}")
+        fun getUserDetails(@Path("status") status: String?): Call<ResponseBody>
 
         @GET("/{delstd}")
         fun deleteStudent(@Path("delstd") delstd: Int?): Call<ResponseBody>

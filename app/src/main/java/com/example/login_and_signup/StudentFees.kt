@@ -26,7 +26,7 @@ import retrofit2.Response
 import java.lang.reflect.Type
 
 class StudentFees : AppCompatActivity() {
-    lateinit var context : Context
+    lateinit var context: Context
     override fun onCreate(savedInstanceState: Bundle?) {
         context = this
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class StudentFees : AppCompatActivity() {
         np_amount_paid_edit_txt.setText(feesData.amountPaid)
         amount_due_edit_txt.setText(feesData.amountDue)
 
-        if (feesData.feesStatus == StringUtils.PAID){
+        if (feesData.feesStatus == StringUtils.PAID) {
             checkBoxPaid.isChecked = true
             checkBoxNotPaid.visibility = View.GONE
             amount_tobe_paid_ll.visibility = View.VISIBLE
@@ -53,7 +53,7 @@ class StudentFees : AppCompatActivity() {
 
         }
 
-        if (feesData.feesStatus == StringUtils.NOT_PAID){
+        if (feesData.feesStatus == StringUtils.NOT_PAID) {
             checkBoxNotPaid.isChecked = true
             checkBoxPaid.visibility = View.GONE
             np_amount_tobe_paid_ll.visibility = View.VISIBLE
@@ -70,8 +70,7 @@ class StudentFees : AppCompatActivity() {
                 checkBoxNotPaid.visibility = View.GONE
                 amount_tobe_paid_ll.visibility = View.VISIBLE
                 amount_paid_ll.visibility = View.VISIBLE
-            }
-            else {
+            } else {
                 checkBoxNotPaid.visibility = View.VISIBLE
                 amount_tobe_paid_ll.visibility = View.GONE
                 amount_paid_ll.visibility = View.GONE
@@ -87,8 +86,7 @@ class StudentFees : AppCompatActivity() {
                 amount_due_ll.visibility = View.VISIBLE
                 btn_send_remainder.visibility = View.VISIBLE
                 btn_update_fees.visibility = View.VISIBLE
-            }
-            else {
+            } else {
                 checkBoxPaid.visibility = View.VISIBLE
                 np_amount_tobe_paid_ll.visibility = View.GONE
                 np_amount_paid_ll.visibility = View.GONE
@@ -116,38 +114,48 @@ class StudentFees : AppCompatActivity() {
                 val np_amountPaid = np_amount_paid_edit_txt.text.toString()
                 val np_amountDue = amount_due_edit_txt.text.toString()
 
-                jsonUpdateFeesObj.addProperty("np_amountToBePaid", np_amountToBePaid)
-                jsonUpdateFeesObj.addProperty("np_amountPaid", np_amountPaid)
-                jsonUpdateFeesObj.addProperty("np_amountDue", np_amountDue)
-                if (np_amountDue == "0")
-                    jsonUpdateFeesObj.addProperty("feesStatus",StringUtils.PAID)
-                else
-                    jsonUpdateFeesObj.addProperty("feesStatus",StringUtils.NOT_PAID)
-                jsonUpdateFeesObj.addProperty("studentId",feesData.sid)
+                if (np_amountToBePaid.isEmpty() or np_amountPaid.isEmpty() or np_amountDue.isEmpty()) {
+                    Toast.makeText(
+                        applicationContext, "Please fill all the fields",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+
+                    jsonUpdateFeesObj.addProperty("np_amountToBePaid", np_amountToBePaid)
+                    jsonUpdateFeesObj.addProperty("np_amountPaid", np_amountPaid)
+                    jsonUpdateFeesObj.addProperty("np_amountDue", np_amountDue)
+                    if (np_amountDue == "0")
+                        jsonUpdateFeesObj.addProperty("feesStatus", StringUtils.PAID)
+                    else
+                        jsonUpdateFeesObj.addProperty("feesStatus", StringUtils.NOT_PAID)
+                    jsonUpdateFeesObj.addProperty("studentId", feesData.sid)
+
+                    ApiStudent()
+                        .addRetroFit()
+                        ?.updateFeesData(jsonUpdateFeesObj)
+                        ?.enqueue(object : Callback<ResponseBody> {
+                            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                                Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                            }
+
+                            override fun onResponse(
+                                call: Call<ResponseBody>, response: Response<ResponseBody>
+                            ) {
+                                if (response.isSuccessful) {
+                                    val msg = response.body()?.string()
+                                    Log.i("marksssssss", "---TTTT :: GET msg from server :: " + msg)
+                                    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+                                    finish()
+                                }
+                            }
+                        })
+                }
             }
-
-            ApiStudent()
-                .addRetroFit()
-                ?.updateFeesData(jsonUpdateFeesObj)
-                ?.enqueue(object : Callback<ResponseBody> {
-                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
-                    }
-                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>
-                    ) {
-                        if (response.isSuccessful) {
-                            val msg = response.body()?.string()
-                            Log.i("marksssssss", "---TTTT :: GET msg from server :: " + msg)
-                            Toast.makeText(context,msg, Toast.LENGTH_SHORT).show()
-                            finish()
-                        }
-                    }
-                })
         }
 
-        val btnSendRemainder = findViewById<Button>(R.id.btn_send_remainder)
-        btnSendRemainder.setOnClickListener {
-            Toast.makeText(this, "Remainder sent successfully", Toast.LENGTH_SHORT).show()
-        }
+            val btnSendRemainder = findViewById<Button>(R.id.btn_send_remainder)
+            btnSendRemainder.setOnClickListener {
+                Toast.makeText(this, "Remainder sent successfully", Toast.LENGTH_SHORT).show()
+            }
     }
 }

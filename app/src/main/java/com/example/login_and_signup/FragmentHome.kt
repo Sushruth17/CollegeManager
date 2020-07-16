@@ -150,7 +150,9 @@ public class FragmentHome : Fragment() {
         val btnUserDetails = getView()?.findViewById<Button>(R.id.btn_user_details)
         btnUserDetails?.setOnClickListener {
             Log.i("btntest", "Clicked student details button ")
-            ApiStudent()
+            val intent = Intent(activity, UserDetails::class.java)
+            activity?.startActivity(intent)
+/*            ApiStudent()
                 .addRetroFit()
                 ?.getUserDetails()
                 ?.enqueue(object : Callback<ResponseBody> {
@@ -171,7 +173,7 @@ public class FragmentHome : Fragment() {
                             // Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
                         }
                     }
-                })
+                })*/
         }
 
 

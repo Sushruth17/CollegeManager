@@ -46,14 +46,14 @@ class StudentDetails : AppCompatActivity() {
 //        Log.i("here","------this is apikindastuff--------" + apiKindaStuff)
         setContentView(R.layout.activity_std_details)
 
-        val searchIcon = search_bar.findViewById<ImageView>(R.id.search_mag_icon)
+/*        val searchIcon = search_bar.findViewById<ImageView>(R.id.search_mag_icon)
         searchIcon.setColorFilter(Color.WHITE)
 
         val cancelIcon = search_bar.findViewById<ImageView>(R.id.search_close_btn)
         cancelIcon.setColorFilter(Color.WHITE)
 
         val textView = search_bar.findViewById<TextView>(R.id.search_src_text)
-        textView.setTextColor(Color.WHITE)
+        textView.setTextColor(Color.WHITE)*/
 
 
  /*       search_bar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
@@ -90,8 +90,6 @@ class StudentDetails : AppCompatActivity() {
             object : TypeToken<StudentModel>() {}.type
         val studentInfoData = gson.fromJson<StudentModel>(json, type)
         Log.i("myyyaapp", "ssiizzeeeeee-->$studentInfoData")
-
-
         val rv_studentInfo_list = findViewById<RecyclerView>(R.id.rv_studentInfo_list)
 
 
