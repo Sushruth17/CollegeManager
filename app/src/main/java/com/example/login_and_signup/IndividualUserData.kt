@@ -1,8 +1,13 @@
 package com.example.login_and_signup
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
+import android.widget.Toast
 import com.example.login_and_signup.R
 import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.InfoUserItem
@@ -21,5 +26,24 @@ class IndividualUserData : AppCompatActivity() {
         ind_user_profile_email_id.text =itemReceived.userEmailId
         ind_user_profile_phone_number.text = itemReceived.userPhoneNumber
         ind_user_role.text = itemReceived.userType
+        ind_user_status.text = itemReceived.userStatus
+
+/*        val emailIdClick = findViewById<TextView>(R.id.ind_user_profile_email_id)
+        emailIdClick!!.setOnClickListener {
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                data = Uri.parse("mailto:")
+                type = "text/plain"
+                putExtra(Intent.EXTRA_EMAIL, itemReceived.userEmailId)
+                putExtra(Intent.EXTRA_SUBJECT, "Subject of Email")
+            }
+            if (intent.resolveActivity(packageManager) != null) {
+                intent.setPackage("com.google.android.gm")
+                startActivity(intent)
+            } else {
+                Toast.makeText(this,"No app available to send email", Toast.LENGTH_LONG).show()
+                Log.d("TAG", "No app available to send email.")
+            }
+        }*/
     }
 }

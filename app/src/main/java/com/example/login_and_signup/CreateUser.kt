@@ -1,5 +1,7 @@
 package com.example.login_and_signup
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +24,9 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var buttonID : Int = 0
     var task :String= ""
     var userName :String? = ""
+    lateinit var context : Context
     override fun onCreate(savedInstanceState: Bundle?) {
+        context = this
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_user)
 
@@ -84,7 +88,7 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
         val spinnerCreateUser: String = create_user_spinner.selectedItem.toString()
-        Log.i("spinner","---selected ROLE---"+spinnerCreateUser)
+        Log.i("spinner", "---selected ROLE---" + spinnerCreateUser)
 
         Log.i("buttonID", "--------buttonID-------------- $buttonID")
         val buttonCreate = findViewById<Button>(buttonID)
@@ -95,6 +99,8 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 Toast.makeText(applicationContext, "Invalid email address", Toast.LENGTH_SHORT)
                     .show()
             }
+            else
+            {
 
             val jsonUserObj = JsonObject()
             jsonUserObj.addProperty("userType", spinnerCreateUser)
@@ -118,10 +124,13 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                             val msg = response.body()?.string()
                             println("---TTTT :: POST msg from server :: " + msg)
                             Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
+                            finish()
+                            finish()
                         }
                     }
                 })
         }
+    }
 
     }
 }

@@ -1,7 +1,9 @@
 package com.example.login_and_signup
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -75,6 +77,17 @@ class FragmentProfile() : Fragment() {
         val userPhoneNumber = SharedPreference.getValueString(activity as Home,StringUtils.USER_PHONE_NUMBER) ?:StringUtils.NOT_VALID
         Log.i("type", "---userPhoneNumber--- " + userPhoneNumber)
         profile_phone_number.text = "+91 $userPhoneNumber"
+
+        val userStatus = SharedPreference.getValueString(activity as Home, StringUtils.USER_STATUS) ?:StringUtils.NOT_VALID
+        profile_status.text = userStatus
+
+        val userRole = SharedPreference.getValueString(activity as Home, StringUtils.USER_TYPE) ?:StringUtils.NOT_VALID
+        profile_role.text = userRole
+
+
+
+
+
 
         val btnLogout = getView()?.findViewById<TextView>(R.id.profile_logout)
         if (btnLogout != null) {

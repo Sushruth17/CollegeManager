@@ -14,6 +14,7 @@ class StringUtils {
             return false
         }
 
+        val USER_STATUS: String = "USER_STATUS"
         val NOT_CREATED: String = "not created"
         val INACTIVE: String = "inactive"
         val ACTIVE: String = "active"

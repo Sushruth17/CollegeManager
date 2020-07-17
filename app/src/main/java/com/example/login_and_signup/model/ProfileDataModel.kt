@@ -17,5 +17,8 @@ data class ProfileDataModel(
 	val userName: String? = null,
 
 	@field:SerializedName("user_phone_number")
-	val userPhoneNumber: String? = null
+	val userPhoneNumber: String? = null,
+
+	@field:SerializedName("user_status")
+	val userStatus: String? = null
 )

@@ -61,6 +61,8 @@ class Home : AppCompatActivity() {
         val userEmailId = profile_data.userEmailId ?: StringUtils.NOT_VALID
         Log.i("profile_data", "userEmailId-->$userEmailId")
 
+        val userStatus = profile_data.userStatus ?: StringUtils.NOT_VALID
+
         setContentView(R.layout.activity_home)
 /*        val assignButton = findViewById<Button>(R.id.btn_assign_user)
         assignButton.visibility = VISIBLE*/
@@ -70,6 +72,7 @@ class Home : AppCompatActivity() {
         SharedPreference.save(this,StringUtils.USER_USERNAME,userUsername)
         SharedPreference.save(this,StringUtils.USER_PHONE_NUMBER,userPhoneNumber)
         SharedPreference.save(this,StringUtils.USER_EMAIL,userEmailId)
+        SharedPreference.save(this,StringUtils.USER_STATUS,userStatus)
 
         setUpNavigation()
     }

@@ -31,13 +31,17 @@ data class InfoUserItem(
 	val userName: String? = null,
 
 	@field:SerializedName("user_username")
-	val userUsername: String? = null
+	val userUsername: String? = null,
+
+	@field:SerializedName("user_status")
+	val userStatus: String? = null
 ): Parcelable {
 	constructor(parcel: Parcel) : this(
 		parcel.readString(),
 		parcel.readString(),
 		parcel.readString(),
 		parcel.readValue(Int::class.java.classLoader) as? Int,
+		parcel.readString(),
 		parcel.readString(),
 		parcel.readString()
 	)
@@ -51,6 +55,7 @@ data class InfoUserItem(
 			parcel.writeValue(userId)
 			parcel.writeString(userName)
 			parcel.writeString(userUsername)
+			parcel.writeString(userStatus)
 		}
 
 		override fun create(parcel: Parcel): InfoUserItem {
