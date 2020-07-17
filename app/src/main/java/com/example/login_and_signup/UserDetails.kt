@@ -97,7 +97,26 @@ class UserDetails : AppCompatActivity() {
                         rv_userData_list?.adapter = user_adapter
 
 
-                        val swipeController = SwipeController(object : SwipeControllerActions() {
+                        rv_userData_list.addOnItemTouchListener(RecyclerItemClickListenr
+                            (context, rv_userData_list, object :
+                            RecyclerItemClickListenr.OnItemClickListener {
+
+                            override fun onItemClick(view: View, position: Int) {
+                                val itemSelected = user_adapter.data.infoUser?.get(position)
+                                val userid = itemSelected?.userId
+
+                                val intent = Intent(context, IndividualUserData::class.java)
+                                intent.putExtra(StringUtils.USER_DATA, itemSelected)
+                                startActivity(intent)
+                            }
+
+                            override fun onItemLongClick(view: View?, position: Int) {
+
+                            }
+                        }))
+
+
+                            val swipeController = SwipeController(object : SwipeControllerActions() {
 
                             override fun onLeftClicked(position: Int) {
                                 val dataSelected = user_adapter.data.infoUser?.get(position)
@@ -223,18 +242,6 @@ class UserDetails : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
-        class FragmentActivity : UserDataFragment() {
-            override fun onCreate(savedInstanceState: Bundle?) {
-                super.onCreate(savedInstanceState)
-                if (savedInstanceState == null) {
-                    supportFragmentManager.beginTransaction()
-                        .add(android.R.id.content, UserDataFragment()).commit()
-                }
-            }
-        }
-
-
 
     }
 

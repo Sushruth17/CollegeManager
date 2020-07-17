@@ -13,10 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StudentFees"
+        <activity android:name=".IndividualUserData"
             android:theme="@style/LoginPage"/>
-        <activity android:name=".IndividualStudent"
-            android:theme="@style/LoginPage"/>
+        <activity
+            android:name=".StudentFees"
+            android:theme="@style/LoginPage" />
+        <activity
+            android:name=".IndividualStudent"
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".UserDetails"
             android:theme="@style/LoginPage" />

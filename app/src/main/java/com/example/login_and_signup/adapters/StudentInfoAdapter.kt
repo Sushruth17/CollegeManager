@@ -4,7 +4,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.R
@@ -12,8 +11,8 @@ import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.StudentModel
 import kotlinx.android.synthetic.main.student_info_unit.view.*
 import java.util.*
-import kotlin.collections.ArrayList
-import java.util.logging.Filter as Filter1
+import java.util.logging.Filter
+import java.util.logging.LogRecord
 
 class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(){
 
@@ -25,7 +24,7 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
         val parentNameType = itemView.parent_name
     }
 
-
+    lateinit var stddata:InfoItem
     lateinit var data:StudentModel
     fun setDataCustom(data:StudentModel){
         this.data = data
@@ -58,38 +57,43 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
 
     }
 
-/*    override fun getFilter(): Filter? {
+/*
+    override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
                 if (charSearch.isEmpty()) {
-                    studentFilterList = data.info
+                    val countryFilterList = data.info
                 } else {
-                    val resultList = data.info
+                    val resultList = ArrayList<String>()
                     for (row in data.info!!) {
                         if (row.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
-                            if (resultList != null) {
-                                resultList.add(row)
-                            }
+                            resultList.add(row)
                         }
                     }
-                    studentFilterList = resultList
+                    countryFilterList = resultList
                 }
                 val filterResults = FilterResults()
-                filterResults.values = studentFilterList
+                filterResults.values = countryFilterList
                 return filterResults
             }
 
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                if (results != null) {
-                    studentFilterList = results.values as MutableList<InfoItem?>?
-                }
+                countryFilterList = results?.values as ArrayList<String>
                 notifyDataSetChanged()
             }
 
         }
-    }*/
+    }
+
+
+*/
+
+
+
+
+
 
 
     fun removeAt(position: Int) {
