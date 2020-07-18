@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -103,11 +104,18 @@ class FragmentProfile() : Fragment() {
         if (btnEdit != null) {
             btnEdit.setOnClickListener {
                 Log.i("btntest", "Logout clicked")
-                val intent = Intent(getActivity(), EditProfile::class.java)
+                val intent = Intent(activity, EditProfile::class.java)
                 //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
-                getActivity()?.startActivity(intent)
+                activity?.startActivity(intent)
 
             }
+        }
+
+        val btnSettings = getView()?.findViewById<ImageView>(R.id.profile_settings)
+        btnSettings?.setOnClickListener{
+            Log.i("btntest", "settings clicked")
+            val intent = Intent(context, Settings::class.java)
+            startActivity(intent)
         }
     }
 

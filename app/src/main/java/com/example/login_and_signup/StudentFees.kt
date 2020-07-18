@@ -44,7 +44,12 @@ class StudentFees : AppCompatActivity() {
         np_amount_tobe_paid_edit_txt.setText(feesData.amountToBePaid)
         np_amount_paid_edit_txt.setText(feesData.amountPaid)
         amount_due_edit_txt.setText(feesData.amountDue)
+        concession_amount_edit_txt.setText(feesData.feeConcession)
 
+        if (feesData.feeConcession!! > "0") {
+            checkBoxConcession.isChecked = true
+            concession_amount_ll.visibility = View.VISIBLE
+        }
         if (feesData.feesStatus == StringUtils.PAID) {
             checkBoxPaid.isChecked = true
             checkBoxNotPaid.visibility = View.GONE
@@ -113,8 +118,14 @@ class StudentFees : AppCompatActivity() {
                 val np_amountToBePaid = np_amount_tobe_paid_edit_txt.text.toString()
                 val np_amountPaid = np_amount_paid_edit_txt.text.toString()
                 val np_amountDue = amount_due_edit_txt.text.toString()
+                var feeConcession = "0"
 
-                if (np_amountToBePaid.isEmpty() or np_amountPaid.isEmpty() or np_amountDue.isEmpty()) {
+                if (checkBoxConcession.isChecked) {
+                    feeConcession = concession_amount_edit_txt.text.toString()
+                }
+
+                if (np_amountToBePaid.isEmpty() or np_amountPaid.isEmpty() or
+                    np_amountDue.isEmpty()) {
                     Toast.makeText(
                         applicationContext, "Please fill all the fields",
                         Toast.LENGTH_SHORT
@@ -124,6 +135,7 @@ class StudentFees : AppCompatActivity() {
                     jsonUpdateFeesObj.addProperty("np_amountToBePaid", np_amountToBePaid)
                     jsonUpdateFeesObj.addProperty("np_amountPaid", np_amountPaid)
                     jsonUpdateFeesObj.addProperty("np_amountDue", np_amountDue)
+                    jsonUpdateFeesObj.addProperty("feeConcession", feeConcession)
                     if (np_amountDue == "0")
                         jsonUpdateFeesObj.addProperty("feesStatus", StringUtils.PAID)
                     else
