@@ -76,6 +76,9 @@ class ApiStudent {
         @POST("/updateFees")
         fun updateFeesData(@Body body: JsonObject): Call<ResponseBody>
 
+        @POST("/addFee")
+        fun addFee(@Body body: JsonObject): Call<ResponseBody>
+
         @POST("/topperStudent")
         fun getAcedamicTopper(@Body body: JsonObject): Call<ResponseBody>
 

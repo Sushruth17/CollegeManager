@@ -16,6 +16,7 @@ import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_individual_student.*
 import kotlinx.android.synthetic.main.activity_student_marks.*
 import kotlinx.android.synthetic.main.student_marks_unit.*
 import java.lang.reflect.Type
@@ -28,6 +29,7 @@ class StudentMarks : AppCompatActivity() {
         val itemReceived =intent.getParcelableExtra<InfoItem>(StringUtils.STUDENT_INFO_DATA)
         Log.i("Data","----Data received-----"+ itemReceived)
             name.setText(itemReceived?.name)
+            branch.text = itemReceived?.branch
 
         val json = intent.getStringExtra(StringUtils.STUDENT_MARKS_DATA)
         val gson = Gson()

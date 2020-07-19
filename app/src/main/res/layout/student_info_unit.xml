@@ -85,7 +85,27 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/parent_name_ll"
+        android:id="@+id/parent_name_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parent Name: " />
+
+        <TextView
+            android:id="@+id/parent_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Sampath" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/branch_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -95,13 +115,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Parent Name: " />
+                android:text="Branch: " />
 
             <TextView
-                android:id="@+id/parent_name"
+                android:id="@+id/branch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Sampath" />
+                tools:text="CSE" />
         </LinearLayout>
 
         <ImageView

@@ -19,46 +19,50 @@ class AddStudent : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_student)
 
-
-
         val button = findViewById<Button>(R.id.add)
         button.setOnClickListener {
 
-            val name_added : String = add_name.getText().toString()
-            Log.i("add","--------ADDNAME-------------- " + name_added)
-            val address_added : String = add_address.getText().toString()
-            Log.i("add","--------ADDADDRES-------------- " + address_added)
-            val age_added : String = add_age.getText().toString()
-            Log.i("add","--------ADDAGE-------------- " + age_added)
-            val parentname_added : String = add_parent_name.getText().toString()
-            Log.i("add","--------ADDPARENTNAME-------------- " + parentname_added)
+            val name_added: String = add_name.text.toString()
+            Log.i("add", "--------ADDNAME-------------- " + name_added)
+            val address_added: String = add_address.text.toString()
+            Log.i("add", "--------ADDADDRES-------------- " + address_added)
+            val age_added: String = add_age.text.toString()
+            Log.i("add", "--------ADDAGE-------------- " + age_added)
+            val parentname_added: String = add_parent_name.text.toString()
+            Log.i("add", "--------ADDPARENTNAME-------------- " + parentname_added)
+            val branch = add_branch.text.toString()
 
-
-            val jsonObj = JsonObject()
-            jsonObj.addProperty("name", name_added)
-            jsonObj.addProperty("address", address_added)
-            jsonObj.addProperty("age", age_added)
-            jsonObj.addProperty("parentname", parentname_added)
-            //  POST demo
-            ApiStudent()
-                .addRetroFit()
-                ?.getVectors(jsonObj)
-                ?.enqueue(object : Callback<ResponseBody> {
-                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        println("---TTTT :: POST Throwable EXCEPTION:: " + t.message)
-                    }
-
-                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                        if (response.isSuccessful) {
-                            val msg = response.body()?.string()
-                            println("---TTTT :: POST msg from server :: " + msg)
-                            Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
+            if ((branch != "CSE") and (branch != "ISE") and (branch != "ECE")) {
+                Toast.makeText(applicationContext, "Invalid branch", Toast.LENGTH_SHORT).show()
+            } else {
+                val jsonObj = JsonObject()
+                jsonObj.addProperty("name", name_added)
+                jsonObj.addProperty("address", address_added)
+                jsonObj.addProperty("age", age_added)
+                jsonObj.addProperty("parentname", parentname_added)
+                jsonObj.addProperty("branch", branch)
+                //  POST demo
+                ApiStudent()
+                    .addRetroFit()
+                    ?.getVectors(jsonObj)
+                    ?.enqueue(object : Callback<ResponseBody> {
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                           Log.i("api","---TTTT :: POST Throwable EXCEPTION:: " + t.message)
                         }
-                    }
-                })
-            val intent = Intent(this, Home::class.java)
-            startActivity(intent)
 
+                        override fun onResponse(
+                            call: Call<ResponseBody>,
+                            response: Response<ResponseBody>
+                        ) {
+                            if (response.isSuccessful) {
+                                val msg = response.body()?.string()
+                                Log.i("api","---TTTT :: POST msg from server :: " + msg)
+                                Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
+                                finish()
+                            }
+                        }
+                    })
+            }
         }
     }
 }

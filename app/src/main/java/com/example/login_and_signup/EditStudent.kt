@@ -35,6 +35,7 @@ class EditStudent : AppCompatActivity() {
         edit_age.setText(age)
         edit_address.setText(dataReceived.address)
         edit_parent_name.setText(dataReceived.parentname)
+        edit_branch.setText(dataReceived.branch)
 
 
         edit_name.filters = validateET("[A-Za-z ]+")
@@ -51,46 +52,49 @@ class EditStudent : AppCompatActivity() {
 
 //            val name_edited: String = edit_name.text.toString()
         val nameEdited = edit_name.text.toString()
-        Log.i("add", "--------ADDNAME-------------- " + nameEdited)
+        Log.i("edit", "--------nameEdited-------------- " + nameEdited)
         val address_edited: String = edit_address.text.toString()
-        Log.i("add", "--------ADDADDRES-------------- " + address_edited)
+        Log.i("edit", "--------address_edited-------------- " + address_edited)
         val age_edited: String = edit_age.text.toString()
-        Log.i("add", "--------ADDAGE-------------- " + age_edited)
+        Log.i("edit", "--------age_edited-------------- " + age_edited)
         val parentname_edited: String = edit_parent_name.text.toString()
-        Log.i("add", "--------ADDPARENTNAME-------------- " + parentname_edited)
+        Log.i("edit", "--------parentname_edited-------------- " + parentname_edited)
+        val branch_edited: String = edit_branch.text.toString()
+        Log.i("edit", "--------branch_edited-------------- " + branch_edited)
         val idOfEdited = dataReceived?.id
+        if ((branch_edited != "CSE") and (branch_edited != "ISE") and (branch_edited != "ECE")) {
+            Toast.makeText(applicationContext, "Invalid branch", Toast.LENGTH_SHORT).show()
+        } else {
 
-
-        val jsonEditObj = JsonObject()
-        jsonEditObj.addProperty("name", nameEdited)
-        jsonEditObj.addProperty("address", address_edited)
-        jsonEditObj.addProperty("age", age_edited)
-        jsonEditObj.addProperty("parentname", parentname_edited)
-        jsonEditObj.addProperty("id", idOfEdited)
-        //  POST demo
-        ApiStudent()
-            .addRetroFit()
-            ?.editStudent(jsonEditObj)
-            ?.enqueue(object : Callback<ResponseBody> {
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    println("---TTTT :: POST Throwable EXCEPTION:: " + t.message)
-                }
-
-                override fun onResponse(
-                    call: Call<ResponseBody>,
-                    response: Response<ResponseBody>
-                ) {
-                    if (response.isSuccessful) {
-                        val msg = response.body()?.string()
-                        println("---TTTT :: POST msg from server :: " + msg)
-                        Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
+            val jsonEditObj = JsonObject()
+            jsonEditObj.addProperty("name", nameEdited)
+            jsonEditObj.addProperty("address", address_edited)
+            jsonEditObj.addProperty("age", age_edited)
+            jsonEditObj.addProperty("parentname", parentname_edited)
+            jsonEditObj.addProperty("branch", branch_edited)
+            jsonEditObj.addProperty("id", idOfEdited)
+            //  POST demo
+            ApiStudent()
+                .addRetroFit()
+                ?.editStudent(jsonEditObj)
+                ?.enqueue(object : Callback<ResponseBody> {
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        println("---TTTT :: POST Throwable EXCEPTION:: " + t.message)
                     }
-                }
-            })
-        val intent = Intent(this, Home::class.java)
-        startActivity(intent)
 
-
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
+                        if (response.isSuccessful) {
+                            val msg = response.body()?.string()
+                            println("---TTTT :: POST msg from server :: " + msg)
+                            Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
+                    }
+                })
+        }
     }
 
     private fun validateET(regex: String): Array<InputFilter>? {

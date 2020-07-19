@@ -58,18 +58,17 @@
                 android:layout_height="110dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="275dp"
-                app:cardCornerRadius="15dp"
-                android:outlineAmbientShadowColor="@color/white">
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_card"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
@@ -94,9 +93,13 @@
                             android:textStyle="bold" />
 
                     </LinearLayout>
-
+                    <ImageView
+                        android:layout_width="4dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/login_edit_background"/>
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"

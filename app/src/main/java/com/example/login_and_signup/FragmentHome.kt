@@ -136,6 +136,7 @@ public class FragmentHome : Fragment() {
                 getActivity()?.startActivity(intent)
             }
         }*/
+/*
         val buttonChangeUserRole= getView()?.findViewById<Button>(R.id.btn_change_user_role)
         if (buttonChangeUserRole != null) {
             buttonChangeUserRole.setOnClickListener {
@@ -145,6 +146,7 @@ public class FragmentHome : Fragment() {
                 getActivity()?.startActivity(intent)
             }
         }
+*/
 
 
         val btnUserDetails = getView()?.findViewById<Button>(R.id.btn_user_details)
@@ -185,9 +187,7 @@ public class FragmentHome : Fragment() {
             Log.i("lifecycle", "onActivityCreated")
             userType = SharedPreference.getValueString(activity as Home,StringUtils.USER_TYPE) ?:StringUtils.NOT_VALID
 
-
             if (userType == StringUtils.ADMIN) {
-                btn_change_user_role.visibility = View.VISIBLE
                 btn_user_details.visibility=View.VISIBLE
                 Log.i("type", "---usertype--- " + userType)
             }

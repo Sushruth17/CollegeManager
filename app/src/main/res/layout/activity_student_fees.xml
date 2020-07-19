@@ -7,6 +7,19 @@
     tools:context=".StudentFees"
     android:background="@drawable/login_background">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/feeDataText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Add Fee Data"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <Button
         android:id="@+id/btn_send_remainder"
         android:layout_width="wrap_content"
@@ -14,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/button_background"
         android:text="Send Remainder"
         android:textAllCaps="false"
@@ -28,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/btn_send_remainder"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_background"
         android:text="Update"
         android:textAllCaps="false"
@@ -69,6 +82,44 @@
 
         <EditText
             android:id="@+id/concession_amount_edit_txt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/conc_actual_fee_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Actual Fee: "
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/conc_actual_fee__edit_txt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/conc_amount_to_be_paid_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount To Be Paid: "
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/conc_amount_to_be_paid_edit_txt"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="19sp"/>

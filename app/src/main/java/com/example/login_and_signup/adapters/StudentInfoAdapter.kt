@@ -22,6 +22,7 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
         val ageType = itemView.age
         val addressType = itemView.address
         val parentNameType = itemView.parent_name
+        val branchType = itemView.branch
     }
 
     lateinit var stddata:InfoItem
@@ -52,6 +53,7 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
             holder.ageType?.text = unitData.age.toString()
             holder.addressType?.text = unitData.address
             holder.parentNameType?.text = unitData.parentname
+            holder.branchType?.text = unitData.branch
         }
 
 

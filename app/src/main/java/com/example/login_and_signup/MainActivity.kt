@@ -30,6 +30,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(layout.activity_main)
         Log.i("add","--------inside activity main-------------- " )
 
+        var i: Int = 0
+        btn_show_password.setOnClickListener {
+                if (i == 0) {
+                    Log.i("i", "--------i0-------------- $i")
+//                    Toast.makeText(applicationContext, "Clicked once", Toast.LENGTH_SHORT).show()
+                    sign_in_password.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                    i += 1
+                }
+                else if (i == 1) {
+                    Log.i("i", "--------i1-------------- $i")
+//                    Toast.makeText(applicationContext, "Clicked again", Toast.LENGTH_SHORT).show()
+                    sign_in_password.transformationMethod = PasswordTransformationMethod.getInstance()
+                    i = 0
+                }
+        }
+
         val buttonSignin = findViewById<Button>(id.btn_signin)
         buttonSignin.setOnClickListener{
 
@@ -42,28 +58,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-/*
-            btn_show_password.setOnClickListener {
-                if(sign_in_password.inputType == 0){
-                    pwd.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                    btn_show_password.background = ""
-                } else{
-                    pwd.transformationMethod = PasswordTransformationMethod.getInstance()
-                    btn_show_password.text = "Show"
-                }
-*/
-
-                btn_show_password.setOnClickListener {
-                var i : Int = 0
-                    if (i == 0) {
-                        Log.i("edit", "--------emailId-------------- $")
-                        Toast.makeText(getApplicationContext(),"Clicked once", Toast.LENGTH_SHORT).show()
-                        i+= 1
-                    } else if (i == 1) {
-                        Toast.makeText(getApplicationContext(),"Clicked again", Toast.LENGTH_SHORT).show()
-                        i = 0;
-                    }
-                }
 
                 val jsonObj = JsonObject()
             jsonObj.addProperty("username", username)

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.login_and_signup.adapters.StudentInfoAdapter
 import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.MockData.Companion.data
@@ -28,6 +29,7 @@ class IndividualStudent : AppCompatActivity() {
         val itemReceived =intent.getParcelableExtra<InfoItem>(StringUtils.STUDENT_INFO_DATA)
         Log.i("Data","----Data received-----"+ itemReceived)
         name_individual_student.text = itemReceived?.name
+        branch_individual_student.text = itemReceived?.branch
 
         val studentid = itemReceived?.id
         val btnMarks = findViewById<Button>(R.id.btn_marks)
@@ -92,21 +94,41 @@ class IndividualStudent : AppCompatActivity() {
                             if (msg != "None") {
                                 val intent = Intent(context, StudentFees::class.java)
                                 intent.putExtra(StringUtils.STUDENT_FEES_DATA ,msg)
+                                intent.putExtra(StringUtils.STUDENT_INFO_DATA, itemReceived)
                                 Log.i("marksssssss", "---TTTT :: GET msg from server :: " + msg)
                                 Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
                                 startActivity(intent)
                             }
                             else {
-                                Toast.makeText(
-                                    context,
-                                    "data not available for this student" + msg,
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                               /**/ Toast.makeText(context, "data not available for this student" + msg, Toast.LENGTH_SHORT).show()
+                                val builder = AlertDialog.Builder(context)
+                                //set title for alert dialog
+                                builder.setTitle("Do you want to add fees data?")
+                                //set message for alert dialog
+                                builder.setMessage("Fees data not available for this studente")
+//                                builder.setIcon(android.R.drawable.ic_dialog_alert)
+
+                                //performing positive action
+                                builder.setPositiveButton("Yes"){dialogInterface, which ->
+                                    Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_LONG).show()
+                                    val intent = Intent(context, AddFeeData::class.java)
+                                    intent.putExtra(StringUtils.STUDENT_INFO_DATA, itemReceived)
+                                    startActivity(intent)
                             }
+
+                                builder.setNegativeButton("No"){dialogInterface, which ->
+                                    Toast.makeText(applicationContext,"clicked No",Toast.LENGTH_LONG).show()
+                                }
+                                // Create the AlertDialog
+                                val alertDialog: AlertDialog = builder.create()
+                                // Set other dialog properties
+                                alertDialog.setCancelable(false)
+                                alertDialog.show()
                         }
                     }
-                })
-        }
+                }
+        })
 
     }
+}
 }

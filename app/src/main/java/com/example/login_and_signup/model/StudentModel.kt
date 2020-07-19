@@ -18,7 +18,7 @@ data class StudentModel(
 		val address: String? = null,
 		val id: Int? = null,
 		val parentname: String? = null,
-		val bid: Int? = null,
+		val branch: String? = null,
 		val age: Int? = null,
 		val name: String? = null
 	) : Parcelable {
@@ -26,7 +26,7 @@ data class StudentModel(
 			parcel.readString(),
 			parcel.readValue(Int::class.java.classLoader) as? Int,
 			parcel.readString(),
-			parcel.readValue(Int::class.java.classLoader) as? Int,
+			parcel.readString(),
 			parcel.readValue(Int::class.java.classLoader) as? Int,
 			parcel.readString()
 		) {
@@ -38,7 +38,7 @@ data class StudentModel(
 				parcel.writeString(address)
 				parcel.writeValue(id)
 				parcel.writeString(parentname)
-				parcel.writeValue(bid)
+				parcel.writeString(branch)
 				parcel.writeValue(age)
 				parcel.writeString(name)
 			}

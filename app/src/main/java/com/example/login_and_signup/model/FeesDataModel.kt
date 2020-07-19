@@ -9,6 +9,9 @@ data class FeesDataModel(
 	@field:SerializedName("fees_status")
 	val feesStatus: String? = null,
 
+	@field:SerializedName("actual_fee")
+	val actualFee: String? = null,
+
 	@field:SerializedName("fee_concession")
 	val feeConcession: String? = null,
 

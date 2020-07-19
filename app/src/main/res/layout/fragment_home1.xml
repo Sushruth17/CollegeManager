@@ -87,7 +87,7 @@
         android:textSize="21sp"
         android:visibility="gone"/>-->
 
-    <Button
+<!--    <Button
         android:id="@+id/btn_change_user_role"
         android:layout_marginTop="20dp"
         android:layout_marginStart="75dp"
@@ -99,7 +99,7 @@
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/btn_toppers_list"
         android:textSize="21sp"
-        android:visibility="gone"/>
+        android:visibility="gone"/>-->
 
     <Button
         android:id="@+id/btn_user_details"
@@ -111,7 +111,7 @@
         android:background="@drawable/button_background"
         android:text="User Details"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/btn_change_user_role"
+        app:layout_constraintTop_toBottomOf="@id/btn_toppers_list"
         android:textSize="21sp"
         android:visibility="gone"/>
 

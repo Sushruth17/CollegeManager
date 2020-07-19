@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddFeeData">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/addFeetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Add Fee Data"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:textSize="35sp"
+            />
+
+        <EditText
+            android:id="@+id/addFee_actualFee"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:background="@drawable/login_edit_background"
+            android:drawablePadding="10dp"
+            android:hint="Actual Fee"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/addFeetext"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="127dp" />
+        <EditText
+            android:id="@+id/addFee_concession"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:background="@drawable/login_edit_background"
+            android:drawablePadding="10dp"
+            android:hint="Fee Concession"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/addFee_actualFee"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="127dp" />
+        <EditText
+            android:id="@+id/addFee_amountToBePaid"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:background="@drawable/login_edit_background"
+            android:drawablePadding="10dp"
+            android:hint="Amount To Be Paid"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/addFee_concession"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="127dp" />
+
+            <EditText
+        android:id="@+id/addFee_amountPaid"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/login_edit_background"
+        android:drawablePadding="10dp"
+        android:hint="Amount Paid"
+        android:layout_centerHorizontal="true"
+        android:paddingStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/addFee_amountToBePaid"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="127dp" />
+
+        <EditText
+            android:id="@+id/addFee_amountDue"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:background="@drawable/login_edit_background"
+            android:drawablePadding="10dp"
+            android:hint="Amount Due"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/addFee_amountPaid"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="127dp" />
+
+        <Button
+            android:id="@+id/btnAddFee"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text="ADD"
+            android:textSize="21sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/addFee_amountDue"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_background"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

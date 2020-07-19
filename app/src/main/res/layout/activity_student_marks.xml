@@ -25,12 +25,21 @@
             android:layout_marginTop="20dp">
                 <TextView
                     android:id="@+id/name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     tools:text="Sushruth"
                     android:textStyle="bold"
                     android:textSize="35sp"
                     android:textColor="@color/colorAccent"/>
+            <TextView
+                android:id="@+id/branch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="CSE"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:paddingStart="40dp"
+                android:textColor="@color/colorAccent"/>
 
         </LinearLayout>
         <ImageView

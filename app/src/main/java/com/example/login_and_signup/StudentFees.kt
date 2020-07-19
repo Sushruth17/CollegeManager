@@ -11,6 +11,7 @@ import android.widget.CheckBox
 import android.widget.Checkable
 import android.widget.Toast
 import com.example.login_and_signup.model.FeesDataModel
+import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.ProfileDataModel
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
@@ -18,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_add_fee_data.*
 import kotlinx.android.synthetic.main.activity_student_fees.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -31,6 +33,9 @@ class StudentFees : AppCompatActivity() {
         context = this
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_fees)
+        val itemReceived =intent.getParcelableExtra<InfoItem>(StringUtils.STUDENT_INFO_DATA)
+        feeDataText.text = itemReceived.name + "'s Fee Data"
+
         val json = intent.getStringExtra(StringUtils.STUDENT_FEES_DATA) ?: StringUtils.NOT_VALID
         val gson = Gson()
         Log.i("fees_data", "json -->$json")
@@ -45,10 +50,14 @@ class StudentFees : AppCompatActivity() {
         np_amount_paid_edit_txt.setText(feesData.amountPaid)
         amount_due_edit_txt.setText(feesData.amountDue)
         concession_amount_edit_txt.setText(feesData.feeConcession)
+        conc_actual_fee__edit_txt.setText(feesData.actualFee)
+        conc_amount_to_be_paid_edit_txt.setText(feesData.amountToBePaid)
 
         if (feesData.feeConcession!! > "0") {
             checkBoxConcession.isChecked = true
             concession_amount_ll.visibility = View.VISIBLE
+            conc_actual_fee_ll.visibility = View.VISIBLE
+            conc_amount_to_be_paid_ll.visibility = View.VISIBLE
         }
         if (feesData.feesStatus == StringUtils.PAID) {
             checkBoxPaid.isChecked = true
@@ -105,8 +114,12 @@ class StudentFees : AppCompatActivity() {
             if (isChecked) {
                 Toast.makeText(this, "Concession", Toast.LENGTH_SHORT).show()
                 concession_amount_ll.visibility = View.VISIBLE
+                conc_actual_fee_ll.visibility = View.VISIBLE
+                conc_amount_to_be_paid_ll.visibility = View.VISIBLE
             } else {
                 concession_amount_ll.visibility = View.GONE
+                conc_actual_fee_ll.visibility = View.GONE
+                conc_amount_to_be_paid_ll.visibility = View.GONE
             }
         }
 
