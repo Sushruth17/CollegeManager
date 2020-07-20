@@ -115,4 +115,18 @@
         android:textSize="21sp"
         android:visibility="gone"/>
 
+        <Button
+        android:id="@+id/btnPassPercentage"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="Pass Percentage"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/btn_user_details"
+        android:textSize="21sp"
+        android:visibility="visible"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

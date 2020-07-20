@@ -127,6 +127,16 @@ public class FragmentHome : Fragment() {
                 }
             }
 
+        val btnPassPercentage = getView()?.findViewById<Button>(R.id.btnPassPercentage)
+        if (btnPassPercentage != null) {
+            btnPassPercentage.setOnClickListener {
+                Log.i("btntest", "Clicked btnPassPercentage button ")
+                val intent = Intent(activity, PassPercentage::class.java)
+                //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
+                activity?.startActivity(intent)
+            }
+        }
+
 /*        val buttonCreateUser = getView()?.findViewById<Button>(R.id.btn_create_user)
         if (buttonCreateUser != null) {
             buttonCreateUser.setOnClickListener {

@@ -53,6 +53,7 @@ data class StudentMarksModel(
 	val infoMarks: MutableList<MarksItem?>? = null
 )
 data class MarksItem(
+	val passPercentage : Int? = null,
 	val name: String? = null,
 	val marks: Int? = null
 )

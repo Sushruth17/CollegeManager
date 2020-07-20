@@ -13,8 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddFeeData"
-            android:theme="@style/LoginPage"/>
+        <activity android:name=".PassPercentage"></activity>
+        <activity
+            android:name=".AddFeeData"
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".Settings"
             android:theme="@style/LoginPage" />
