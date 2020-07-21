@@ -43,6 +43,7 @@ class StudentFees : AppCompatActivity() {
             object : TypeToken<FeesDataModel>() {}.type
         val feesData = gson.fromJson<FeesDataModel>(json, type)
         Log.i("fees_data", "fees_data-->$feesData")
+        Log.i("fees_data", "fees_data-->$feesData")
 
         amount_tobe_paid_edit_txt.text = feesData.amountToBePaid
         amount_paid_edit_txt.text = feesData.amountPaid

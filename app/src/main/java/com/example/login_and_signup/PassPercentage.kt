@@ -2,22 +2,17 @@ package com.example.login_and_signup
 
 import android.content.Context
 import android.os.Bundle
+import android.system.Os.close
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.login_and_signup.model.MarksItem
 import com.example.login_and_signup.utils.ApiStudent
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.helper.StaticLabelsFormatter
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
-import java.lang.reflect.Type
 
 
 class PassPercentage : AppCompatActivity() {
@@ -29,9 +24,9 @@ class PassPercentage : AppCompatActivity() {
         setContentView(R.layout.activity_pass_percentage)
 
 /*        val pp1 :Int = PassPercentage(20172018)*/
-        PassPercentage(20182019)
-        val pp2 = 25
-//        Log.i("pp2", "pp2 %" + pp2)
+
+        val pp2 = PassPercentage(20182019)
+        Log.i("pp2", "pp2 %" + pp2)
 
 /*        val pp3 :Int = PassPercentage(20192020)*/
 /*        val pp4 :Int = PassPercentage(20202021)*/
@@ -71,11 +66,12 @@ class PassPercentage : AppCompatActivity() {
         return DataPoint(a.toDouble(), b.toDouble())
     }
 
-    fun PassPercentage(year: Int) {
-        ApiStudent()
+    fun PassPercentage(year: Int): Int {
+/*        ApiStudent()
             .addRetroFit()
             ?.getPassPercentage(year)
-            ?.enqueue(object : Callback<ResponseBody> {
+            ?.execute()?.body()*/
+/*            ?.enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                 }
@@ -93,6 +89,18 @@ class PassPercentage : AppCompatActivity() {
 
 
                 }
-            })
+            })*/
+        return try {
+            val apiResponse: ResponseBody? = ApiStudent().addRetroFit()?.getPassPercentage(year)
+                                                ?.execute()?.body()
+            Log.i("api", "-------------apires-----" + apiResponse)
+            val pp = apiResponse.toString().toInt()
+            Log.i("pp", "-------------pp-----" + pp)
+            return pp
+        }
+        catch(ex : Exception) {
+            ex.printStackTrace()
+            5
+        }
     }
 }

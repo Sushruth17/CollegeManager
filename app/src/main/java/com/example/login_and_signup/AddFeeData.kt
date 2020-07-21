@@ -24,8 +24,7 @@ class AddFeeData : AppCompatActivity() {
 
         val itemReceived =intent.getParcelableExtra<InfoItem>(StringUtils.STUDENT_INFO_DATA)
 
-        addFeetext.text = itemReceived.name + "'s Fee Data"
-
+        addFeetext.text = """${itemReceived.name}'s Fee Data"""
         val studentid = itemReceived?.id
         val btnAddFee = findViewById<Button>(R.id.btnAddFee)
         btnAddFee.setOnClickListener {

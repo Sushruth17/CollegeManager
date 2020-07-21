@@ -31,6 +31,7 @@ class AddStudent : AppCompatActivity() {
             val parentname_added: String = add_parent_name.text.toString()
             Log.i("add", "--------ADDPARENTNAME-------------- " + parentname_added)
             val branch = add_branch.text.toString()
+            Log.i("add", "--------ADDBRANCCH-------------- " + add_branch)
 
             if ((branch != "CSE") and (branch != "ISE") and (branch != "ECE")) {
                 Toast.makeText(applicationContext, "Invalid branch", Toast.LENGTH_SHORT).show()
