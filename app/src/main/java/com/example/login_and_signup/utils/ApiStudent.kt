@@ -73,8 +73,8 @@ class ApiStudent {
         @GET("/stdfees/{studentid}")
         fun getFeeDetails(@Path("studentid") studentid: Int?): Call<ResponseBody>
 
-        @GET("/passpercent/{year}")
-        fun getPassPercentage(@Path("year") year: Int?): Call<ResponseBody>
+        @GET("/passpercent/{range}")
+        fun getPassPercentage(@Path("range") range: String): Call<ResponseBody>
 
         @POST("/updateFees")
         fun updateFeesData(@Body body: JsonObject): Call<ResponseBody>
