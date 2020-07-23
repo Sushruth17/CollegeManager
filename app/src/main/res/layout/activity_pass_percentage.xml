@@ -6,14 +6,38 @@
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
     tools:context=".PassPercentage">
+    <LinearLayout
+        android:id="@+id/user_data_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:background="@drawable/login_background"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Pass Percentage"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@drawable/button_background"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
 
     <com.jjoe64.graphview.GraphView
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:id="@+id/graph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
