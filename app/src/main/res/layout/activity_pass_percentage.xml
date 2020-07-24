@@ -7,7 +7,7 @@
     android:background="@drawable/login_background"
     tools:context=".PassPercentage">
     <LinearLayout
-        android:id="@+id/user_data_ll"
+        android:id="@+id/pass_percentage_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,12 +30,57 @@
             android:background="@drawable/button_background"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pass_percentage_ll"
+        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:id="@+id/from_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From:"
+            android:textSize="20sp"
+            android:layout_marginStart="15dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"/>
+        <Spinner
+            android:id="@+id/from_year_spinner"
+            android:layout_width="130dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/colorAccent"
+            android:popupBackground="@color/colorPrimary"
+            android:visibility="visible"
+            style="@style/mySpinnerItemStyle"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/to_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To:"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"/>
+
+        <Spinner
+            android:id="@+id/to_year_spinner"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/colorAccent"
+            android:popupBackground="@color/colorPrimary"
+            android:visibility="visible"
+            style="@style/mySpinnerItemStyle"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
 
     <com.jjoe64.graphview.GraphView
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="250dp"
         android:layout_width="350dp"
         android:layout_height="250dp"
         android:id="@+id/graph" />

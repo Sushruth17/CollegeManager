@@ -1,6 +1,9 @@
 package com.example.login_and_signup.utils
 
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import com.example.login_and_signup.R
 
 class StringUtils {
     companion object{
@@ -12,7 +15,9 @@ class StringUtils {
                 return true
             }
             return false
+
         }
+
 
         val USER_STATUS: String = "USER_STATUS"
         val NOT_CREATED: String = "not created"

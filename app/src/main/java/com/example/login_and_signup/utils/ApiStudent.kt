@@ -103,7 +103,8 @@ class ApiStudent {
         val httpClient =  OkHttpClient.Builder()
         httpClient.addInterceptor(logging);
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:5000")
+/*            .baseUrl("http://127.0.0.1:3306")*/
+            .baseUrl("http://192.168.2.5:3306")
             .addConverterFactory(GsonConverterFactory.create())
             .client(httpClient.build())
             .build()

@@ -3,6 +3,10 @@ package com.example.login_and_signup
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_and_signup.utils.ApiStudent
 import com.google.gson.Gson
@@ -18,13 +22,25 @@ import retrofit2.Response
 import java.lang.reflect.Type
 
 
-class PassPercentage : AppCompatActivity() {
+class PassPercentage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var context: Context
     var passPercentage: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         context = this
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pass_percentage)
+
+
+        val fromYearSpinner = findViewById<Spinner>(R.id.from_year_spinner)
+        val arrayFromYear = R.array.year_array
+        createSpinner(fromYearSpinner,arrayFromYear)
+
+        val toYearSpinner = findViewById<Spinner>(R.id.to_year_spinner)
+        val arrayToYear = R.array.year_array
+        createSpinner(toYearSpinner,arrayToYear)
+
+
+
         val range = "20182019-20202021"
         ApiStudent()
             .addRetroFit()
@@ -101,23 +117,31 @@ class PassPercentage : AppCompatActivity() {
                 return DataPoint(a.toDouble(), b.toDouble())
             }
 
-
-//    fun PassPercentage(range: String) {
-
-/*        return try {
-            val apiResponse: ResponseBody? = ApiStudent().addRetroFit()?.getPassPercentage(year)
-                                                ?.execute()?.body()
-            Log.i("api", "-------------apires-----" + apiResponse)
-            val pp = apiResponse.toString().toInt()
-            Log.i("pp", "-------------pp-----" + pp)
-            return pp
+    fun createSpinner(spinner : Spinner?, array : Int){
+        if (spinner != null) {
+            spinner.onItemSelectedListener = this
         }
-        catch(ex : Exception) {
-            ex.printStackTrace()
-            5
-        }*/
-//    }
 
+        applicationContext.let {
+            ArrayAdapter.createFromResource(
+                it,
+                array,
+                R.layout.spinner_item
+            ).also { adapter ->
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                // Apply the adapter to the spinner
+                if (spinner != null) {
+                    spinner.adapter = adapter
+                }
 
+            }
+        }
+    }
 
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+    }
 }
