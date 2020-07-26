@@ -1,20 +1,26 @@
 package com.example.login_and_signup
 
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
-import android.widget.*
+import android.view.View
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.RelativeLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.login_and_signup.R.*
+import com.example.login_and_signup.R.id
+import com.example.login_and_signup.R.layout
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,8 +30,11 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     lateinit var context: Context
 
+
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         context = this
+
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
         Log.i("add","--------inside activity main-------------- " )
@@ -45,18 +54,16 @@ class MainActivity : AppCompatActivity() {
                     i = 0
                 }
         }
-
+        val progressBar: ProgressBar = this.progress_loader
         val buttonSignin = findViewById<Button>(id.btn_signin)
         buttonSignin.setOnClickListener{
-
-
+            progressBar.visibility = View.VISIBLE
+            mainActivityParent.visibility = View.GONE
             Log.i("add","--------clicked button-------------- " )
             val username = sign_in_username.getText().toString()
             Log.i("add","--------ADDNAME-------------- " + username)
             val password : String = sign_in_password.getText().toString()
             Log.i("add","--------ADDADDRES-------------- " + password)
-
-
 
 
                 val jsonObj = JsonObject()
@@ -95,15 +102,49 @@ class MainActivity : AppCompatActivity() {
 
         val btnSignUp = findViewById<Button>(id.btn_signup)
         btnSignUp.setOnClickListener{
+
             val intent = Intent(this, Signup::class.java)
             startActivity(intent)
         }
 
+        val btnChangeUrl = findViewById<Button>(id.btn_change_base_url)
+        btnChangeUrl.setOnClickListener{
+
+            StringUtils.baseUrl =  change_base_url.text.toString()
+            Log.i("url", "--------baseUrl-------------- "+StringUtils.baseUrl)
+        }
 
     }
+
+    override fun onStart() {
+        super.onStart()
+        val progressBar: ProgressBar = this.progress_loader
+        progressBar.visibility = View.GONE
+        mainActivityParent.visibility = View.VISIBLE
+    }
+
+/*    override fun onResume() {
+        super.onResume()
+        val progressBar: ProgressBar = this.progress_loader
+        progressBar.visibility = View.GONE
+        mainActivityParent.visibility = View.VISIBLE
+    }*/
 
     override fun onBackPressed() {
         //do nothing
     }
+
+/*    private fun progressBar(){
+
+        val progressBar: ProgressBar = this.progress_loader
+        Thread(Runnable {
+            this.runOnUiThread(java.lang.Runnable {
+                progressBar.visibility = View.VISIBLE
+            })
+            this@MainActivity.runOnUiThread(java.lang.Runnable {
+                progressBar.visibility = View.GONE
+            })
+        }).start()
+    }*/
 }
 

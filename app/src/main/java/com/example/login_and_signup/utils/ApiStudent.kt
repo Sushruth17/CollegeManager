@@ -38,7 +38,6 @@ import retrofit2.http.Path
 
 class ApiStudent {
 
-
     interface APIService {
         @POST("/api/sign_in_data")
         fun signIn(@Body body: JsonObject): Call<ResponseBody>
@@ -93,6 +92,9 @@ class ApiStudent {
 
         @POST("/editProfile")
         fun editProfile(@Body body: JsonObject): Call<ResponseBody>
+
+/*        @GET("/yearRange")
+        fun yearRange(): Call<ResponseBody>*/
     }
 
 
@@ -104,11 +106,11 @@ class ApiStudent {
         httpClient.addInterceptor(logging);
         val retrofit = Retrofit.Builder()
 /*            .baseUrl("http://127.0.0.1:3306")*/
-            .baseUrl("http://192.168.2.5:3306")
+            .baseUrl(StringUtils.baseUrl)
+
             .addConverterFactory(GsonConverterFactory.create())
             .client(httpClient.build())
             .build()
         return retrofit.create(APIService::class.java)
     }
-
 }

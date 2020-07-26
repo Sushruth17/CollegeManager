@@ -1,13 +1,16 @@
 package com.example.login_and_signup
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.adapters.TopperAdapter
 import com.example.login_and_signup.model.TopperModel
 import com.example.login_and_signup.utils.ApiStudent
+import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -18,6 +21,8 @@ import retrofit2.Response
 import java.lang.reflect.Type
 
 class Repo {
+    lateinit var context: Context
+
 
     fun getTopperStudent(year : Int, branch : String, rv_topper_list : RecyclerView, context : Context?){
         val jsonObj = JsonObject()
@@ -60,4 +65,23 @@ class Repo {
                 }
             })
     }
+
+ /*   fun getYearRange(){
+        ApiStudent()
+            .addRetroFit()
+            ?.yearRange()
+            ?.enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
+                }
+
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    if (response.isSuccessful) {
+                        val msg = response.body()?.string()
+                        Log.i("api", "---TTTT :: GET msg from server :: " + msg)
+                        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+    }*/
 }

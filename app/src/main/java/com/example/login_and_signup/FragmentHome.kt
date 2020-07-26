@@ -8,11 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.login_and_signup.adapters.FragmentHomeAdapter
+import com.example.login_and_signup.adapters.StudentInfoAdapter
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.SharedPreference
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home1.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -30,7 +39,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 public class FragmentHome : Fragment() {
-    //    @get:JvmName("getContext_")lateinit var context: Context
+
+//    @get:JvmName("getContext_")
+//    lateinit var context: Context
     var bottomNavigationView: BottomNavigationView? = null
 
     // TODO: Rename and change types of parameters
@@ -74,134 +85,105 @@ public class FragmentHome : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.i("lifecycle", "onViewCreated")
+        val buttonNamesList
+                = listOf<String>(
+            StringUtils.STUDENT_DETAILS,
+            StringUtils.TOPPER_LIST,
+            StringUtils.USER_DETAILS,
+            StringUtils.PASS_PERCENTAGE
+        )
 
+        val rv_fragment_home = getView()?.findViewById<RecyclerView>(R.id.rv_fragment_home)
+        val home_adapter = FragmentHomeAdapter()
+        home_adapter.setDataCustom(buttonNamesList)
+        rv_fragment_home?.layoutManager  = GridLayoutManager(
+            activity,2, GridLayoutManager.VERTICAL, false)
+        rv_fragment_home?.adapter = home_adapter
 
+        val progressBar: ProgressBar = this.progress_bar_frag_home
+        rv_fragment_home?.addOnItemTouchListener(RecyclerItemClickListenr
+            (activity!!.applicationContext, rv_fragment_home, object :
+            RecyclerItemClickListenr.OnItemClickListener {
 
-            val buttonstd = getView()?.findViewById<Button>(R.id.btn_stdDetails)
-            buttonstd?.setOnClickListener {
-                Log.i("btntest", "Clicked student details button ")
-                ApiStudent()
-                    .addRetroFit()
-                    ?.greetUser()
-                    ?.enqueue(object : Callback<ResponseBody> {
-                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                            Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
-                        }
+            override fun onItemClick(view: View, position: Int) {
+                val itemSelected = home_adapter.data[position]
 
-                        override fun onResponse(
-                            call: Call<ResponseBody>,
-                            response: Response<ResponseBody>
-                        ) {
-                            if (response.isSuccessful) {
-                                // val msg = "{info:" + response.body()?.string() + "}"
-                                //Log.i("api","msgg " + msg)
-                                val msg = response.body()?.string()
-                                val intent = Intent(activity, StudentDetails::class.java)
-                                intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
-                                activity?.startActivity(intent)
-                                Log.i("api", "---TTTT :: GET msg from server :: " + msg)
-                                // Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
-
+                if (itemSelected == StringUtils.STUDENT_DETAILS){
+                    Toast.makeText(activity, "student details", Toast.LENGTH_SHORT).show()
+                    progressBar.visibility = View.VISIBLE
+                    home_xml.visibility = View.GONE
+                    Log.i("btntest", "Clicked student details button ")
+                    ApiStudent()
+                        .addRetroFit()
+                        ?.greetUser()
+                        ?.enqueue(object : Callback<ResponseBody> {
+                            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                                Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                             }
-                        }
-                    })
-            }
 
-            val buttonsearch = getView()?.findViewById<Button>(R.id.btn_search_student)
-            if (buttonsearch != null) {
-                buttonsearch.setOnClickListener {
-                    Log.i("btntest", "Clicked search student button ")
-                    val intent = Intent(getActivity(), SearchStudent::class.java)
-                    //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
-                    getActivity()?.startActivity(intent)
+                            override fun onResponse(
+                                call: Call<ResponseBody>,
+                                response: Response<ResponseBody>
+                            ) {
+                                if (response.isSuccessful) {
+                                    val msg = response.body()?.string()
+                                    val intent = Intent(activity, StudentDetails::class.java)
+                                    intent.putExtra(StringUtils.STUDENT_INFO_DATA, msg)
+                                    activity?.startActivity(intent)
+                                    Log.i("api", "---TTTT :: GET msg from server :: $msg")
+                                }
+                            }
+                        })
                 }
-            }
 
-            val btnTopper = getView()?.findViewById<Button>(R.id.btn_toppers_list)
-            if (btnTopper != null) {
-                btnTopper.setOnClickListener {
+                if (itemSelected == StringUtils.TOPPER_LIST){
+                    Toast.makeText(activity, "topper list", Toast.LENGTH_SHORT).show()
                     Log.i("btntest", "Clicked topper list button ")
-                    val intent = Intent(getActivity(), TopperList::class.java)
-                    //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
-                    getActivity()?.startActivity(intent)
+                    val intent = Intent(activity, TopperList::class.java)
+                    activity?.startActivity(intent)
+                }
+
+                if (itemSelected == StringUtils.USER_DETAILS){
+                    Toast.makeText(activity, "user details", Toast.LENGTH_SHORT).show()
+                    Log.i("btntest", "Clicked student details button ")
+                    val intent = Intent(activity, UserDetails::class.java)
+                    activity?.startActivity(intent)
+                }
+
+                if (itemSelected == StringUtils.PASS_PERCENTAGE){
+                    Toast.makeText(context, "pass percentage", Toast.LENGTH_SHORT).show()
+                    Log.i("btntest", "Clicked btnPassPercentage button ")
+                    val intent = Intent(activity, PassPercentage::class.java)
+                    activity?.startActivity(intent)
                 }
             }
 
-        val btnPassPercentage = getView()?.findViewById<Button>(R.id.btnPassPercentage)
-        if (btnPassPercentage != null) {
-            btnPassPercentage.setOnClickListener {
-                Log.i("btntest", "Clicked btnPassPercentage button ")
-                val intent = Intent(activity, PassPercentage::class.java)
-                //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
-                activity?.startActivity(intent)
+            override fun onItemLongClick(view: View?, position: Int) {
+                TODO("Not yet implemented")
             }
-        }
+        }))
+    }
 
-/*        val buttonCreateUser = getView()?.findViewById<Button>(R.id.btn_create_user)
-        if (buttonCreateUser != null) {
-            buttonCreateUser.setOnClickListener {
-                Log.i("btntest", "Clicked create user button ")
-                val intent = Intent(getActivity(), CreateUser::class.java)
-                intent.putExtra("buttonsActivity",StringUtils.CREATE_USER)
-                getActivity()?.startActivity(intent)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+                super.onActivityCreated(savedInstanceState)
+                Log.i("lifecycle", "onActivityCreated")
+                userType = SharedPreference.getValueString(activity as Home, StringUtils.USER_TYPE)
+                    ?: StringUtils.NOT_VALID
+
+                if (userType == StringUtils.ADMIN) {
+//                btn_user_details.visibility=View.VISIBLE
+                    Log.i("type", "---usertype--- " + userType)
+                }
             }
-        }*/
-/*
-        val buttonChangeUserRole= getView()?.findViewById<Button>(R.id.btn_change_user_role)
-        if (buttonChangeUserRole != null) {
-            buttonChangeUserRole.setOnClickListener {
-                Log.i("btntest", "Clicked ChangeUserRole button ")
-                val intent = Intent(getActivity(), CreateUser::class.java)
-                intent.putExtra("buttonsActivity",StringUtils.CHANGE_USER_ROLE)
-                getActivity()?.startActivity(intent)
-            }
-        }
-*/
 
 
-        val btnUserDetails = getView()?.findViewById<Button>(R.id.btn_user_details)
-        btnUserDetails?.setOnClickListener {
-            Log.i("btntest", "Clicked student details button ")
-            val intent = Intent(activity, UserDetails::class.java)
-            activity?.startActivity(intent)
-/*            ApiStudent()
-                .addRetroFit()
-                ?.getUserDetails()
-                ?.enqueue(object : Callback<ResponseBody> {
-                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
-                    }
+    override fun onStart() {
+        super.onStart()
+        val progressBar: ProgressBar = this.progress_bar_frag_home
+        progressBar.visibility = View.GONE
+        home_xml.visibility = View.VISIBLE
+    }
 
-                    override fun onResponse(
-                        call: Call<ResponseBody>,
-                        response: Response<ResponseBody>
-                    ) {
-                        if (response.isSuccessful) {
-                            val msg = response.body()?.string()
-                            val intent = Intent(activity, UserDetails::class.java)
-                            intent.putExtra(StringUtils.USER_DATA, msg)
-                            activity?.startActivity(intent)
-                            Log.i("api", "---TTTT :: GET msg from server :: " + msg)
-                            // Toast.makeText(context, "Im the msg" +  msg, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                })*/
-        }
-
-
-
-        }
-
-        override fun onActivityCreated(savedInstanceState: Bundle?) {
-            super.onActivityCreated(savedInstanceState)
-            Log.i("lifecycle", "onActivityCreated")
-            userType = SharedPreference.getValueString(activity as Home,StringUtils.USER_TYPE) ?:StringUtils.NOT_VALID
-
-            if (userType == StringUtils.ADMIN) {
-                btn_user_details.visibility=View.VISIBLE
-                Log.i("type", "---usertype--- " + userType)
-            }
-        }
 
     companion object {
         /**

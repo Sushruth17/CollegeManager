@@ -1,11 +1,13 @@
 package com.example.login_and_signup
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -20,6 +22,8 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_user_details.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,6 +35,7 @@ class UserDetails : AppCompatActivity() {
     lateinit var context: Context
 
     var status : String = "active"
+    lateinit var nDialog : ProgressDialog
 
 
     fun onTabTapped(position : Int): String {
@@ -52,11 +57,16 @@ class UserDetails : AppCompatActivity() {
     }
 
     private fun getUser(status: String) {
+       /* val progressBar: ProgressBar = this.progress_bar_user_details
+        progressBar.visibility = View.VISIBLE*/
+        showLoader()
             ApiStudent()
                 .addRetroFit()
                 ?.getUserDetails(status)
                 ?.enqueue(object : Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        hideLoader()
+//                        progressBar.visibility = View.GONE
                         Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                     }
 
@@ -64,6 +74,8 @@ class UserDetails : AppCompatActivity() {
                         call: Call<ResponseBody>,
                         response: Response<ResponseBody>
                     ) {
+                        hideLoader()
+//                        progressBar.visibility = View.GONE
                         if (response.isSuccessful) {
                             val msg = response.body()?.string() ?: StringUtils.NOT_VALID
                             Log.i("msg", "---TTTT :: GET msg from server :: " + msg)
@@ -244,6 +256,20 @@ class UserDetails : AppCompatActivity() {
         }
 
     }
+    fun showLoader(){
+        nDialog = ProgressDialog(this);
+        nDialog.setMessage("Loading..");
+        nDialog.setTitle("Wait");
+        nDialog.setIndeterminate(false);
+        nDialog.setCancelable(true);
+        nDialog.show()
+    }
+
+    fun hideLoader(){
+        if(nDialog != null)
+        nDialog.dismiss()
+    }
+
 
 
 }

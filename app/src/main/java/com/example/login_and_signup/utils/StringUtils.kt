@@ -8,6 +8,12 @@ import com.example.login_and_signup.R
 class StringUtils {
     companion object{
 
+        val PASS_PERCENTAGE: String = "Pass Percentage"
+        val USER_DETAILS: String = "User Details"
+        val TOPPER_LIST: String = "Topper List"
+        val STUDENT_DETAILS: String = "Student Details"
+        var baseUrl :String = "http://11155464b807.ngrok.io"
+
         fun checkRegex(src: CharSequence?, regex: String): Boolean {
             Log.i("regex","---------REGEX_ inside checkRefex--------")
             if (src.toString().matches(regex.toRegex())) {

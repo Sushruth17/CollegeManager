@@ -4,21 +4,21 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.View.VISIBLE
-import android.widget.Button
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.example.login_and_signup.model.*
+import com.example.login_and_signup.model.ProfileDataModel
 import com.example.login_and_signup.utils.SharedPreference
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home1.*
 import java.lang.reflect.Type
 
@@ -36,6 +36,7 @@ class Home : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         username = intent.getStringExtra("USERNAME")  ?: StringUtils.NOT_VALID
 
         val json = intent.getStringExtra("ProfileData") ?: StringUtils.NOT_VALID
@@ -90,6 +91,7 @@ class Home : AppCompatActivity() {
             }
         }
     }
+
 }
 
 
