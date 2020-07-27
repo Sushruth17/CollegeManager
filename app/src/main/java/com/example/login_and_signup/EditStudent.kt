@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.InputFilter
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_edit_student.*
+import kotlinx.android.synthetic.main.activity_pass_percentage.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +25,10 @@ class EditStudent : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_student)
 
+        edit_std_toolbar.setNavigationIcon(R.drawable.ic_back)
+        edit_std_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
 
         val dataReceived =intent.getParcelableExtra<InfoItem>(StringUtils.STUDENT_EDIT_DATA)
         Log.i("Data","----Data received-----"+ dataReceived)

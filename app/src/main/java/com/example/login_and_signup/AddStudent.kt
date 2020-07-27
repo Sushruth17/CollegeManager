@@ -4,11 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.example.login_and_signup.utils.ApiStudent
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_add_student.*
+import kotlinx.android.synthetic.main.activity_edit_student.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,6 +20,12 @@ class AddStudent : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_student)
+
+        add_std_toolbar.setNavigationIcon(R.drawable.ic_back)
+        add_std_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
+
 
         val button = findViewById<Button>(R.id.add)
         button.setOnClickListener {

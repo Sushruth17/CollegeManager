@@ -1,26 +1,21 @@
 package com.example.login_and_signup
 
 import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.CheckBox
-import android.widget.Checkable
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.login_and_signup.model.FeesDataModel
 import com.example.login_and_signup.model.InfoItem
-import com.example.login_and_signup.model.ProfileDataModel
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_add_fee_data.*
 import kotlinx.android.synthetic.main.activity_student_fees.*
+import kotlinx.android.synthetic.main.activity_student_marks.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,6 +28,12 @@ class StudentFees : AppCompatActivity() {
         context = this
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_fees)
+
+        indv_fees_toolbar.setNavigationIcon(R.drawable.ic_back)
+        indv_fees_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
+
         val itemReceived =intent.getParcelableExtra<InfoItem>(StringUtils.STUDENT_INFO_DATA)
         feeDataText.text = itemReceived.name + "'s Fee Data"
 

@@ -3,6 +3,7 @@ package com.example.login_and_signup
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -17,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_individual_student.*
+import kotlinx.android.synthetic.main.activity_std_details.*
 import kotlinx.android.synthetic.main.activity_student_marks.*
 import kotlinx.android.synthetic.main.student_marks_unit.*
 import java.lang.reflect.Type
@@ -26,10 +28,15 @@ class StudentMarks : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_marks)
+
+        indv_marks_toolbar.setNavigationIcon(R.drawable.ic_back)
+        indv_marks_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
+
         val itemReceived =intent.getParcelableExtra<InfoItem>(StringUtils.STUDENT_INFO_DATA)
         Log.i("Data","----Data received-----"+ itemReceived)
-            name.setText(itemReceived?.name)
-            branch.text = itemReceived?.branch
+        indv_marks_name.text = itemReceived?.name + "'s Marks"
 
         val json = intent.getStringExtra(StringUtils.STUDENT_MARKS_DATA)
         val gson = Gson()

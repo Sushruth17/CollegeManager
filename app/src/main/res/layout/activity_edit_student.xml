@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/login_background">
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Student Details"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:textSize="35sp"
-        />
+    <Toolbar
+        android:id="@+id/edit_std_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Student Details"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:textSize="30sp"/>
+    </Toolbar>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@drawable/button_background"
+        android:layout_below="@+id/edit_std_toolbar"/>
 
     <TextView
         android:id="@+id/edit_name_invalid"
@@ -31,7 +44,7 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="130dp"
         android:layout_marginBottom="20dp">
          <TextView
             android:layout_width="80dp"

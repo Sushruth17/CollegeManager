@@ -23,6 +23,7 @@ import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_topper_list.*
 import kotlinx.android.synthetic.main.activity_user_details.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -57,16 +58,18 @@ class UserDetails : AppCompatActivity() {
     }
 
     private fun getUser(status: String) {
-       /* val progressBar: ProgressBar = this.progress_bar_user_details
-        progressBar.visibility = View.VISIBLE*/
-        showLoader()
+        val progressBar: ProgressBar = this.progress_bar_user_details
+        progressBar.visibility = View.VISIBLE
+        rv_userData_list.visibility = View.GONE
+//        showLoader()
             ApiStudent()
                 .addRetroFit()
                 ?.getUserDetails(status)
                 ?.enqueue(object : Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        hideLoader()
-//                        progressBar.visibility = View.GONE
+                        rv_userData_list.visibility = View.VISIBLE
+//                        hideLoader()
+                        progressBar.visibility = View.GONE
                         Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                     }
 
@@ -74,8 +77,9 @@ class UserDetails : AppCompatActivity() {
                         call: Call<ResponseBody>,
                         response: Response<ResponseBody>
                     ) {
-                        hideLoader()
-//                        progressBar.visibility = View.GONE
+//                        hideLoader()
+                        rv_userData_list.visibility = View.VISIBLE
+                        progressBar.visibility = View.GONE
                         if (response.isSuccessful) {
                             val msg = response.body()?.string() ?: StringUtils.NOT_VALID
                             Log.i("msg", "---TTTT :: GET msg from server :: " + msg)
@@ -242,7 +246,10 @@ class UserDetails : AppCompatActivity() {
         context = this
         status = setupTabLayout()
         Log.i("final", "status" + status)
-
+        user_details_toolbar.setNavigationIcon(R.drawable.ic_back)
+        user_details_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
         getUser(status)
 
         val buttonCreateUser = findViewById<FloatingActionButton>(R.id.btn_create_user)
@@ -256,6 +263,7 @@ class UserDetails : AppCompatActivity() {
         }
 
     }
+/*
     fun showLoader(){
         nDialog = ProgressDialog(this);
         nDialog.setMessage("Loading..");
@@ -269,6 +277,7 @@ class UserDetails : AppCompatActivity() {
         if(nDialog != null)
         nDialog.dismiss()
     }
+*/
 
 
 

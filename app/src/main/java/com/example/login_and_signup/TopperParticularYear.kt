@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_home1.*
 import kotlinx.android.synthetic.main.fragment_particular_year.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -82,25 +84,28 @@ class TopperParticularYear : Fragment(), AdapterView.OnItemSelectedListener{
             if(parent.id == R.id.year_spinner)
             {
                 val selectedYear: Int = year_spinner.selectedItem.toString().toInt()
+                val progressBar: ProgressBar = this.progress_bar_particular_year
                 Log.i("spinner","---selected year---"+selectedYear)
 /*                val selectedBranch: String = branch_spinner.selectedItem.toString()
                 Log.i("spinner","---selected BRANCH---"+selectedBranch)*/
                 val classRepo = Repo()
                 val rv_topper_list = getView()?.findViewById<RecyclerView>(R.id.rv_py_topper_list)
                 if (rv_topper_list != null) {
-                    classRepo.getTopperStudent(selectedYear,"",rv_topper_list,context)
+                    classRepo.getTopperStudent(selectedYear,
+                        "",rv_topper_list,progressBar,context)
                 }
             }
             else if(parent.id == R.id.branch_spinner)
             {
                 val selectedYear: Int = year_spinner.selectedItem.toString().toInt()
+                val progressBar: ProgressBar = this.progress_bar_particular_year
                 Log.i("spinner","---selected year---"+selectedYear)
                 val selectedBranch: String = branch_spinner.selectedItem.toString()
                 Log.i("spinner","---selected BRANCH---"+selectedBranch)
                 val classRepo = Repo()
                 val rv_topper_list = getView()?.findViewById<RecyclerView>(R.id.rv_py_topper_list)
                 if (rv_topper_list != null) {
-                    classRepo.getTopperStudent(selectedYear,selectedBranch,rv_topper_list,context)
+                    classRepo.getTopperStudent(selectedYear,selectedBranch,rv_topper_list,progressBar,context)
                 }
             }
         }

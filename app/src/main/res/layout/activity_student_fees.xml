@@ -7,19 +7,32 @@
     tools:context=".StudentFees"
     android:background="@drawable/login_background">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/feeDataText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Add Fee Data"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:textSize="35sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Toolbar
+        android:id="@+id/indv_fees_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        android:elevation="4dp"
         app:layout_constraintTop_toTopOf="parent"
-        />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+        <TextView
+            android:id="@+id/feeDataText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Fee"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:textSize="30sp"/>
+    </Toolbar>
+    <ImageView
+        android:id="@+id/marks_bar"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@drawable/button_background"
+        android:layout_below="@+id/edit_std_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/indv_fees_toolbar"/>
     <Button
         android:id="@+id/btn_send_remainder"
         android:layout_width="wrap_content"
@@ -55,7 +68,8 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
+    android:layout_marginTop="180dp"
+
     android:orientation="vertical">
     <CheckBox
         android:id="@+id/checkBoxConcession"

@@ -11,6 +11,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.activity_std_details.*
 import kotlinx.android.synthetic.main.activity_topper_list.*
 import java.util.*
 
@@ -19,6 +20,11 @@ class TopperList : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_topper_list)
+        topper_list_toolbar.setNavigationIcon(R.drawable.ic_back)
+        topper_list_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
+
         val spinner: Spinner? = findViewById(R.id.topper_spinner)
         if (spinner != null) {
             spinner.onItemSelectedListener = this

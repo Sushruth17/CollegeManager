@@ -1,7 +1,6 @@
 package com.example.login_and_signup
 
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +10,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
-import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,15 +27,12 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var context: Context
-
-
-
     public override fun onCreate(savedInstanceState: Bundle?) {
         context = this
-
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
         Log.i("add","--------inside activity main-------------- " )
+        val settings = getSharedPreferences("Login", 0)
 
         var i: Int = 0
         btn_show_password.setOnClickListener {
@@ -84,10 +79,15 @@ class MainActivity : AppCompatActivity() {
                             println("---TTTT :: POST msg from server :: " + msg)
                             if ((msg != StringUtils.WRONG_PASSWORD) && (msg != StringUtils.WRONG_USER))
                             {
-                                val intent = Intent(context, Home::class.java)
-                                intent.putExtra("ProfileData", msg)
-                                intent.putExtra("USERNAME",username)
-                                startActivity(intent)
+
+                                    val editor = settings.edit()
+                                    editor.putBoolean("LoggedIn", true)
+                                    editor.apply()
+                                    val intent = Intent(context, Home::class.java)
+                                    intent.putExtra("ProfileData", msg)
+                                    intent.putExtra("USERNAME", username)
+                                    startActivity(intent)
+                                    finish()
                             }
                             Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
                         }

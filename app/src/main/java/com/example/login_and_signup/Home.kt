@@ -2,11 +2,12 @@ package com.example.login_and_signup
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -17,9 +18,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home1.*
 import java.lang.reflect.Type
 
 
@@ -35,48 +33,57 @@ class Home : AppCompatActivity() {
 //    lateinit var userEmailId  :String
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_home)
 
-        username = intent.getStringExtra("USERNAME")  ?: StringUtils.NOT_VALID
+  /*  val settings = getSharedPreferences("your_preference_name", 0)
+    val isLoggedIn = settings.getBoolean("LoggedIn", false)
+    if (!isLoggedIn) {
+        val intent = Intent(context, MainActivity::class.java)
+        startActivity(intent)
+    } else
+    {*/
+        username = intent.getStringExtra("USERNAME") ?: StringUtils.NOT_VALID
 
-        val json = intent.getStringExtra("ProfileData") ?: StringUtils.NOT_VALID
-        val gson = Gson()
-        Log.i("profile_data", "json -->$json")
-        val type: Type =
-            object : TypeToken<ProfileDataModel>() {}.type
-        val profile_data = gson.fromJson<ProfileDataModel>(json, type)
-        Log.i("profile_data", "ProfileData-->$profile_data")
+    val json = intent.getStringExtra("ProfileData") ?: StringUtils.NOT_VALID
+    val gson = Gson()
+    Log.i("profile_data", "json -->$json")
+    val type: Type =
+        object : TypeToken<ProfileDataModel>() {}.type
+    val profile_data = gson.fromJson<ProfileDataModel>(json, type)
+    Log.i("profile_data", "ProfileData-->$profile_data")
 
-        val userType = profile_data.userType ?: StringUtils.NOT_VALID
-        Log.i("profile_data", "userType-->$userType")
+    val userType = profile_data.userType ?: StringUtils.NOT_VALID
+    Log.i("profile_data", "userType-->$userType")
 
-        val userName = profile_data.userName ?: StringUtils.NOT_VALID
-        Log.i("profile_data", "userName-->$userName")
+    val userName = profile_data.userName ?: StringUtils.NOT_VALID
+    Log.i("profile_data", "userName-->$userName")
 
-        val userUsername = profile_data.userUsername ?: StringUtils.NOT_VALID
-        Log.i("profile_data", "userUsername-->$userUsername")
+    val userUsername = profile_data.userUsername ?: StringUtils.NOT_VALID
+    Log.i("profile_data", "userUsername-->$userUsername")
 
-        val userPhoneNumber = profile_data.userPhoneNumber ?: StringUtils.NOT_VALID
-        Log.i("profile_data", "userPhoneNumber-->$userPhoneNumber")
+    val userPhoneNumber = profile_data.userPhoneNumber ?: StringUtils.NOT_VALID
+    Log.i("profile_data", "userPhoneNumber-->$userPhoneNumber")
 
-        val userEmailId = profile_data.userEmailId ?: StringUtils.NOT_VALID
-        Log.i("profile_data", "userEmailId-->$userEmailId")
+    val userEmailId = profile_data.userEmailId ?: StringUtils.NOT_VALID
+    Log.i("profile_data", "userEmailId-->$userEmailId")
 
-        val userStatus = profile_data.userStatus ?: StringUtils.NOT_VALID
+    val userStatus = profile_data.userStatus ?: StringUtils.NOT_VALID
 
-        setContentView(R.layout.activity_home)
+
 /*        val assignButton = findViewById<Button>(R.id.btn_assign_user)
         assignButton.visibility = VISIBLE*/
 
-        SharedPreference.save(this,StringUtils.USER_TYPE,userType)
-        SharedPreference.save(this,StringUtils.USER_NAME,userName)
-        SharedPreference.save(this,StringUtils.USER_USERNAME,userUsername)
-        SharedPreference.save(this,StringUtils.USER_PHONE_NUMBER,userPhoneNumber)
-        SharedPreference.save(this,StringUtils.USER_EMAIL,userEmailId)
-        SharedPreference.save(this,StringUtils.USER_STATUS,userStatus)
+    SharedPreference.save(this, StringUtils.USER_TYPE, userType)
+    SharedPreference.save(this, StringUtils.USER_NAME, userName)
+    SharedPreference.save(this, StringUtils.USER_USERNAME, userUsername)
+    SharedPreference.save(this, StringUtils.USER_PHONE_NUMBER, userPhoneNumber)
+    SharedPreference.save(this, StringUtils.USER_EMAIL, userEmailId)
+    SharedPreference.save(this, StringUtils.USER_STATUS, userStatus)
 
-        setUpNavigation()
-    }
+    setUpNavigation()
+
+}
 
     private fun setUpNavigation() {
         bottomNavigationView = findViewById(R.id.bttm_nav)

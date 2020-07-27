@@ -7,23 +7,32 @@
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
     tools:context="com.example.login_and_signup.StudentDetails">
+    <Toolbar
+        android:id="@+id/std_details_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student Details"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:textSize="30sp"/>
+    </Toolbar>
     <LinearLayout
         android:id="@+id/student_data_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/std_details_toolbar"
         android:orientation="vertical"
         android:background="@drawable/login_background">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Student Details"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"
-            android:textSize="30sp"/>
         <SearchView
             android:id="@+id/search_bar"
             android:layout_width="match_parent"

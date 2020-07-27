@@ -3,6 +3,8 @@ package com.example.login_and_signup
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,15 +26,19 @@ class Repo {
     lateinit var context: Context
 
 
-    fun getTopperStudent(year : Int, branch : String, rv_topper_list : RecyclerView, context : Context?){
+    fun getTopperStudent(year : Int, branch : String, rv_topper_list : RecyclerView, progressBar:ProgressBar, context : Context?){
         val jsonObj = JsonObject()
         jsonObj.addProperty("year", year)
         jsonObj.addProperty("branch", branch)
+        progressBar.visibility = View.VISIBLE
+        rv_topper_list.visibility = View.GONE
         ApiStudent()
             .addRetroFit()
             ?.getAcedamicTopper(jsonObj)
             ?.enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    progressBar.visibility = View.GONE
+                    rv_topper_list.visibility = View.VISIBLE
                     Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                 }
 
@@ -40,6 +46,8 @@ class Repo {
                     call: Call<ResponseBody>,
                     response: Response<ResponseBody>
                 ) {
+                    progressBar.visibility = View.GONE
+                    rv_topper_list.visibility = View.VISIBLE
                     if (response.isSuccessful) {
                         val msg = response.body()?.string()
                         Log.i("api", "---TTTT :: GET msg from server :: " + msg)

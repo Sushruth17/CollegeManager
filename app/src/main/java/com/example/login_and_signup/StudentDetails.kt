@@ -3,38 +3,29 @@ package com.example.login_and_signup
 import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.login_and_signup.adapters.StudentInfoAdapter
-import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.StudentModel
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_edit_student.*
 import kotlinx.android.synthetic.main.activity_std_details.*
-import kotlinx.android.synthetic.main.activity_student_marks.*
-import kotlinx.android.synthetic.main.student_marks_unit.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.reflect.Type
-import java.util.Locale.filter
 
 
 class StudentDetails : AppCompatActivity() {
@@ -45,6 +36,11 @@ class StudentDetails : AppCompatActivity() {
         Log.i("api","------ After start activity Button clicked --------- ")
 //        Log.i("here","------this is apikindastuff--------" + apiKindaStuff)
         setContentView(R.layout.activity_std_details)
+
+        std_details_toolbar.setNavigationIcon(R.drawable.ic_back)
+        std_details_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
 
 /*        val searchIcon = search_bar.findViewById<ImageView>(R.id.search_mag_icon)
         searchIcon.setColorFilter(Color.WHITE)
@@ -208,7 +204,7 @@ class StudentDetails : AppCompatActivity() {
                     val removed = student_adapter.data.info?.get(position)?.id
                     student_adapter.removeAt(position)
                     student_adapter.notifyItemRemoved(position)
-                    student_adapter.notifyItemRangeChanged(position, student_adapter.getItemCount())
+                    student_adapter.notifyItemRangeChanged(position, student_adapter.itemCount)
 //                student_adapter.data.info?.get(position)?.id
 
                     Log.i("del", "------removed----position------>" +position+"\n" +Gson().toJson(removed))
@@ -265,8 +261,8 @@ class StudentDetails : AppCompatActivity() {
                 swipeController.onDraw(c)
             }
         })
-    }
 
+    }
 
 
     override fun onPause() {
@@ -299,6 +295,9 @@ class StudentDetails : AppCompatActivity() {
         super.onResume()
         Log.i("Learning","------ Home activity B on resume --------- ")
     }
+
+
+
 
 
 }

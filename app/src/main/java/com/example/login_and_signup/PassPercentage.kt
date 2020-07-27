@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.login_and_signup.utils.ApiStudent
@@ -15,6 +16,9 @@ import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.helper.StaticLabelsFormatter
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import kotlinx.android.synthetic.main.activity_pass_percentage.*
+import kotlinx.android.synthetic.main.activity_std_details.*
+import kotlinx.android.synthetic.main.fragment_home1.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +33,10 @@ class PassPercentage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         context = this
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pass_percentage)
-
+        pp_list_toolbar.setNavigationIcon(R.drawable.ic_back)
+        pp_list_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
 
         val fromYearSpinner = findViewById<Spinner>(R.id.from_year_spinner)
         val arrayFromYear = R.array.year_array
@@ -40,13 +47,17 @@ class PassPercentage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         createSpinner(toYearSpinner,arrayToYear)
 
 
-
+        val progressBar: ProgressBar = this.progress_bar_pass_percentage
         val range = "20182019-20202021"
+        progressBar.visibility = View.VISIBLE
+        graph.visibility = View.GONE
         ApiStudent()
             .addRetroFit()
             ?.getPassPercentage(range)
             ?.enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    progressBar.visibility = View.GONE
+                    graph.visibility = View.VISIBLE
                     Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                 }
 
@@ -54,6 +65,8 @@ class PassPercentage : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     call: Call<ResponseBody>,
                     response: Response<ResponseBody>
                 ) {
+                    progressBar.visibility = View.GONE
+                    graph.visibility = View.VISIBLE
                     if (response.isSuccessful) {
                         val msg = response.body()?.string()
                         Log.i("api", "---TTTT :: GET msg from server :: $msg")

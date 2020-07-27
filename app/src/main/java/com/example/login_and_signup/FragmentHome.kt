@@ -1,27 +1,21 @@
 package com.example.login_and_signup
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.adapters.FragmentHomeAdapter
-import com.example.login_and_signup.adapters.StudentInfoAdapter
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.SharedPreference
 import com.example.login_and_signup.utils.StringUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home1.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -92,6 +86,9 @@ public class FragmentHome : Fragment() {
             StringUtils.USER_DETAILS,
             StringUtils.PASS_PERCENTAGE
         )
+        userType = SharedPreference.getValueString(activity as Home, StringUtils.USER_TYPE)
+            ?: StringUtils.NOT_VALID
+        Log.i("type", "---usertype--- " + userType)
 
         val rv_fragment_home = getView()?.findViewById<RecyclerView>(R.id.rv_fragment_home)
         val home_adapter = FragmentHomeAdapter()
@@ -144,10 +141,15 @@ public class FragmentHome : Fragment() {
                 }
 
                 if (itemSelected == StringUtils.USER_DETAILS){
-                    Toast.makeText(activity, "user details", Toast.LENGTH_SHORT).show()
-                    Log.i("btntest", "Clicked student details button ")
-                    val intent = Intent(activity, UserDetails::class.java)
-                    activity?.startActivity(intent)
+                    if (userType == StringUtils.TEACHER){
+                        Toast.makeText(activity, "Only Admin can Access", Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        Toast.makeText(activity, "user details", Toast.LENGTH_SHORT).show()
+                        Log.i("btntest", "Clicked student details button ")
+                        val intent = Intent(activity, UserDetails::class.java)
+                        activity?.startActivity(intent)
+                    }
                 }
 
                 if (itemSelected == StringUtils.PASS_PERCENTAGE){
@@ -159,7 +161,7 @@ public class FragmentHome : Fragment() {
             }
 
             override fun onItemLongClick(view: View?, position: Int) {
-                TODO("Not yet implemented")
+
             }
         }))
     }
@@ -169,11 +171,10 @@ public class FragmentHome : Fragment() {
                 Log.i("lifecycle", "onActivityCreated")
                 userType = SharedPreference.getValueString(activity as Home, StringUtils.USER_TYPE)
                     ?: StringUtils.NOT_VALID
-
-                if (userType == StringUtils.ADMIN) {
-//                btn_user_details.visibility=View.VISIBLE
-                    Log.i("type", "---usertype--- " + userType)
-                }
+                 Log.i("type", "---usertype--- " + userType)
+/*                if (userType == StringUtils.ADMIN) {
+                    view?.visibility = View.VISIBLE
+                }*/
             }
 
 

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.example.login_and_signup.model.TopperModel
 import com.example.login_and_signup.utils.ApiStudent
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.fragment_academic_year.*
 import kotlinx.android.synthetic.main.fragment_any_year.*
 import kotlinx.android.synthetic.main.fragment_any_year.view.*
 import okhttp3.ResponseBody
@@ -56,11 +58,14 @@ class TopperAnyYear : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val progressBar: ProgressBar = this.progress_bar_any_year
+        progressBar.visibility = View.VISIBLE
         ApiStudent()
             .addRetroFit()
             ?.getAnyYearTopper()
             ?.enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    progressBar.visibility = View.GONE
                     Log.i("api", "---TTTT :: GET Throwable EXCEPTION:: " + t.message)
                 }
 
@@ -68,6 +73,7 @@ class TopperAnyYear : Fragment() {
                     call: Call<ResponseBody>,
                     response: Response<ResponseBody>
                 ) {
+                    progressBar.visibility = View.GONE
                     if (response.isSuccessful) {
                         val msg = response.body()?.string()
                         Log.i("api", "---TTTT :: GET msg from server :: " + msg)

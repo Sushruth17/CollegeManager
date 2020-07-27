@@ -27,13 +27,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
-        android:src="@mipmap/code_android_logo" />
+        android:src="@drawable/ic_launcher_round" />
 
     <EditText
         android:id="@+id/sign_in_username"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="240dp"
         android:layout_width="280dp"
         android:layout_centerHorizontal="true"
         android:layout_height="50dp"
@@ -95,7 +95,7 @@
         android:background="@drawable/button_background"
         android:text="@string/sign_in"
         android:textAllCaps="false"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="400dp"
         android:textSize="21sp"/>
 
 

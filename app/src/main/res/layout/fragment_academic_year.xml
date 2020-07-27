@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:orientation="vertical"
-        android:background="@drawable/login_edit_background">
+        android:background="@drawable/login_background">
 
 <!--        <TextView-->
 <!--            android:id="@+id/topper_ac_year"-->
@@ -41,4 +41,14 @@
             tools:layout_editor_absoluteY="95dp" />
 
     </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progress_bar_academic_year"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

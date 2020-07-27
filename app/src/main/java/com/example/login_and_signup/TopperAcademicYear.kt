@@ -5,8 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_academic_year.*
+import kotlinx.android.synthetic.main.fragment_particular_year.*
 import java.util.*
 
 
@@ -57,9 +60,10 @@ class TopperAcademicYear : Fragment() {
             Log.i("year", "-----current year >  6-----" + year)
         }
         val rv_topper_list = getView()?.findViewById<RecyclerView>(R.id.rv_ac_topper_list)
+        val progressBar: ProgressBar = this.progress_bar_academic_year
         val classRepo = Repo()
         if (rv_topper_list != null) {
-            classRepo.getTopperStudent(year,"",rv_topper_list,context)
+            classRepo.getTopperStudent(year,"",rv_topper_list,progressBar,context)
         }
     }
 

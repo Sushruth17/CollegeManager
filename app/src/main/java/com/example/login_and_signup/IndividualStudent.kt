@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -13,6 +14,7 @@ import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.MockData.Companion.data
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
+import kotlinx.android.synthetic.main.activity_edit_student.*
 import kotlinx.android.synthetic.main.activity_individual_student.*
 import kotlinx.android.synthetic.main.activity_student_marks.*
 import okhttp3.ResponseBody
@@ -26,10 +28,17 @@ class IndividualStudent : AppCompatActivity() {
         context = this
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_individual_student)
+
+        indv_std_toolbar.setNavigationIcon(R.drawable.ic_back)
+        indv_std_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
+
+
         val itemReceived =intent.getParcelableExtra<InfoItem>(StringUtils.STUDENT_INFO_DATA)
         Log.i("Data","----Data received-----"+ itemReceived)
         name_individual_student.text = itemReceived?.name
-        branch_individual_student.text = itemReceived?.branch
+        branch_indv.text = itemReceived?.branch
 
         val studentid = itemReceived?.id
         val btnMarks = findViewById<Button>(R.id.btn_marks)
