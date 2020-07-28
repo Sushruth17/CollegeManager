@@ -13,6 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Open"
+            android:theme="@style/LoginPage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".PassPercentage"
             android:theme="@style/LoginPage" />
@@ -39,6 +47,9 @@
                app to run.
         -->
         <activity
+        android:name=".EditProfile"
+        android:theme="@style/LoginPage" />
+        <activity
             android:name=".CreateUser"
             android:theme="@style/LoginPage" />
         <activity
@@ -47,7 +58,6 @@
         <activity
             android:name=".ResetPassword"
             android:theme="@style/LoginPage" />
-        <activity android:name=".EditProfile" />
         <activity
             android:name=".EditStudent"
             android:theme="@style/LoginPage" />
@@ -65,21 +75,17 @@
             android:theme="@style/LoginPage" />
         <activity
             android:name=".StudentDetails"
-            android:theme="@style/LoginPage"/>
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".Home"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".Signup"
             android:theme="@style/LoginPage" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/LoginPage">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 

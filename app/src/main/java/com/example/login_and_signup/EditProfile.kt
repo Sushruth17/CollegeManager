@@ -5,12 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.SharedPreference
 import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_add_student.*
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_signup.*
 import okhttp3.ResponseBody
@@ -24,6 +26,11 @@ class EditProfile : AppCompatActivity(){
         context = this
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
+
+        edit_profile_toolbar.setNavigationIcon(R.drawable.ic_back)
+        edit_profile_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
 
 
         val userName =

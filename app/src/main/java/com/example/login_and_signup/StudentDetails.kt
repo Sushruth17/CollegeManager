@@ -1,5 +1,6 @@
 package com.example.login_and_signup
 
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
@@ -41,6 +42,7 @@ class StudentDetails : AppCompatActivity() {
         std_details_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
             finish()
         })
+
 
 /*        val searchIcon = search_bar.findViewById<ImageView>(R.id.search_mag_icon)
         searchIcon.setColorFilter(Color.WHITE)
@@ -295,7 +297,6 @@ class StudentDetails : AppCompatActivity() {
         super.onResume()
         Log.i("Learning","------ Home activity B on resume --------- ")
     }
-
 
 
 

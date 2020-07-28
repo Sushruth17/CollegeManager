@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Switch
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -50,6 +52,12 @@ class Settings : AppCompatActivity() {
             dpd.show()
         }
 
+        val darkModeSwitch = findViewById<Switch>(R.id.dark_mode_switch)
+        darkModeSwitch.isChecked = true
+        darkModeSwitch?.setOnCheckedChangeListener { _, isChecked ->
+            val message = if (isChecked) "Dark mode enabled" else "Dark mode disabled"
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
 
     }
 }

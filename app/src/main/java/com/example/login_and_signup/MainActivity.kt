@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
                                     editor.putBoolean("LoggedIn", true)
                                     editor.apply()
                                     val intent = Intent(context, Home::class.java)
+                                    intent.putExtra("calling-activity", ActivityConstants.ACTIVITY_1)
                                     intent.putExtra("ProfileData", msg)
                                     intent.putExtra("USERNAME", username)
                                     startActivity(intent)

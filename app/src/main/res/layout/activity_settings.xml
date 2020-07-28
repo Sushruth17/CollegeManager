@@ -103,6 +103,19 @@
         app:layout_constraintTop_toBottomOf="@+id/start"
         tools:text="Month" />-->
 
+    <Switch
+        android:id="@+id/dark_mode_switch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/end"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:switchPadding="160dp"
+        android:text="Dark Mode"
+        android:textSize="17sp"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

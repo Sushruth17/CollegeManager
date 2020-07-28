@@ -75,6 +75,7 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
         else{
             buttonID = R.id.btn_create
+            user_status_switch.visibility = View.GONE
             task = StringUtils.CREATE
             Log.i("task","----task-----"+ task)
         }

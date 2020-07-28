@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.login_and_signup.adapters.StudentInfoAdapter
@@ -17,6 +18,7 @@ import com.example.login_and_signup.utils.StringUtils
 import kotlinx.android.synthetic.main.activity_edit_student.*
 import kotlinx.android.synthetic.main.activity_individual_student.*
 import kotlinx.android.synthetic.main.activity_student_marks.*
+import kotlinx.android.synthetic.main.fragment_home1.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,12 +41,15 @@ class IndividualStudent : AppCompatActivity() {
         Log.i("Data","----Data received-----"+ itemReceived)
         name_individual_student.text = itemReceived?.name
         branch_indv.text = itemReceived?.branch
-
         val studentid = itemReceived?.id
         val btnMarks = findViewById<Button>(R.id.btn_marks)
+        val progressBar: ProgressBar = this.progress_bar_indv_std
         btnMarks.setOnClickListener{
 
 //                val intent = Intent(context, StudentMarks::class.java)
+
+            progressBar.visibility = View.VISIBLE
+            indv_std_inner_layout.visibility = View.GONE
             ApiStudent()
                 .addRetroFit()
                 ?.getMarks(studentid)
@@ -85,7 +90,8 @@ class IndividualStudent : AppCompatActivity() {
 
         val btnFees = findViewById<Button>(R.id.btn_fees)
         btnFees.setOnClickListener{
-
+            progressBar.visibility = View.VISIBLE
+            indv_std_inner_layout.visibility = View.GONE
             ApiStudent()
                 .addRetroFit()
                 ?.getFeeDetails(studentid)
@@ -127,6 +133,8 @@ class IndividualStudent : AppCompatActivity() {
 
                                 builder.setNegativeButton("No"){dialogInterface, which ->
                                     Toast.makeText(applicationContext,"clicked No",Toast.LENGTH_LONG).show()
+                                    progressBar.visibility = View.GONE
+                                    indv_std_inner_layout.visibility = View.VISIBLE
                                 }
                                 // Create the AlertDialog
                                 val alertDialog: AlertDialog = builder.create()
@@ -140,4 +148,11 @@ class IndividualStudent : AppCompatActivity() {
 
     }
 }
+
+    override fun onStart() {
+        super.onStart()
+        val progressBar: ProgressBar = this.progress_bar_indv_std
+        progressBar.visibility = View.GONE
+        indv_std_inner_layout.visibility = View.VISIBLE
+    }
 }

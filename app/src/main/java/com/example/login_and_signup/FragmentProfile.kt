@@ -1,26 +1,20 @@
 package com.example.login_and_signup
 
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.SharedPreference
 import com.example.login_and_signup.utils.StringUtils
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_profile.*
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,19 +90,21 @@ class FragmentProfile() : Fragment() {
                 Log.i("btntest", "Logout clicked")
                 val intent = Intent(getActivity(), MainActivity::class.java)
                 //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
-                getActivity()?.startActivity(intent)
-
-            }
-        }
-        val btnEdit = getView()?.findViewById<TextView>(R.id.profile_edit)
-        if (btnEdit != null) {
-            btnEdit.setOnClickListener {
-                Log.i("btntest", "Logout clicked")
-                val intent = Intent(activity, EditProfile::class.java)
-                //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
+                val settings = this.activity?.getSharedPreferences("Login", 0)
+                val editor = settings?.edit()
+                editor?.putBoolean("LoggedIn", false)
+                editor?.apply()
                 activity?.startActivity(intent)
 
             }
+        }
+
+        val btnEdit = getView()?.findViewById<FloatingActionButton>(R.id.profile_edit)
+            btnEdit?.setOnClickListener {
+            Log.i("btntest", "Logout clicked")
+            val intent = Intent(activity, EditProfile::class.java)
+            //          intent.putExtra(StringUtils.STUDENT_INFO_DATA,getData())
+            activity?.startActivity(intent)
         }
 
         val btnSettings = getView()?.findViewById<ImageView>(R.id.profile_settings)
