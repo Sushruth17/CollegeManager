@@ -12,6 +12,7 @@ import com.example.login_and_signup.model.InfoUserItem
 import com.example.login_and_signup.utils.ApiStudent
 import com.example.login_and_signup.utils.StringUtils
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_add_student.*
 import kotlinx.android.synthetic.main.activity_create_user.*
 import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.fragment_particular_year.*
@@ -30,6 +31,10 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_user)
 
+        change_user_toolbar.setNavigationIcon(R.drawable.ic_back)
+        change_user_toolbar.setNavigationOnClickListener(View.OnClickListener { // Your code
+            finish()
+        })
 
         val spinnerCreateUser: Spinner? = findViewById(R.id.create_user_spinner)
         val arrayCreateUser = R.array.create_user_array
@@ -60,6 +65,8 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         if (buttonsActivity == StringUtils.CHANGE_USER_ROLE){
             btn_create.visibility = View.GONE
             btn_change.visibility = View.VISIBLE
+            change_user_txt.visibility = View.VISIBLE
+            create_user_txt.visibility= View.GONE
             buttonID = R.id.btn_change
             task = StringUtils.CHANGE
             userName = dataReceived.userName
@@ -71,6 +78,12 @@ class CreateUser : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
             else if  (dataReceived.userType == StringUtils.ADMIN) {
                 spinnerCreateUser?.setSelection(0)
+            }
+
+            val userStatusSwitch = findViewById<Switch>(R.id.user_status_switch)
+            userStatusSwitch?.setOnCheckedChangeListener { _, isChecked ->
+                val message = if (isChecked) "Active" else "Inactive"
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             }
         }
         else{

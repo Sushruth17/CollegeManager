@@ -44,8 +44,8 @@ class EditStudent : AppCompatActivity() {
         edit_branch.setText(dataReceived.branch)
 
 
-        edit_name.filters = validateET("[A-Za-z ]+")
-        edit_parent_name.filters = validateET("([A-Za-z ])+")
+        edit_name.filters = StringUtils.validateET("[A-Za-z ]+")
+        edit_parent_name.filters = StringUtils.validateET("([A-Za-z ])+")
 
         val buttonEdit = findViewById<Button>(R.id.btn_edit)
         buttonEdit.setOnClickListener {
@@ -103,7 +103,7 @@ class EditStudent : AppCompatActivity() {
         }
     }
 
-    private fun validateET(regex: String): Array<InputFilter>? {
+    /*private fun validateET(regex: String): Array<InputFilter>? {
         return arrayOf(
             InputFilter { src, start, end, dst, dstart, dend ->
                 if (src == "") { // for backspace
@@ -119,7 +119,7 @@ class EditStudent : AppCompatActivity() {
             }
         )
 
-    }
+    }*/
 
 }
 

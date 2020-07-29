@@ -52,5 +52,6 @@ class FragmentHomeAdapter: RecyclerView.Adapter<FragmentHomeAdapter.ViewHolder>(
                 holder.btnLogo.setImageResource(R.drawable.ic_pass_percent)
         }
     }
+
 }
 

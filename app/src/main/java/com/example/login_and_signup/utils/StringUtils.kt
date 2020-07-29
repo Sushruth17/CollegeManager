@@ -1,5 +1,6 @@
 package com.example.login_and_signup.utils
 
+import android.text.InputFilter
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -12,7 +13,7 @@ class StringUtils {
         val USER_DETAILS: String = "User Details"
         val TOPPER_LIST: String = "Topper List"
         val STUDENT_DETAILS: String = "Student Details"
-        var baseUrl :String = "http://caecdfaa90f7.ngrok.io"
+        var baseUrl :String = "http://daba54013b14.ngrok.io"
 
         fun checkRegex(src: CharSequence?, regex: String): Boolean {
             Log.i("regex","---------REGEX_ inside checkRefex--------")
@@ -21,6 +22,23 @@ class StringUtils {
                 return true
             }
             return false
+        }
+
+        fun validateET(regex: String): Array<InputFilter>? {
+            return arrayOf(
+                InputFilter { src, start, end, dst, dstart, dend ->
+                    if (src == "") { // for backspace
+                        Log.i("regex","---------REGEX_ if backspace--------")
+                        return@InputFilter src
+
+                    }
+                    if (checkRegex(src,regex)){
+                        Log.i("regex","---------REGEX_ if given expression--------")
+                        src
+                    } else ""
+
+                }
+            )
 
         }
 

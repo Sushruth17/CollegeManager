@@ -4,4 +4,4 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="2dp"
     android:textSize="18sp"
-    android:textColor="@color/colorAccent"/>
+    android:textColor="@color/white"/>

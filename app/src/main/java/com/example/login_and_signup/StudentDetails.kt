@@ -5,11 +5,16 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.EditText
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.iterator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +32,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.reflect.Type
+import java.util.Locale.filter
 
 
 class StudentDetails : AppCompatActivity() {
@@ -43,27 +49,32 @@ class StudentDetails : AppCompatActivity() {
             finish()
         })
 
+        search_bar.setOnClickListener{
+            search_bar.isIconified = false
+        }
 
-/*        val searchIcon = search_bar.findViewById<ImageView>(R.id.search_mag_icon)
+/*
+        val searchIcon = search_bar.findViewById<ImageView>(R.id.search_mag_icon)
         searchIcon.setColorFilter(Color.WHITE)
 
         val cancelIcon = search_bar.findViewById<ImageView>(R.id.search_close_btn)
         cancelIcon.setColorFilter(Color.WHITE)
 
         val textView = search_bar.findViewById<TextView>(R.id.search_src_text)
-        textView.setTextColor(Color.WHITE)*/
+        textView.setTextColor(Color.WHITE)
+
+*/
 
 
- /*       search_bar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+
+/*        search_bar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                val adpFilter = StudentInfoAdapter().getFilter()
-                if (adpFilter != null) {
-                    adpFilter.filter(newText)
-                }
+                val adpFilter = StudentInfoAdapter().filterList()
+                adpFilter.filter(newText)
                 return false
             }
 
@@ -297,7 +308,6 @@ class StudentDetails : AppCompatActivity() {
         super.onResume()
         Log.i("Learning","------ Home activity B on resume --------- ")
     }
-
 
 
 

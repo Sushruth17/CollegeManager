@@ -136,6 +136,12 @@
         <item>ISE</item>
     </string-array>
 
+    <string-array name="branch_add_std_array">
+        <item>CSE</item>
+        <item>ECE</item>
+        <item>ISE</item>
+    </string-array>
+
     <string-array name="create_user_array">
         <item>Admin</item>
         <item>HOD</item>

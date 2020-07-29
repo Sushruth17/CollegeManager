@@ -21,12 +21,12 @@ class IndividualUserData : AppCompatActivity() {
         setContentView(R.layout.activity_individual_user_data)
         val itemReceived =intent.getParcelableExtra<InfoUserItem>(StringUtils.USER_DATA)
         Log.i("Data","----Data received-----"+ itemReceived)
-        ind_user_profile_username.text = itemReceived.userUsername
-        ind_user_profile_name.text = itemReceived.userName
-        ind_user_profile_email_id.text =itemReceived.userEmailId
-        ind_user_profile_phone_number.text = itemReceived.userPhoneNumber
-        ind_user_role.text = itemReceived.userType
-        ind_user_status.text = itemReceived.userStatus
+        indv_user_username.text = itemReceived.userUsername
+        indv_user_name.text = itemReceived.userName
+        indv_user_email_id.text =itemReceived.userEmailId
+        indv_user_phone_number.text = itemReceived.userPhoneNumber
+        indv_user_role.text = itemReceived.userType
+        indv_user_status.text = itemReceived.userStatus
 
 /*        val emailIdClick = findViewById<TextView>(R.id.ind_user_profile_email_id)
         emailIdClick!!.setOnClickListener {

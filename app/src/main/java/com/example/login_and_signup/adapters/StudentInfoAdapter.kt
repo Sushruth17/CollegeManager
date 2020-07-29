@@ -4,15 +4,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_and_signup.R
 import com.example.login_and_signup.model.InfoItem
 import com.example.login_and_signup.model.StudentModel
 import kotlinx.android.synthetic.main.student_info_unit.view.*
-import java.util.*
-import java.util.logging.Filter
-import java.util.logging.LogRecord
 
 class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(){
 
@@ -93,11 +89,6 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
 */
 
 
-
-
-
-
-
     fun removeAt(position: Int) {
         data.info?.removeAt(position)
         notifyItemRemoved(position)
@@ -105,9 +96,11 @@ class StudentInfoAdapter  : RecyclerView.Adapter<StudentInfoAdapter.ViewHolder>(
 
     fun <T : RecyclerView.ViewHolder> T.listen(event: (position: Int, type: Int) -> Unit): T {
         itemView.setOnClickListener {
-            event.invoke(getAdapterPosition(), getItemViewType())
+            event.invoke(adapterPosition, itemViewType)
         }
         return this
     }
+
+
 
 }

@@ -21,6 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Student Details"
+            android:gravity="center"
+            android:layout_marginEnd="?android:attr/actionBarSize"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
             android:textSize="30sp"/>
@@ -41,9 +43,10 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/login_edit_background"
-            android:textCursorDrawable="@null"
             app:iconifiedByDefault="true"
-            android:layout_margin="5dp"/>
+            android:clickable="true"
+            android:layout_margin="5dp"
+            android:focusable="true" />
 
         <ImageView
             android:id="@+id/imageView"

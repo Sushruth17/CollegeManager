@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Open"
+        <activity android:name=".Documents"
+            android:theme="@style/LoginPage"/>
+        <activity
+            android:name=".Open"
             android:theme="@style/LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,8 +50,8 @@
                app to run.
         -->
         <activity
-        android:name=".EditProfile"
-        android:theme="@style/LoginPage" />
+            android:name=".EditProfile"
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".CreateUser"
             android:theme="@style/LoginPage" />
@@ -84,9 +87,7 @@
             android:theme="@style/LoginPage" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/LoginPage">
-
-        </activity>
+            android:theme="@style/LoginPage"></activity>
     </application>
 
 </manifest>

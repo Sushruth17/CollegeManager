@@ -14,10 +14,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Student"
+            android:gravity="center"
+            android:layout_marginEnd="?android:attr/actionBarSize"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
             android:textSize="30sp"/>
@@ -49,6 +52,7 @@
         android:hint=" Age"
         android:layout_centerHorizontal="true"
         android:paddingStart="20dp"
+        android:inputType="numberDecimal"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/add_name"
         tools:layout_editor_absoluteX="83dp"
@@ -60,6 +64,7 @@
         android:background="@drawable/login_edit_background"
         android:drawablePadding="10dp"
         android:hint="Address"
+        android:inputType="textPostalAddress"
         android:layout_centerHorizontal="true"
         android:paddingStart="20dp"
         android:layout_marginTop="20dp"
@@ -73,6 +78,7 @@
         android:background="@drawable/login_edit_background"
         android:drawablePadding="10dp"
         android:hint="Parent Name"
+        android:inputType="text"
         android:layout_centerHorizontal="true"
         android:paddingStart="20dp"
         android:layout_marginTop="20dp"
@@ -80,19 +86,31 @@
         tools:layout_editor_absoluteX="83dp"
         tools:layout_editor_absoluteY="127dp" />
 
-    <EditText
-        android:id="@+id/add_branch"
-        android:layout_width="250dp"
+    <Spinner
+        android:id="@+id/add_spinner_branch"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:drawablePadding="10dp"
+        style="@style/mySpinnerItemStyle"
+        android:backgroundTint="@color/colorAccent"
+        android:popupBackground="@color/colorPrimary"
+        android:layout_marginTop="20dp"
+        android:layout_alignEnd="@id/add_parent_name"
+        android:layout_below="@+id/add_parent_name" />
+    <TextView
+        android:id="@+id/add_std_branch"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:background="@drawable/login_edit_background"
-        android:drawablePadding="10dp"
-        android:hint="Branch"
-        android:layout_centerHorizontal="true"
         android:paddingStart="20dp"
+        android:gravity="center_vertical"
+        android:text="Branch"
+        android:textSize="17dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/add_parent_name"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="127dp" />
+        android:layout_alignStart="@id/add_parent_name"
+        android:layout_below="@id/add_parent_name" />
+
 
     <Button
         android:id="@+id/add"
@@ -101,7 +119,7 @@
         android:text="ADD"
         android:textSize="21sp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/add_branch"
+        android:layout_below="@+id/add_std_branch"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_background"/>
 

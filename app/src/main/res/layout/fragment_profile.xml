@@ -156,19 +156,20 @@
 
         <LinearLayout
             android:id="@+id/down_ll"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp">
+                android:paddingStart="25dp"
+                android:layout_marginBottom="15dp">
 
                 <ImageView
                     style=""
@@ -181,8 +182,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="username@gmail.com"
+                    android:paddingStart="20dp"
+                    android:textSize="17sp"
+                    tools:text="username@gmail.com"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -192,7 +194,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp">
+                android:paddingLeft="25dp"
+                android:layout_marginBottom="15dp">
 
                 <ImageView
                     android:layout_width="36dp"
@@ -206,11 +209,12 @@
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="+91 99999 99999"
+                    android:textSize="17sp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <LinearLayout
+           <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -231,7 +235,7 @@
                     android:text="Add to group"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold" />
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -252,6 +256,7 @@
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="Logout"
+                    android:textSize="17sp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold" />
 
