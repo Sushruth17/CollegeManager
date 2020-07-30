@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".StudentFees"
     android:background="@drawable/login_background">
 
@@ -43,12 +47,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_update_fees"
         android:background="@drawable/button_background"
         android:text="Send Remainder"
         android:textAllCaps="false"
         android:padding="10dp"
         android:textSize="17dp"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
     <Button
         android:id="@+id/btn_update_fees"
         android:layout_width="wrap_content"
@@ -56,15 +62,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/btn_send_remainder"
-        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ll_check_box"
         android:background="@drawable/button_background"
         android:text="Update"
         android:textAllCaps="false"
         android:padding="10dp"
         android:textSize="17dp"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
 <LinearLayout
+    android:id="@+id/ll_check_box"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
@@ -263,3 +270,4 @@
 </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

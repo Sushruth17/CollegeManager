@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TopperList">
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".TopperList"
+    android:background="@drawable/login_background">
     <Toolbar
         android:id="@+id/topper_list_toolbar"
         android:layout_width="match_parent"
@@ -32,7 +37,7 @@
         android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topper_list_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/topper_list_toolbar"
         android:orientation="vertical"
         android:background="@color/colorPrimaryDark">
 
@@ -59,11 +64,14 @@
         android:id="@+id/nav_topper_host_fragment"
         class="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="607dp"
         app:defaultNavHost="true"
-        android:layout_marginTop="102dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
-        app:navGraph="@navigation/nav_graph_topper_list" />
+        app:navGraph="@navigation/nav_graph_topper_list"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
