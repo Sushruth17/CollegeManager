@@ -13,7 +13,7 @@ class StringUtils {
         val USER_DETAILS: String = "User Details"
         val TOPPER_LIST: String = "Topper List"
         val STUDENT_DETAILS: String = "Student Details"
-        var baseUrl :String = "http://27bde8e8811c.ngrok.io"
+        var baseUrl :String = "http://ab76137d7453.ngrok.io"
 
         fun checkRegex(src: CharSequence?, regex: String): Boolean {
             Log.i("regex","---------REGEX_ inside checkRefex--------")
