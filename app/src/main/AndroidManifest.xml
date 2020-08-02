@@ -4,14 +4,9 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission
-        android:name="android.permission.CAMERA" />
-
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -21,8 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Documents"
-            android:theme="@style/LoginPage"/>
+        <activity android:name=".DocsNew" />
+        <activity android:name=".ImagesActivity" />
+        <activity
+            android:name=".ShowImage"
+            android:theme="@style/LoginPage" />
+        <activity
+            android:name=".Docs"
+            android:theme="@style/LoginPage" />
+        <activity
+            android:name=".Documents"
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".Open"
             android:theme="@style/LoginPage">
@@ -46,7 +50,7 @@
             android:theme="@style/LoginPage" />
         <activity
             android:name=".StudentFees"
-            android:theme="@style/LoginPage"/>
+            android:theme="@style/LoginPage" />
         <activity
             android:name=".IndividualStudent"
             android:theme="@style/LoginPage" />
@@ -97,6 +101,5 @@
             android:name=".MainActivity"
             android:theme="@style/LoginPage" />
     </application>
-    <!--Declaring the required permissions-->
 
 </manifest>

@@ -49,32 +49,6 @@ class Documents : AppCompatActivity(),View.OnClickListener {
             finish()
         })
 
-/*        val mStorageRef = FirebaseStorage.getInstance().reference
-
-        val file: Uri = Uri.fromFile(File("path/to/images/rivers.jpg"))
-        val storage = FirebaseStorage.getInstance()
-        val storageRef: StorageReference= storage.getReferenceFromUrl("Url to storage")
-        val riversRef: StorageReference = storageRef.child("images/rivers.jpg")
-
-        riversRef.putFile(file)
-            .addOnSuccessListener { taskSnapshot -> // Get a URL to the uploaded content
-                val downloadUrl: Uri = taskSnapshot.getDownloadUrl()
-            }
-            .addOnFailureListener {
-                // Handle unsuccessful uploads
-                // ...
-            }
-
-        val localFile = File.createTempFile("images", "jpg")
-        riversRef.getFile(localFile)
-            .addOnSuccessListener {
-                // Successfully downloaded data to local file
-                // ...
-            }.addOnFailureListener {
-                // Handle failed download
-                // ...
-            }*/
-
         //getting views from layout
         buttonChoose =  findViewById<Button>(R.id.button_Choose);
         buttonUpload =  findViewById<Button>(R.id.button_Upload);
@@ -94,11 +68,8 @@ class Documents : AppCompatActivity(),View.OnClickListener {
     }
 
     //handling the image chooser activity result
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?
-    ) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+    {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != RESULT_CANCELED){
             if (requestCode == PICK_IMAGE_REQUEST && data != null && data.data != null) {
@@ -111,7 +82,7 @@ class Documents : AppCompatActivity(),View.OnClickListener {
                     e.printStackTrace()
                 }
             }
-    }
+        }
     }
 
     override fun onClick(v: View?) {
@@ -140,39 +111,23 @@ class Documents : AppCompatActivity(),View.OnClickListener {
                 val imageURL = Uri.toString()
                 val imagetest = findViewById<ImageView>(R.id.image_View)
                 progressDialog.dismiss()
-                Toast.makeText(applicationContext, "File Uploaded ", Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(applicationContext, "File Uploaded ",
+                    Toast.LENGTH_LONG).show()
 
-                Glide.with(this)
-                    .load(imageURL)
+                Glide.with(this).load(imageURL)
                     .into(imagetest)
 
             }
-                /*  .addOnSuccessListener {//if the upload is successfull
-                      //hiding the progress dialog
-                          // Handle successful uploads on complete
-                      progressDialog.dismiss()
-                      Toast.makeText(applicationContext, "File Uploaded ", Toast.LENGTH_LONG)
-                          .show()
-                          } */
 
                 .addOnFailureListener { exception -> //if the upload is not successfull
                     //hiding the progress dialog
                     progressDialog.dismiss()
 
                     //and displaying error message
-                    Toast.makeText(
-                        applicationContext,
-                        exception.message,
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(applicationContext, exception.message,
+                        Toast.LENGTH_LONG).show()
                 }
-/*                .addOnProgressListener { taskSnapshot -> //calculating progress percentage
-                    val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount
 
-                    //displaying percentage in progress dialog
-                    progressDialog.setMessage("Uploaded " + progress.toInt() + "%...")
-                }*/
         } else {
             Toast.makeText(applicationContext, "error ", Toast.LENGTH_LONG).show()
         }
@@ -182,42 +137,26 @@ class Documents : AppCompatActivity(),View.OnClickListener {
     fun checkPermission(permission: String, requestCode: Int) {
 
         // Checking if permission is not granted
-        if (ContextCompat.checkSelfPermission(
-                this,
-                permission
-            )
+        if (ContextCompat.checkSelfPermission(this, permission)
             == PackageManager.PERMISSION_DENIED
         ) {
             ActivityCompat
-                .requestPermissions(
-                    this, arrayOf(permission),
-                    requestCode
-                )
+                .requestPermissions(this, arrayOf(permission),
+                    requestCode)
         } else {
             Toast
-                .makeText(
-                    this,
-                    "Permission already granted",
-                    Toast.LENGTH_SHORT
-                )
-                .show()
+                .makeText(this, "Permission already granted",
+                    Toast.LENGTH_SHORT).show()
         }
     }
 
-    // This function is called when user accept or decline the permission.
-// Request Code is used to check which permission called this function.
-// This request code is provided when user is prompt for permission.
 
-    // This function is called when user accept or decline the permission.
-    // Request Code is used to check which permission called this function.
-    // This request code is provided when user is prompt for permission.
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String?>,
         grantResults: IntArray
     ) {
-        super
-            .onRequestPermissionsResult(
+        super.onRequestPermissionsResult(
                 requestCode,
                 permissions,
                 grantResults
@@ -230,37 +169,21 @@ class Documents : AppCompatActivity(),View.OnClickListener {
             ) {
 
                 // Showing the toast message
-                Toast.makeText(
-                    this,
-                    "Camera Permission Granted",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                Toast.makeText(this, "Camera Permission Granted",
+                    Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(
-                    this,
-                    "Camera Permission Denied",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                Toast.makeText(this, "Camera Permission Denied",
+                    Toast.LENGTH_SHORT).show()
             }
         } else if (requestCode == STORAGE_PERMISSION_CODE) {
             if (grantResults.size > 0
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED
             ) {
-                Toast.makeText(
-                    this,
-                    "Storage Permission Granted",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                Toast.makeText(this, "Storage Permission Granted",
+                    Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(
-                    this,
-                    "Storage Permission Denied",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                Toast.makeText(this, "Storage Permission Denied",
+                    Toast.LENGTH_SHORT).show()
             }
         }
     }

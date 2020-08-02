@@ -204,7 +204,7 @@ class IndividualStudent : AppCompatActivity() {
 //    }
 
         indv_std_inner_layout3_docs.setOnClickListener {
-            val intent = Intent(context, Documents::class.java)
+            val intent = Intent(context, DocsNew::class.java)
             startActivity(intent)
         }
 }
